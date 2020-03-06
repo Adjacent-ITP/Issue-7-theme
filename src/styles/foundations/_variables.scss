@@ -1,0 +1,7 @@
+$nav-height: 15vh;
+$footer-height: 8vh;
+$body-height: calc(100vh - #{$nav-height} - #{$footer-height});
+
+$theme-rect-width: 20vw;
+
+$border-standard: 1px solid $c-main;
