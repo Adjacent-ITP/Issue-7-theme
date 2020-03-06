@@ -1,5 +1,155 @@
 .header {
-  height: $nav-height;
+  height: $header-height;
   width: 100vw;
   border-bottom: $border-standard;
+  display: flex;
+}
+
+.header__logo {
+  @include -flex-center-all;
+  width: $theme-rect-width;
+  border-left: $border-standard;
+
+  &-link {
+    @include -flex-center-all;
+  }
+
+  &-img {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/*
+** navigation bar
+*/
+$nav-border-size: 4px;
+$nav-chevron-size: 3em;
+$nav-btn-width: calc(#{$nav-width} * 0.2);
+$chevron-line-width: calc(#{$nav-width} / 10);
+
+.nav {
+  @include -flex-center-space-between;
+  flex-grow: 1;
+  padding: 0 2rem;
+}
+
+.nav__btn {
+  position: relative;
+  font-size: 100%;
+  width: $nav-btn-width;
+
+  // arrow chevron
+  &.-chevron {
+    @include -flex;
+
+    &.-right {
+      justify-content: flex-end;
+    }
+  }
+  &-chevron {
+    border-style: solid;
+    border-width: $nav-border-size $nav-border-size 0 0;
+    height: $nav-chevron-size;
+    width: $nav-chevron-size;
+
+    .-left & {
+      transform: rotate(-135deg);
+    }
+    .-right & {
+      transform: rotate(45deg);
+    }
+  }
+
+  // arrow line
+  &.-chevron {
+    &:before {
+      content: "";
+      position: absolute;
+      top: calc(50% - #{$nav-border-size}/ 2);
+      width: $chevron-line-width;
+      height: $nav-border-size;
+      background-color: $c-main;
+      transition: all $transition-time;
+    }
+
+    &.-left:before {
+      left: calc(#{$chevron-line-width} / 5);
+    }
+    &.-right:before {
+      right: calc(#{$chevron-line-width} / 5);
+    }
+  }
+
+  // ham
+  &.-ham {
+    position: relative;
+    height: $nav-chevron-size;
+
+    & .nav__btn-ham {
+      height: $nav-border-size;
+      width: 100%;
+      background-color: $c-main;
+    }
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      height: $nav-border-size;
+      width: 100%;
+      background-color: $c-main;
+    }
+    &:before {
+      top: 0;
+    }
+    &:after {
+      bottom: 0;
+    }
+  }
+}
+
+// rwd
+.nav__btn.-chevron {
+  @include media("above-desktop") {
+    transition: all $transition-time;
+
+    &:hover {
+      transition: all $transition-time;
+      &:before,
+      &:after {
+        transition: all $transition-time;
+      }
+    }
+
+    & .nav__btn-chevron:hover {
+      // border-color: red;
+    }
+
+    &.-left:hover {
+      transform: translate3d(-0.8rem, 0, 0);
+
+      &:before {
+        transform: translate3d(-0.85rem, 0, 0);
+      }
+    }
+    &.-right:hover {
+      transform: translate3d(0.8rem, 0, 0);
+
+      &:before {
+        transform: translate3d(0.85rem, 0, 0);
+      }
+    }
+  }
+}
+
+.nav__btn.-ham {
+  @include media("above-desktop") {
+    transition: all $transition-time;
+
+    &:hover {
+      width: calc(#{$nav-btn-width} * 1.2);
+    }
+  }
 }
