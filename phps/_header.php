@@ -1,9 +1,9 @@
 <header class="header" role="banner">
-	<nav class="nav">
+	<nav class="nav" id="nav">
 		<button class="nav__btn -left -chevron">
 			<div class="nav__btn-chevron"></div>
 		</button>
-		<button class="nav__btn -center -ham">
+		<button class="nav__btn -center -ham" id="btnHam">
 			<div class="nav__btn-ham"></div>
 		</button>
 		<button class="nav__btn -right -chevron">

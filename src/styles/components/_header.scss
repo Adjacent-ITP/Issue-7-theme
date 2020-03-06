@@ -32,6 +32,7 @@ $chevron-line-width: calc(#{$nav-width} / 10);
   @include -flex-center-space-between;
   flex-grow: 1;
   padding: 0 2rem;
+  transition: all $transition-time;
 }
 
 .nav__btn {
@@ -151,5 +152,33 @@ $chevron-line-width: calc(#{$nav-width} / 10);
     &:hover {
       width: calc(#{$nav-btn-width} * 1.2);
     }
+  }
+}
+
+// state management
+.nav.-is-active {
+  transition: all $transition-time;
+  background-color: gray;
+
+  & .nav__btn-ham {
+    background-color: transparent;
+  }
+  & .nav__btn.-ham {
+    &:after,
+    &:before {
+      transform-origin: center;
+    }
+    &:after {
+      bottom: calc(#{$nav-chevron-size} / 2.5);
+      transform: rotate(15deg);
+    }
+    &:before {
+      top: calc(#{$nav-chevron-size} / 2);
+      transform: rotate(-15deg);
+    }
+  }
+  & .nav__btn.-chevron {
+    opacity: 0;
+    pointer-events: none;
   }
 }

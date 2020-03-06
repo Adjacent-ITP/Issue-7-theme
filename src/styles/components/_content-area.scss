@@ -1,0 +1,10 @@
+.content-area {
+  flex-grow: 1;
+  transition: all $transition-time;
+}
+
+// state management
+.content-area.-is-active {
+  transition: all $transition-time;
+  background-color: gray;
+}
