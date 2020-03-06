@@ -1,0 +1,61 @@
+/*---------------------*/
+/*
+** FONT FAMILY SETUP
+*/
+/*---------------------*/
+
+// @font-face {
+//   font-family: "spacemono-regular";
+//   src: url("/public/assets/fonts/SpaceMono-Regular.ttf") format("ttf");
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+/*---------------------*/
+/*
+** THEME FONT SETUP
+*/
+/*---------------------*/
+
+/* level 1 */
+// $f-main: "spacemono-regular";
+
+/* level 2 */
+// $f-title: $f-sub;
+
+/*---------------------*/
+/*
+** FONT SIZE SETUP
+**
+** fs > stands for --> font size
+*/
+/*---------------------*/
+
+// $fs-root: 16px;
+
+/*---------------------*/
+/*
+** FONT STYLES SETUP
+**
+** fc > stands for --> font color
+*/
+/*---------------------*/
+
+// @mixin f-title {
+// 	font-family: $f-title;
+// 		font-size: $fs-subtitle;
+// 		line-height: 2.25rem;
+// 	color: $c-main;
+// }
+// .-f-title { @include f-title }
+
+/*---------------------*/
+/*
+** DEFAULT FONT STYLE SETUP
+*/
+/*---------------------*/
+
+// a {
+// 	color: $c-theme;
+// 	text-decoration: underline;
+// }
