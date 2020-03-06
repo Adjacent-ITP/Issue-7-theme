@@ -1,7 +1,10 @@
-$nav-height: 16vh;
+$header-height: 16vh;
 $footer-height: 8vh;
-$body-height: calc(100vh - #{$nav-height} - #{$footer-height});
+$body-height: calc(100vh - #{$header-height} - #{$footer-height});
 
 $theme-rect-width: 20vw;
+$nav-width: calc(100vw - #{$theme-rect-width});
 
 $border-standard: 1px solid $c-main;
+
+$transition-time: 0.3s;
