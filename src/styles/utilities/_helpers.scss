@@ -22,3 +22,11 @@
 .-flex.-center-space-between {
   @include -flex-center-space-between;
 }
+
+@mixin -flex-column {
+  @include -flex;
+  flex-direction: column;
+}
+.-flex.-column {
+  @include -flex-column;
+}

@@ -1,0 +1,44 @@
+.menu {
+  @include -flex-column;
+  height: 100%;
+}
+
+$menu-border: 1px dashed $c-main;
+$menu-small-row-height: calc(100% / 12);
+
+.menu__row {
+  @include -flex;
+  width: 100%;
+
+  &.-small {
+    height: calc(100% / 12);
+  }
+  &.-big {
+    flex-grow: 1;
+  }
+
+  &:first-child,
+  &:nth-child(2) {
+    border-bottom: $menu-border;
+  }
+}
+
+.menu__cell {
+  flex-grow: 1;
+  &:not(:last-child) {
+    border-right: $menu-border;
+  }
+}
+
+// state management
+.menu {
+  position: relative;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+}
+.menu.-is-active {
+  z-index: 1;
+  opacity: 1;
+  pointer-events: initial;
+}
