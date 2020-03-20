@@ -20,10 +20,6 @@
 /* level 1 */
 $f-main: "Helvetica", "Roboto", "Arial", sans-serif;
 
-/* level 2 */
-$f-title: $f-main;
-$f-body: $f-main;
-
 /*---------------------*/
 /*
 ** FONT SIZE SETUP
@@ -33,10 +29,11 @@ $f-body: $f-main;
 /*---------------------*/
 
 $fs-root: 16px;
-$fs-hero: 2.25rem;
-$fs-title: 2rem;
-$fs-subtitle: 1.75rem;
-$fs-body: 1rem;
+$fs-headline: 2rem;
+$fs-title: 1.425rem;
+$fs-subtitle: 1.125rem;
+$fs-small: 0.875rem;
+$fs-note: 0.75rem;
 
 /*---------------------*/
 /*
@@ -57,52 +54,108 @@ $fw-bold: bold;
 */
 /*---------------------*/
 
-@mixin f-hero {
-  font-family: $f-title;
-  font-size: $fs-hero;
-  color: $c-main;
+// subhead
+@mixin f-subhead {
+  font-family: $f-main;
+  font-size: $fs-headline;
+  line-height: 2.5rem;
 }
-.-f-hero {
-  @include f-hero;
-}
-.-f-hero-bold {
-  @include f-hero;
-  font-weight: $fw-bold;
+.-f-subhead {
+  @include f-subhead;
 }
 
+// headline
+@mixin f-headline {
+  @include f-subhead;
+  font-weight: $fw-bold;
+}
+.-f-headline {
+  @include f-headline;
+}
+
+// title, author, quote
 @mixin f-title {
-  font-family: $f-title;
+  font-family: $f-main;
   font-size: $fs-title;
-  color: $c-main;
-}
-.-f-title {
-  @include f-title;
-}
-.-f-title-bold {
-  @include f-title;
+  line-height: 1.75rem;
   font-weight: $fw-bold;
 }
+@mixin f-author {
+  @include f-title;
+}
+@mixin f-quote {
+  @include f-title;
+}
+.-f-title,
+.-f-author,
+.-f-quote {
+  @include f-title;
+}
 
+// paragraph, illustrator, list, caption
 @mixin f-subtitle {
-  font-family: $f-title;
+  font-family: $f-main;
   font-size: $fs-subtitle;
-  color: $c-main;
+  line-height: 1.875rem;
 }
-.-f-subtitle {
+@mixin f-paragraph {
   @include f-subtitle;
 }
-.-f-subtitle-bold {
+@mixin f-list {
   @include f-subtitle;
-  font-weight: $fw-bold;
+}
+.-f-subtitle,
+.-f-paragraph,
+.-f-list {
+  @include f-subtitle;
 }
 
-@mixin f-body {
-  font-family: $f-body;
-  font-size: $fs-body;
-  color: $c-main;
+@mixin f-subtitle-i {
+  @include f-subtitle;
+  font-style: italic;
 }
-.-f-body {
-  @include f-body;
+@mixin f-illustrator {
+  @include f-subtitle-i;
+}
+@mixin f-caption {
+  @include f-subtitle-i;
+}
+.-f-illustrator,
+.-f-caption {
+  @include f-subtitle-i;
+}
+
+// footer, quote author
+@mixin f-small {
+  font-family: $f-main;
+  font-size: $fs-small;
+  line-height: 1.125rem;
+}
+@mixin f-footer {
+  @include f-small;
+}
+.-f-small,
+.-f-footer {
+  @include f-small;
+}
+
+@mixin f-quote-author {
+  @include f-small;
+  font-weight: $fw-bold;
+}
+.-f-quote-author {
+  @include f-quote-author;
+}
+
+// footnote
+@mixin f-note {
+  font-family: $f-main;
+  font-size: $fs-note;
+  line-height: 1.125rem;
+}
+.-f-note,
+.-f-footnote {
+  @include f-note;
 }
 
 /*---------------------*/
