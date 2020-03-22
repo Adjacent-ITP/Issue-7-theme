@@ -1,6 +1,6 @@
 .header {
   height: $header-height;
-  width: 100vw;
+  width: 100%;
   border-bottom: $border-standard;
   display: flex;
 }
@@ -51,6 +51,7 @@ $chevron-line-width: calc(#{$nav-width} / 10);
   &-chevron {
     border-style: solid;
     border-width: $nav-border-size $nav-border-size 0 0;
+    border-color: black;
     height: $nav-chevron-size;
     width: $nav-chevron-size;
 
