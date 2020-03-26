@@ -1,4 +1,5 @@
 .footer {
+  @include -flex-center-all;
   height: $footer-height;
   max-width: 100vw;
   border-top: $border-standard;
