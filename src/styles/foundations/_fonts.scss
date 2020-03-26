@@ -80,16 +80,25 @@ $fw-bold: bold;
   line-height: 1.75rem;
   font-weight: $fw-bold;
 }
-@mixin f-author {
-  @include f-title;
-}
 @mixin f-quote {
   @include f-title;
 }
 .-f-title,
-.-f-author,
 .-f-quote {
   @include f-title;
+}
+
+// author
+@mixin f-title-regular {
+  font-family: $f-main;
+  font-size: $fs-title;
+  line-height: 1.75rem;
+}
+@mixin f-author {
+  @include f-title-regular;
+}
+.-f-author {
+  @include f-title-regular;
 }
 
 // paragraph, illustrator, list, caption
@@ -156,6 +165,11 @@ $fw-bold: bold;
 .-f-note,
 .-f-footnote {
   @include f-note;
+}
+
+// modifier
+.-f-bold {
+  font-weight: $fw-bold;
 }
 
 /*---------------------*/

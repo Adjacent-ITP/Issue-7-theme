@@ -1,0 +1,101 @@
+.post {
+  @include -flex;
+  width: 100%;
+  height: 100%;
+
+  &__left {
+    width: 65%;
+    max-width: calc(1620px * 0.65);
+    border-right: $border-standard;
+  }
+  &__right {
+    flex-grow: 1;
+  }
+
+  & .article {
+    overflow-y: scroll;
+  }
+}
+
+.article {
+  @include f-paragraph;
+  box-sizing: border-box;
+  padding: 48px 72px;
+
+  &__paragraph,
+  &__caption,
+  &__title,
+  &__footnote-title,
+  &__footnote {
+    margin-bottom: 16px;
+  }
+  &__quote-block,
+  &__caption,
+  &__list,
+  &__divider {
+    margin: 48px 0;
+  }
+
+  &__header {
+    margin-bottom: 136px;
+  }
+  &__headline {
+    margin-bottom: 48px;
+  }
+
+  &__title {
+    @include f-title;
+  }
+
+  &__intro {
+    width: 90%;
+    margin-bottom: 48px;
+  }
+  &__blurb {
+    margin-bottom: 48px;
+  }
+
+  &__main {
+  }
+
+  &__paragraph {
+    @include f-paragraph;
+  }
+
+  &__quote {
+    @include f-quote;
+    display: inline-block;
+    margin-bottom: 24px;
+  }
+  &__quote-author {
+    @include f-quote-author;
+  }
+
+  &__caption {
+    @include f-caption;
+    display: inline-block;
+  }
+
+  &__list {
+    text-indent: 1rem;
+  }
+  &__list-item {
+    position: relative;
+
+    &:before {
+      content: "-";
+      position: absolute;
+      top: 0;
+      left: -1rem;
+    }
+  }
+
+  &__divider,
+  hr {
+    border: 2px solid $c-theme;
+  }
+
+  &__footnote {
+    @include f-note;
+  }
+}

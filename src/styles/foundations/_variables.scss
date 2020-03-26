@@ -5,6 +5,7 @@ $body-height: calc(100vh - #{$header-height} - #{$footer-height});
 $theme-rect-width: 20vw;
 $theme-rect-height: $body-height;
 $nav-width: calc(100vw - #{$theme-rect-width});
+$content-area-width: calc(100vw - #{$theme-rect-width});
 
 $border-standard: 1px solid $c-main;
 
