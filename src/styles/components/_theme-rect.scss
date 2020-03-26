@@ -22,20 +22,21 @@ $col-width: calc(#{$rect-container-width} / #{$col-count});
 }
 
 $text-margin: calc(#{$row-height} * 2);
+$full-width: calc(#{$col-width} * #{$col-count});
 
 $f-width: calc(#{$col-width} * 8);
 $f-height: calc(#{$row-height} * 10);
 $e-width: calc(#{$col-width} * 8);
 $e-height: calc(#{$row-height} * 20);
-$e2-width: calc(#{$col-width} * #{$col-count});
+$e2-width: $full-width;
 $e2-height: calc(#{$row-height} * 13);
-$l-width: calc(#{$col-width} * #{$col-count});
+$l-width: $full-width;
 $l-height: calc(#{$row-height} * 6);
 $i-width: calc(#{$col-width});
 $i-height: calc(#{$row-height} * 6);
 $n-width: calc(#{$col-width} * 16);
 $n-height: calc(#{$row-height} * 10);
-$g-width: calc(#{$col-width} * #{$col-count});
+$g-width: $full-width;
 $g-height: calc(#{$row-height} * 7);
 
 .theme-text {
@@ -46,151 +47,221 @@ $g-height: calc(#{$row-height} * 7);
     stroke: black;
     stroke-width: $text-width;
   }
+}
+.theme-text__f {
+  top: 0;
+  left: 0;
+  width: $f-width;
+  height: $f-height;
 
-  &__f {
-    top: 0;
-    left: 0;
-    width: $f-width;
-    height: $f-height;
+  & #f-top {
+    transform: translate3d(0, $text-width-offset, 0);
+  }
+  & #f-center {
+    transform: translate3d(0, 58%, 0);
+  }
+  & #f-left {
+    transform: translate3d($text-width-offset, 0, 0);
+  }
+}
 
-    & #f-top {
-      transform: translate3d(0, $text-width-offset, 0);
+.theme-text__e {
+  top: 0;
+  right: 0;
+  width: $e-width;
+  height: $e-height;
+
+  & #e-top {
+    transform: translate3d(0, $text-width-offset, 0);
+  }
+  & #e-center {
+    transform: translate3d(0, 55%, 0);
+  }
+  & #e-btm {
+    transform: translate3d(0, calc(100% - #{$text-width-offset}), 0);
+  }
+  & #e-left {
+    transform: translate3d($text-width-offset, 0, 0);
+  }
+}
+
+$e2-offset-y: calc(#{$f-height} + #{$text-margin});
+
+.theme-text__e2 {
+  top: 0;
+  left: 0;
+  width: $e2-width;
+  height: $e2-height;
+  transform: translate3d(0, $e2-offset-y, 0);
+
+  & #e2-top {
+    transform: translate3d(0, $text-width-offset, 0) scaleX(0.5);
+  }
+  & #e2-center {
+    transform: translate3d(0, 55%, 0) scaleX(0.45);
+  }
+  & #e2-btm {
+    transform: translate3d(0, calc(100% - #{$text-width-offset}), 0);
+  }
+  & #e2-left {
+    transform: translate3d($text-width-offset, 0, 0);
+  }
+}
+
+$l-offset-y: calc(#{$f-height} + #{$e2-height} + #{$text-margin} * 2);
+
+.theme-text__l {
+  top: 0;
+  left: 0;
+  width: $l-width;
+  height: $l-height;
+  transform: translate3d(0, $l-offset-y, 0);
+
+  & #l-btm {
+    transform: translate3d(0, calc(100% - #{$text-width-offset}), 0);
+  }
+  & #l-left {
+    transform: translate3d($text-width-offset, 0, 0);
+  }
+}
+
+$i-offset-y: calc(
+  #{$f-height} + #{$e2-height} + #{$l-height} + #{$text-margin} * 3
+);
+
+.theme-text__i {
+  top: 0;
+  left: 0;
+  width: $i-width;
+  height: $i-height;
+  transform: translate3d(0, $i-offset-y, 0);
+
+  & #i-left {
+    transform: translate3d($text-width-offset, 0, 0);
+  }
+}
+
+$n-offset-y: calc(
+  #{$f-height} + #{$e2-height} + #{$l-height} + #{$text-margin} * 3
+);
+
+.theme-text__n {
+  top: 0;
+  right: 0;
+  width: $n-width;
+  height: $n-height;
+  transform: translate3d(0, $n-offset-y, 0);
+
+  & #n-left {
+    transform: translate3d($text-width-offset, 0, 0) scaleY(0.6);
+  }
+  & #n-right {
+    transform: translate3d(calc(#{$n-width} - #{$text-width-offset}), 0, 0);
+  }
+}
+
+$g-offset-y: calc(
+  #{$f-height} + #{$e2-height} + #{$l-height} + #{$n-height} + #{$text-margin} *
+    2
+);
+
+.theme-text__g {
+  top: 0;
+  right: 0;
+  width: $g-width;
+  height: $g-height;
+  transform: translate3d(0, $g-offset-y, 0);
+
+  & #g-top {
+    transform: translate3d($text-width-offset, $text-width-offset, 0)
+      scaleX(0.6);
+  }
+  & #g-left {
+    transform: translate3d($text-width-offset, 0, 0);
+  }
+  & #g-btm {
+    transform: translate3d(
+      $text-width-offset,
+      calc(100% - #{$text-width-offset}),
+      0
+    );
+  }
+  & #g-right {
+    transform: translate3d(calc(#{$g-width} - #{$text-width-offset}), 60%, 0)
+      scaleY(0.6);
+  }
+  & #g-center {
+    transform: translate3d(calc(#{$col-width} * 5), 60%, 0);
+  }
+}
+
+/*
+** animation
+*/
+
+.theme-text {
+  @keyframes f-e-e_f {
+    from {
+      width: $f-width;
     }
-    & #f-center {
-      transform: translate3d(0, 58%, 0);
-    }
-    & #f-left {
-      transform: translate3d($text-width-offset, 0, 0);
+    to {
+      width: $full-width;
     }
   }
-
-  &__e {
-    top: 0;
-    right: 0;
-    width: $e-width;
-    height: $e-height;
-
-    & #e-top {
-      transform: translate3d(0, $text-width-offset, 0);
+  @keyframes f-e-e_e {
+    from {
+      height: $e-height;
+      transform: none;
     }
-    & #e-center {
-      transform: translate3d(0, 55%, 0);
-    }
-    & #e-btm {
-      transform: translate3d(0, calc(100% - #{$text-width-offset}), 0);
-    }
-    & #e-left {
-      transform: translate3d($text-width-offset, 0, 0);
+    to {
+      height: $e2-height;
+      transform: translate3d(0, $e2-offset-y, 0);
     }
   }
-
-  $e2-offset-y: calc(#{$f-height} + #{$text-margin});
-
-  &__e2 {
-    top: 0;
-    left: 0;
-    width: $e2-width;
-    height: $e2-height;
-    transform: translate3d(0, $e2-offset-y, 0);
-
-    & #e2-top {
+  @keyframes f-e-e_e2 {
+    from {
+      width: $e2-width;
+    }
+    to {
+      width: calc(#{$full-width} / 2);
+    }
+  }
+  @keyframes f-e-e_e2-top {
+    from {
       transform: translate3d(0, $text-width-offset, 0) scaleX(0.5);
     }
-    & #e2-center {
+    to {
+      transform: translate3d(0, $text-width-offset, 0) scaleX(1);
+    }
+  }
+  @keyframes f-e-e_e2-center {
+    from {
       transform: translate3d(0, 55%, 0) scaleX(0.45);
     }
-    & #e2-btm {
-      transform: translate3d(0, calc(100% - #{$text-width-offset}), 0);
-    }
-    & #e2-left {
-      transform: translate3d($text-width-offset, 0, 0);
+    to {
+      transform: translate3d(0, 55%, 0) scaleX(0.8);
     }
   }
 
-  $l-offset-y: calc(#{$f-height} + #{$e2-height} + #{$text-margin} * 2);
-
-  &__l {
-    top: 0;
-    left: 0;
-    width: $l-width;
-    height: $l-height;
-    transform: translate3d(0, $l-offset-y, 0);
-
-    & #l-btm {
-      transform: translate3d(0, calc(100% - #{$text-width-offset}), 0);
-    }
-    & #l-left {
-      transform: translate3d($text-width-offset, 0, 0);
-    }
+  &__f {
+    animation-name: f-e-e_f;
+    animation-duration: 3s;
   }
-
-  $i-offset-y: calc(
-    #{$f-height} + #{$e2-height} + #{$l-height} + #{$text-margin} * 3
-  );
-
-  &__i {
-    top: 0;
-    left: 0;
-    width: $i-width;
-    height: $i-height;
-    transform: translate3d(0, $i-offset-y, 0);
-
-    & #i-left {
-      transform: translate3d($text-width-offset, 0, 0);
-    }
+  &__e {
+    animation-name: f-e-e_e;
+    animation-duration: 3s;
   }
+  &__e2 {
+    animation-name: f-e-e_e2;
+    animation-duration: 3s;
 
-  $n-offset-y: calc(
-    #{$f-height} + #{$e2-height} + #{$l-height} + #{$text-margin} * 3
-  );
-
-  &__n {
-    top: 0;
-    right: 0;
-    width: $n-width;
-    height: $n-height;
-    transform: translate3d(0, $n-offset-y, 0);
-
-    & #n-left {
-      transform: translate3d($text-width-offset, 0, 0) scaleY(0.6);
+    & #e2-top {
+      animation-name: f-e-e_e2-top;
+      animation-duration: 3s;
     }
-    & #n-right {
-      transform: translate3d(calc(#{$n-width} - #{$text-width-offset}), 0, 0);
-    }
-  }
-
-  $g-offset-y: calc(
-    #{$f-height} + #{$e2-height} + #{$l-height} + #{$n-height} + #{$text-margin} *
-      2
-  );
-
-  &__g {
-    top: 0;
-    right: 0;
-    width: $g-width;
-    height: $g-height;
-    transform: translate3d(0, $g-offset-y, 0);
-
-    & #g-top {
-      transform: translate3d($text-width-offset, $text-width-offset, 0)
-        scaleX(0.6);
-    }
-    & #g-left {
-      transform: translate3d($text-width-offset, 0, 0);
-    }
-    & #g-btm {
-      transform: translate3d(
-        $text-width-offset,
-        calc(100% - #{$text-width-offset}),
-        0
-      );
-    }
-    & #g-right {
-      transform: translate3d(calc(#{$g-width} - #{$text-width-offset}), 60%, 0)
-        scaleY(0.6);
-    }
-    & #g-center {
-      transform: translate3d(calc(#{$col-width} * 5), 60%, 0);
+    & #e2-center {
+      animation-name: f-e-e_e2-center;
+      animation-duration: 3s;
     }
   }
 }
