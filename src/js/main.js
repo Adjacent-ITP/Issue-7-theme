@@ -16,6 +16,23 @@ btnHam.addEventListener("click", () => {
 });
 
 /*
+ ** article section
+ */
+const $articleSection = document.getElementById("articleSection");
+const $articleHeader = document.getElementById("articleHeader");
+const $articleContent = document.getElementById("articleContent");
+const headerHeight = $articleHeader.offsetHeight;
+
+// scroll event
+$articleSection.addEventListener("scroll", () => {
+  if ($articleSection.scrollTop > headerHeight / 2) {
+    $articleHeader.classList.add("-is-scrolled");
+  } else {
+    $articleHeader.classList.remove("-is-scrolled");
+  }
+});
+
+/*
  ** article gallery
  */
 // fetch required elements

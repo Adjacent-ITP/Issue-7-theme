@@ -18,24 +18,22 @@
 }
 
 // article section
-.article {
+.article__content {
   @include f-paragraph;
-  box-sizing: border-box;
-  padding: 48px 72px;
 
   p,
   h2,
-  &__caption,
-  &__footnote-title,
-  &__footnote {
+  .article__caption,
+  .article__footnote-title,
+  .article__footnote {
     margin-bottom: 16px;
   }
 
   hr,
   ul,
   ol,
-  &__quote-block,
-  &__caption {
+  .article__quote-block,
+  .article__caption {
     margin: 48px 0;
   }
 
@@ -66,37 +64,82 @@
     border: 2px solid $c-theme;
   }
 
-  &__header {
-    margin-bottom: 136px;
-  }
-  &__headline {
-    margin-bottom: 48px;
-  }
-
-  &__intro {
+  .article__intro {
     width: 90%;
     margin-bottom: 48px;
   }
-  &__blurb {
+  .article__blurb {
     margin-bottom: 48px;
   }
 
-  &__quote {
+  .article__quote {
     @include f-quote;
     display: inline-block;
     margin-bottom: 24px;
   }
-  &__quote-author {
+  .article__quote-author {
     @include f-quote-author;
   }
 
-  &__caption {
+  .article__caption {
     @include f-caption;
     display: inline-block;
   }
 
-  &__footnote {
+  .article__footnote {
     @include f-note;
+  }
+}
+.article {
+  box-sizing: border-box;
+  position: relative;
+}
+.article__header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 48px 72px;
+
+  & .article__headline {
+    margin-bottom: 48px;
+  }
+}
+.article__content {
+  max-width: 100%;
+  margin-top: 136px;
+  padding: 48px 72px;
+  z-index: 1;
+}
+.article__header-sub {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+
+  & .article__author {
+    font-weight: $fw-regular;
+    padding-left: 4px;
+  }
+}
+
+// article section state
+.article__header.-is-scrolled {
+  background-color: white;
+  border-bottom: 1px solid $c-theme;
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  & .article__header-main {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  & .article__header-sub {
+    opacity: 1;
+    position: relative;
+    pointer-events: initial;
   }
 }
 

@@ -67,10 +67,16 @@ $fw-bold: bold;
 // headline
 @mixin f-headline {
   @include f-subhead;
-  font-weight: $fw-bold;
 }
 .-f-headline {
   @include f-headline;
+}
+@mixin f-headline-b {
+  @include f-subhead;
+  font-weight: $fw-bold;
+}
+.-f-headline-b {
+  @include f-headline-b;
 }
 
 // title, author, quote
