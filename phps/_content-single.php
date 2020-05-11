@@ -14,6 +14,8 @@
 		</div>
 		<div class="article__main">
 
+			<span class="article__caption img-anchor" data-src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image.jpg">Image Caption: Human unsure of life and self enjoying sunset.</span>
+
 			<p>
 				Computer worlds, like those of children’s make-believe, grant absolute power to whoever is imagining or programming them (2). As reality is drafted into digital environments, the computer simulation offers the opportunity to create worlds and bodies without unwanted complexity. It allows us to devise private games and internally consistent worlds in the face of absurdity and paradox. Advances in computer imaging technology towards “photorealism” further seduce us into believing that we are looking at concrete realities rather than ideological assemblages of math and code. As reality is increasingly reflected through the small mirrors of digital simulation, we risk losing sight of the mysterious nature of our lived reality.
 			</p>
@@ -27,7 +29,7 @@
 				Computer worlds, like those of children’s make-believe, grant absolute power to whoever is imagining or programming them (2). As reality is drafted into digital environments, the computer simulation offers the opportunity to create worlds and bodies without unwanted complexity. It allows us to devise private games and internally consistent worlds in the face of absurdity and paradox. Advances in computer imaging technology towards “photorealism” further seduce us into believing that we are looking at concrete realities rather than ideological assemblages of math and code. As reality is increasingly reflected through the small mirrors of digital simulation, we risk losing sight of the mysterious nature of our lived reality.
 			</p>
 
-			<span class="article__caption">Image Caption: Human unsure of life and self enjoying sunset.</span>
+			<span class="article__caption img-anchor" data-src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image-2-1.jpg">Image Caption: Human unsure of life and self enjoying sunset.</span>
 
 			<p>
 				Computer worlds, like those of children’s make-believe, grant absolute power to whoever is imagining or programming them (2). As reality is drafted into digital environments, the computer simulation offers the opportunity to create worlds and bodies without unwanted complexity. It allows us to devise private games and internally consistent worlds in the face of absurdity and paradox. Advances in computer imaging technology towards “photorealism” further seduce us into believing that we are looking at concrete realities rather than ideological assemblages of math and code. As reality is increasingly reflected through the small mirrors of digital simulation, we risk losing sight of the mysterious nature of our lived reality.
@@ -48,6 +50,8 @@
 				Computer worlds, like those of children’s make-believe, grant absolute power to whoever is imagining or programming them (2). As reality is drafted into digital environments, the computer simulation offers the opportunity to create worlds and bodies without unwanted complexity. It allows us to devise private games and internally consistent worlds in the face of absurdity and paradox. Advances in computer imaging technology towards “photorealism” further seduce us into believing that we are looking at concrete realities rather than ideological assemblages of math and code. As reality is increasingly reflected through the small mirrors of digital simulation, we risk losing sight of the mysterious nature of our lived reality.
 			</p>
 
+			<span class="article__caption img-anchor" data-src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image-2.jpg">Image Caption: Human unsure of life and self enjoying sunset.</span>
+
 			<div class="article__footer">
 				<hr>
 				<p class="article__footnote-title -f-title">Footnotes</p>
@@ -61,8 +65,6 @@
 		</div>
 	</div>
 	<div class="post__right gallery">
-		<div class="gallery__wrapper">
-			<img src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image.jpg" alt="test" class="gallery__img">
-		</div>
+		<div class="gallery__wrapper" id="galleryImg"></div>
 	</div>
 </article>
