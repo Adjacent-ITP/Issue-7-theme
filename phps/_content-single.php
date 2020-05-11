@@ -14,7 +14,7 @@
 		</div>
 		<div class="article__main">
 
-			<p class="article__paragraph">
+			<p>
 				Computer worlds, like those of children’s make-believe, grant absolute power to whoever is imagining or programming them (2). As reality is drafted into digital environments, the computer simulation offers the opportunity to create worlds and bodies without unwanted complexity. It allows us to devise private games and internally consistent worlds in the face of absurdity and paradox. Advances in computer imaging technology towards “photorealism” further seduce us into believing that we are looking at concrete realities rather than ideological assemblages of math and code. As reality is increasingly reflected through the small mirrors of digital simulation, we risk losing sight of the mysterious nature of our lived reality.
 			</p>
 
@@ -23,33 +23,33 @@
 				<span class="article__quote-author">Michelle Shevin</span>
 			</div>
 
-			<p class="article__paragraph">
+			<p>
 				Computer worlds, like those of children’s make-believe, grant absolute power to whoever is imagining or programming them (2). As reality is drafted into digital environments, the computer simulation offers the opportunity to create worlds and bodies without unwanted complexity. It allows us to devise private games and internally consistent worlds in the face of absurdity and paradox. Advances in computer imaging technology towards “photorealism” further seduce us into believing that we are looking at concrete realities rather than ideological assemblages of math and code. As reality is increasingly reflected through the small mirrors of digital simulation, we risk losing sight of the mysterious nature of our lived reality.
 			</p>
 
 			<span class="article__caption">Image Caption: Human unsure of life and self enjoying sunset.</span>
 
-			<p class="article__paragraph">
+			<p>
 				Computer worlds, like those of children’s make-believe, grant absolute power to whoever is imagining or programming them (2). As reality is drafted into digital environments, the computer simulation offers the opportunity to create worlds and bodies without unwanted complexity. It allows us to devise private games and internally consistent worlds in the face of absurdity and paradox. Advances in computer imaging technology towards “photorealism” further seduce us into believing that we are looking at concrete realities rather than ideological assemblages of math and code. As reality is increasingly reflected through the small mirrors of digital simulation, we risk losing sight of the mysterious nature of our lived reality.
 			</p>
 
-			<ul class="article__list">
-				<li class="article__list-item">black beans</li>
-				<li class="article__list-item">black beans</li>
-				<li class="article__list-item">black beans</li>
-				<li class="article__list-item">black beans</li>
+			<ul>
+				<li>black beans</li>
+				<li>black beans</li>
+				<li>black beans</li>
+				<li>black beans</li>
 			</ul>
 
-			<hr class="article__divider">
+			<hr>
 
-			<h2 class="article__title">III.</h2>
+			<h2>III.</h2>
 
-			<p class="article__paragraph">
+			<p>
 				Computer worlds, like those of children’s make-believe, grant absolute power to whoever is imagining or programming them (2). As reality is drafted into digital environments, the computer simulation offers the opportunity to create worlds and bodies without unwanted complexity. It allows us to devise private games and internally consistent worlds in the face of absurdity and paradox. Advances in computer imaging technology towards “photorealism” further seduce us into believing that we are looking at concrete realities rather than ideological assemblages of math and code. As reality is increasingly reflected through the small mirrors of digital simulation, we risk losing sight of the mysterious nature of our lived reality.
 			</p>
 
 			<div class="article__footer">
-				<hr class="article__divider">
+				<hr>
 				<p class="article__footnote-title -f-title">Footnotes</p>
 				<div class="article__footnotes">
 					<p class="article__footnote">1. Sum, Lok-kei, “Row over Extradition Bill Grows as Legco Legal Adviser Questions Proposal,” South China Morning Post, 4 May, 2019</p>
@@ -60,5 +60,9 @@
 
 		</div>
 	</div>
-	<div class="post__right post__gallery"></div>
+	<div class="post__right gallery">
+		<div class="gallery__wrapper">
+			<img src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image.jpg" alt="test" class="gallery__img">
+		</div>
+	</div>
 </article>
