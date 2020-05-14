@@ -53,17 +53,12 @@ const observer = new IntersectionObserver(
   (element) => {
     const item = element[0];
     if (item.intersectionRatio > 0) {
-      $galleryImg.style.opacity = 0.8;
-
       setGalleryImg(item.target);
-
-      setTimeout(() => {
-        $galleryImg.style.opacity = 1;
-      }, 500);
     }
   },
   {
     threshold: 0,
+    rootMargin: "40px 0px 40px 0px",
   }
 );
 
