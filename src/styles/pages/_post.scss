@@ -32,12 +32,36 @@
   }
 }
 
+// post state
+.post {
+  figure {
+    display: none;
+  }
+}
+.post.-is-horizontal {
+  & .post__left {
+    width: 100%;
+    max-width: 100%;
+    border-right: none;
+  }
+  & .post__right {
+    display: none;
+  }
+  & .article__caption {
+    display: none;
+  }
+  figure {
+    display: block;
+  }
+}
+
 // article section
 .article__content {
   @include f-paragraph;
 
   p,
   h2,
+  figure img,
   .article__footnote-title,
   .article__footnote {
     margin-bottom: 16px;
@@ -46,12 +70,19 @@
   hr,
   ul,
   ol,
+  figure,
   .article__quote-block {
     margin: 48px 0;
   }
 
   .article__caption {
     padding: 48px 0;
+  }
+
+  figure {
+    img {
+      width: 100%;
+    }
   }
 
   ul,
@@ -98,7 +129,8 @@
     @include f-quote-author;
   }
 
-  .article__caption {
+  .article__caption,
+  figcaption {
     @include f-caption;
     display: inline-block;
   }
@@ -172,5 +204,25 @@
     background-size: cover;
     background-repeat: no-repeat;
     transition: all 1s;
+  }
+}
+
+// rwd
+.post {
+  @include media("below-desktop") {
+    & .post__left {
+      width: 100%;
+      max-width: 100%;
+      border-right: none;
+    }
+    & .post__right {
+      display: none;
+    }
+    & .article__caption {
+      display: none;
+    }
+    figure {
+      display: block;
+    }
   }
 }
