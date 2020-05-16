@@ -1,27 +1,30 @@
-<article class="post">
+<?php while (have_posts()) : ?>
+	<?php the_post(); ?>
+
+<article class="post <?php if( get_field('layout') == 'horizontal'): ?>-is-horizontal<?php endif; ?>" id="articlePost">
 	<div class="post__left article" id="articleSection">
 		<div class="article__header" id="articleHeader">
 			<div class="article__header-main">
-				<h1 class="article__headline -f-headline-b">Horror Honcho Behind The Purge and Get Out Is Hacking the Streaming Upheaval</h1>
-				<p class="article__author -f-headline">Emily Lin</p>
+				<h1 class="article__headline -f-headline-b"><?php  the_title(); ?></h1>
+				<p class="article__author -f-headline"><?php echo get_field('author_name') ?></p>
 			</div>
 			<div class="article__header-sub">
-				<span class="article__headline -f-title">Horror Honcho Behind The Purge and Get Out Is Hacking the Streaming Upheaval</span>
-				<span class="article__author -f-title">By Emily Lin</span>
+				<span class="article__headline -f-title"><?php  the_title(); ?></span>
+				<span class="article__author -f-title">By <?php echo get_field('author_name') ?></span>
 			</div>
 		</div>
 		<div class="article__content" id="articleContent">
 		<div class="article__intro">
 			<p class="article__blurb -f-paragraph -f-bold">
-				Media theorist Wendy Chun once differentiated the computer from other tools and formal systems through its relationship to simulation and simulated worlds. “While most tools produce effects on a wider world of which they are only a part, the computer contains its own worlds in miniature” (1).
+				<?php echo get_field('blurb') ?>
 			</p>
 			<p class="article__illustrator -f-illustrator">
-				Illustrated by Sam Hains
+				Illustrated by <?php echo get_field('illustrator') ?>
 			</p>
 		</div>
 		<div class="article__main">
 
-			<span class="article__caption" data-src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image.jpg">1 Image Caption: Human unsure of life and self enjoying sunset.</span>
+			<!-- <span class="article__caption" data-src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image.jpg">1 Image Caption: Human unsure of life and self enjoying sunset.</span>
 			<figure>
 				<img src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image.jpg" alt="1 Image Caption: Human unsure of life and self enjoying sunset.">
 				<figcaption>1 Image Caption: Human unsure of life and self enjoying sunset.</figcaption>
@@ -70,29 +73,30 @@
 			<figure>
 				<img src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image-2.jpg" alt="3 Image Caption: Human unsure of life and self enjoying sunset.">
 				<figcaption>3 Image Caption: Human unsure of life and self enjoying sunset.</figcaption>
-			</figure>
+			</figure> -->
+
+			<?php the_content(); ?>
 
 			<div class="article__footer">
 				<hr>
 				<p class="article__footnote-title -f-title">Footnotes</p>
 				<div class="article__footnotes">
-					<p class="article__footnote">1. Sum, Lok-kei, “Row over Extradition Bill Grows as Legco Legal Adviser Questions Proposal,” South China Morning Post, 4 May, 2019</p>
-					<p class="article__footnote">2. Sum, Lok-kei, “Row over Extradition Bill Grows as Legco Legal Adviser Questions Proposal,” South China Morning Post, 4 May, 2019</p>
-					<p class="article__footnote">3. Sum, Lok-kei, “Row over Extradition Bill Grows as Legco Legal Adviser Questions Proposal,” South China Morning Post, 4 May, 2019</p>
+					<?php echo get_field('footnotes'); ?>
+					<!-- <p class="article__footnote">1. Sum, Lok-kei, “Row over Extradition Bill Grows as Legco Legal Adviser Questions Proposal,” South China Morning Post, 4 May, 2019</p> -->
 				</div>
 
-				<p class="article__footnote-title -f-title">Emily Lin</p>
-				<p>Michelle Shevin is a researcher and synthesist of stories and ideas, working to facilitate the radical reimagining of alternative futures. She is currently a tech fellow at the Ford Foundation and an adjunct professor on futures thinking at NYU's ITP program.</p>
+				<p class="article__footnote-title -f-title"><?php echo get_field('author_name') ?></p>
+				<p><?php echo get_field('author_bio') ?></p>
 			</div>
 
 		</div>
 		</div>
 	</div>
-	<!-- <php
-	if(is_vertical()) { -->
+	<?php if( get_field('layout') != 'horizontal'): ?>
 	<div class="post__right gallery">
 		<div class="gallery__wrapper" id="galleryImg"></div>
 	</div>
-	<!-- }
-	> -->
+	<?php endif; ?>
 </article>
+
+<?php endwhile; ?>

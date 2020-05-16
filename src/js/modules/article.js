@@ -8,6 +8,7 @@ const $contentArea = document.getElementById("contentArea");
 const $articleSection = document.getElementById("articleSection");
 const $articleHeader = document.getElementById("articleHeader");
 const $articleContent = document.getElementById("articleContent");
+const $articlePost = document.getElementById("articlePost");
 const $imgAnchors = Array.from(
   document.getElementsByClassName("article__caption")
 );
@@ -20,13 +21,21 @@ function setGalleryImg(targetElement) {
   $galleryImg.style.backgroundImage = `url('${imgUrl}')`;
 }
 
+// getters
+function getLayoutType() {
+  return $articlePost.classList.contains("-is-horizontal")
+    ? "horizontal"
+    : "vertical";
+}
+
 /*
  *
  * presets
  *
  */
 // fill in first image
-setGalleryImg($imgAnchors[0]);
+if (getLayoutType() === "vertical" && $imgAnchors.length > 0)
+  setGalleryImg($imgAnchors[0]);
 
 /*
  *
@@ -43,16 +52,18 @@ $articleSection.addEventListener("scroll", () => {
   }
 
   // change gallery image
-  const areaOffsetTop = $contentArea.offsetTop;
-  const areaOffsetBtm = $contentArea.offsetHeight;
-  $imgAnchors.forEach(($anchor) => {
-    const fmtAnchorOffsetTop =
-      $anchor.offsetTop - areaOffsetTop - $articleSection.scrollTop;
-    const isAnchorInView =
-      fmtAnchorOffsetTop > 0 && fmtAnchorOffsetTop < areaOffsetBtm;
+  if (getLayoutType() === "vertical") {
+    const areaOffsetTop = $contentArea.offsetTop;
+    const areaOffsetBtm = $contentArea.offsetHeight;
+    $imgAnchors.forEach(($anchor) => {
+      const fmtAnchorOffsetTop =
+        $anchor.offsetTop - areaOffsetTop - $articleSection.scrollTop;
+      const isAnchorInView =
+        fmtAnchorOffsetTop > 0 && fmtAnchorOffsetTop < areaOffsetBtm;
 
-    if (isAnchorInView) {
-      setGalleryImg($anchor);
-    }
-  });
+      if (isAnchorInView) {
+        setGalleryImg($anchor);
+      }
+    });
+  }
 });

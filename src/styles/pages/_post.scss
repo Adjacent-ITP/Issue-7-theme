@@ -138,8 +138,20 @@
     display: inline-block;
   }
 
-  .article__footnote {
-    @include f-note;
+  .article__footnotes {
+    margin-left: 0.8rem;
+    ol {
+      text-indent: 0;
+    }
+    li {
+      @include f-note;
+      list-style: decimal;
+      text-indent: 0;
+
+      &:before {
+        display: none;
+      }
+    }
   }
 }
 .article {
