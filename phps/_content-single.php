@@ -80,6 +80,9 @@
 					<p class="article__footnote">2. Sum, Lok-kei, “Row over Extradition Bill Grows as Legco Legal Adviser Questions Proposal,” South China Morning Post, 4 May, 2019</p>
 					<p class="article__footnote">3. Sum, Lok-kei, “Row over Extradition Bill Grows as Legco Legal Adviser Questions Proposal,” South China Morning Post, 4 May, 2019</p>
 				</div>
+
+				<p class="article__footnote-title -f-title">Emily Lin</p>
+				<p>Michelle Shevin is a researcher and synthesist of stories and ideas, working to facilitate the radical reimagining of alternative futures. She is currently a tech fellow at the Ford Foundation and an adjunct professor on futures thinking at NYU's ITP program.</p>
 			</div>
 
 		</div>
