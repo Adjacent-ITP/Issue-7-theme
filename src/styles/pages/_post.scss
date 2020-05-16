@@ -38,7 +38,6 @@
 
   p,
   h2,
-  .article__caption,
   .article__footnote-title,
   .article__footnote {
     margin-bottom: 16px;
@@ -47,9 +46,12 @@
   hr,
   ul,
   ol,
-  .article__quote-block,
-  .article__caption {
+  .article__quote-block {
     margin: 48px 0;
+  }
+
+  .article__caption {
+    padding: 48px 0;
   }
 
   ul,
