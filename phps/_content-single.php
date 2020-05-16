@@ -21,7 +21,7 @@
 		</div>
 		<div class="article__main">
 
-			<span class="article__caption img-anchor" data-src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image.jpg">1 Image Caption: Human unsure of life and self enjoying sunset.</span>
+			<span class="article__caption" data-src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image.jpg">1 Image Caption: Human unsure of life and self enjoying sunset.</span>
 			<figure>
 				<img src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image.jpg" alt="1 Image Caption: Human unsure of life and self enjoying sunset.">
 				<figcaption>1 Image Caption: Human unsure of life and self enjoying sunset.</figcaption>
@@ -41,7 +41,7 @@
 				Computer worlds, like those of children’s make-believe, grant absolute power to whoever is imagining or programming them (2). As reality is drafted into digital environmenlts, the computer simulation offers the opportunity to create worlds and bodies without unwanted complexity. It allows us to devise private games and internally consistent worlds in the face of absurdity and paradox. Advances in computer imaging technology towards “photorealism” further seduce us into believing that we are looking at concrete realities rather than ideological assemblages of math and code. As reality is increasingly reflected through the small mirrors of digital simulation, we risk losing sight of the mysterious nature of our lived reality.
 			</p>
 
-			<span class="article__caption img-anchor" data-src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image-2-1.jpg">2 Image Caption: Human unsure of life and self enjoying sunset.</span>
+			<span class="article__caption" data-src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image-2-1.jpg">2 Image Caption: Human unsure of life and self enjoying sunset.</span>
 			<figure>
 				<img src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image-2-1.jpg" alt="2 Image Caption: Human unsure of life and self enjoying sunset.">
 				<figcaption>2 Image Caption: Human unsure of life and self enjoying sunset.</figcaption>
@@ -66,7 +66,7 @@
 				Computer worlds, like those of children’s make-believe, grant absolute power to whoever is imagining or programming them (2). As reality is drafted into digital environments, the computer simulation offers the opportunity to create worlds and bodies without unwanted complexity. It allows us to devise private games and internally consistent worlds in the face of absurdity and paradox. Advances in computer imaging technology towards “photorealism” further seduce us into believing that we are looking at concrete realities rather than ideological assemblages of math and code. As reality is increasingly reflected through the small mirrors of digital simulation, we risk losing sight of the mysterious nature of our lived reality.
 			</p>
 
-			<span class="article__caption img-anchor" data-src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image-2.jpg">3 Image Caption: Human unsure of life and self enjoying sunset.</span>
+			<span class="article__caption" data-src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image-2.jpg">3 Image Caption: Human unsure of life and self enjoying sunset.</span>
 			<figure>
 				<img src="https://itp.nyu.edu/adjacent/issue-7/wp-content/uploads/sites/12/2020/05/vertical-image-2.jpg" alt="3 Image Caption: Human unsure of life and self enjoying sunset.">
 				<figcaption>3 Image Caption: Human unsure of life and self enjoying sunset.</figcaption>

@@ -8,7 +8,9 @@ const $contentArea = document.getElementById("contentArea");
 const $articleSection = document.getElementById("articleSection");
 const $articleHeader = document.getElementById("articleHeader");
 const $articleContent = document.getElementById("articleContent");
-const $imgAnchors = Array.from(document.getElementsByClassName("img-anchor"));
+const $imgAnchors = Array.from(
+  document.getElementsByClassName("article__caption")
+);
 const $galleryImg = document.getElementById("galleryImg");
 const headerHeight = $articleHeader.offsetHeight;
 
