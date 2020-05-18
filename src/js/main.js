@@ -14,3 +14,11 @@ btnHam.addEventListener("click", () => {
   nav.classList.toggle(tags.menuActive);
   contentArea.classList.toggle(tags.menuActive);
 });
+
+
+if(document.getElementById('articlePost')) {
+  activateArticlePage();
+}
+// else if () {
+//
+// }

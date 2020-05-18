@@ -3,6 +3,13 @@ body {
   overflow: hidden;
 }
 
+// should this be here?
+html {
+  font-family: $f-main;
+  font-size: $fs-root;
+  -webkit-font-smoothing: antialiased;
+}
+
 a {
   color: $c-theme;
 }
