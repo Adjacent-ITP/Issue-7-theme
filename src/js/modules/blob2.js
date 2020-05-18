@@ -132,9 +132,11 @@ let activateBlob2 = () => {
     animate();
   }
 
-  loader.load(
-    // resource URL
-    '/wp-content/themes/Issue-7-theme/public/assets/glob/glob.obj',
+  let path = '/wp-content/themes/Issue-7-theme/public/assets/glob/glob.obj';
+  if(window.location.pathname.includes("adjacent")) {
+    path = `/adjacent/issue-7${path}`;
+  }
+  loader.load(path,
     // called when resource is loaded
     function ( object ) {
 
