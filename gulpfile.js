@@ -82,7 +82,7 @@ gulp.task("browser-sync", function() {
 
 gulp.task("make:js", function() {
   return gulp
-    .src([src.js + "vendor/*.js", src.js + "main.js", src.js + "modules/*.js"])
+    .src([src.js + "vendor/*.js", src.js + "modules/*.js", src.js + "main.js"])
     .pipe(
       plumber({
         errorHandler: onError

@@ -213,7 +213,7 @@
 
     float d = distance(vGlobalPosition.xyz, mouseCast);
 
-    float s = smoothstep(5., 7., d);
+    float s = smoothstep(5., 15., d);
 
     vPosition = superPositionForPosition(position + s*vNormal.xyz);
     vGlobalPosition = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);

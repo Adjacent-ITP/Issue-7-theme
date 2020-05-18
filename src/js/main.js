@@ -17,8 +17,10 @@ btnHam.addEventListener("click", () => {
 
 
 if(document.getElementById('articlePost')) {
+  console.log("article");
   activateArticlePage();
 }
-// else if () {
-//
-// }
+else if(document.querySelector('.posts')) {
+  console.log("blob");
+  activateBlob();
+}
