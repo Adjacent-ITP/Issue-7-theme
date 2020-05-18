@@ -20,6 +20,10 @@ if(document.getElementById('articlePost')) {
   console.log("article");
   activateArticlePage();
 }
+else if(document.querySelector('.blobtest')) {
+  console.log("blob");
+  activateBlob2();
+}
 else if(document.querySelector('.posts')) {
   console.log("blob");
   activateBlob();

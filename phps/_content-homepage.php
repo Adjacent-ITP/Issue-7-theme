@@ -126,7 +126,7 @@
 
       vec4 col = vec4(darkColor, 1.0) + brightnessMultiplier * lightIntensity * (brightness + ambientLightIntensity) * vec4(brightColor - darkColor, 1.0);
 
-      col.xyz += 0.3*snoise(vPosition*0.2 + snoise(vNormal*0.8));
+      col.xyz += 0.3*snoise(vPosition*0.2 + snoise(vNormal*1.8));
       // } else {
       //   vec3 X = dFdx(vGlobalPosition.xyz);
       //   vec3 Y = dFdy(vGlobalPosition.xyz);

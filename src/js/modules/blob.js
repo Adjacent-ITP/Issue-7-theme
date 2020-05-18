@@ -51,9 +51,9 @@ let activateBlob = () => {
         'brightColor': {'type': 'c', 'value': COLOR_1},
         'darkColor': {'type': 'c', 'value': COLOR_2},
         'minColorDistance': {'type': 'f', 'value': 0.0},
-        'maxColorDistance': {'type': 'f', 'value': 5.75},
+        'maxColorDistance': {'type': 'f', 'value': 15.75},
         // 'lightIntensity': {'type': 'f', 'value': 0.14},
-        'lightIntensity': {'type': 'f', 'value': 3.5},
+        'lightIntensity': {'type': 'f', 'value': .5},
         'ambientLightIntensity': {'type': 'f', 'value': 0.0},
         'brightnessMultiplier': {'type': 'f', 'value': .6}
       };
