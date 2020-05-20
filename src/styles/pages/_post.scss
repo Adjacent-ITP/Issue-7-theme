@@ -71,7 +71,7 @@
   ul,
   ol,
   figure,
-  .article__quote-block {
+  blockquote {
     margin: 48px 0;
   }
 
@@ -123,12 +123,12 @@
     margin-bottom: 48px;
   }
 
-  .article__quote {
+  blockquote {
     @include f-quote;
     display: inline-block;
-    margin-bottom: 24px;
+    padding-bottom: 24px;
   }
-  .article__quote-author {
+  blockquote cite {
     @include f-quote-author;
   }
 
