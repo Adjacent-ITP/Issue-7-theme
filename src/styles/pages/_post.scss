@@ -111,6 +111,17 @@
     @include f-paragraph;
   }
 
+  sup {
+    font-size: 0.8rem;
+    line-height: 1rem;
+    vertical-align: top;
+
+    em {
+      font-style: italic;
+      text-decoration: underline;
+    }
+  }
+
   hr {
     border: 2px solid $c-theme;
   }
