@@ -34,7 +34,7 @@
 
 // post state
 .post {
-  figure {
+  .article__caption + figure {
     display: none;
   }
 }
@@ -50,9 +50,6 @@
   & .article__caption {
     display: none;
   }
-  figure {
-    display: block;
-  }
 }
 
 // article section
@@ -62,8 +59,7 @@
   p,
   h2,
   figure img,
-  .article__footnote-title,
-  .article__footnote {
+  .article__footnote-title {
     margin-bottom: 16px;
   }
 
@@ -71,12 +67,16 @@
   ul,
   ol,
   figure,
-  blockquote {
+  blockquote,
+  iframe {
     margin: 48px 0;
   }
 
   .article__caption {
     padding: 48px 0;
+  }
+  .article__footnote-title {
+    @include f-title;
   }
   .article__footnotes {
     margin-bottom: 64px;
@@ -86,6 +86,10 @@
     img {
       width: 100%;
     }
+  }
+
+  iframe {
+    width: 100%;
   }
 
   ul,
@@ -151,6 +155,11 @@
 
   .article__footnotes {
     margin-left: 0.8rem;
+
+    & > * {
+      @include f-note;
+    }
+
     ol {
       text-indent: 0;
     }
@@ -163,6 +172,21 @@
         display: none;
       }
     }
+  }
+
+  .video-holder {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 60%;
+    width: 100%;
+    margin-bottom: 112px;
+  }
+  .video-holder iframe {
+    height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
   }
 }
 .article {
