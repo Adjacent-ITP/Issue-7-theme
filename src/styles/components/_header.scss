@@ -159,7 +159,6 @@ $chevron-line-width: calc(#{$nav-width} / 10);
 // state management
 .nav.-is-menu-active {
   transition: all $transition-time;
-  background-color: gray;
 
   & .nav__btn-ham {
     background-color: transparent;

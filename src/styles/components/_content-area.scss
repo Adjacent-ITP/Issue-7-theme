@@ -13,7 +13,6 @@
 // state management
 .content-area.-is-menu-active {
   transition: all $transition-time;
-  background-color: gray;
 }
 .content-area.-is-menu-active .content-area__main {
   position: absolute;
