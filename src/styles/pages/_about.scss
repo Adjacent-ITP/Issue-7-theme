@@ -1,0 +1,45 @@
+.about {
+  @include -scroll-bar;
+  overflow-y: scroll;
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.about__logo {
+  width: 160px;
+}
+
+.about__row {
+  padding: 3.5rem 15% 3.5rem 4rem;
+  box-sizing: border-box;
+
+  &:not(:last-child) {
+    border-bottom: 1px dashed $c-main;
+  }
+}
+
+.about__paragraph {
+  @include f-paragraph;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}
+
+.about__team {
+  &:not(:last-child) {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.about__team-title {
+  @include f-subtitle;
+  font-weight: $fw-bold;
+  margin-bottom: 0.5rem;
+}
+
+.about__team-list {
+  @include f-paragraph;
+}
