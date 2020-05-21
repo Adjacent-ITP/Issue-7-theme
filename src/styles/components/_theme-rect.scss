@@ -24,11 +24,11 @@ $col-width: calc(#{$rect-container-width} / #{$col-count});
 $text-margin: calc(#{$row-height} * 2);
 $full-width: calc(#{$col-width} * #{$col-count});
 
-$f-width: calc(#{$col-width} * 8);
+$f-width: $full-width;
 $f-height: calc(#{$row-height} * 10);
 $e-width: calc(#{$col-width} * 8);
-$e-height: calc(#{$row-height} * 20);
-$e2-width: $full-width;
+$e-height: calc(#{$row-height} * 13);
+$e2-width: calc(#{$col-width} * 8);
 $e2-height: calc(#{$row-height} * 13);
 $l-width: $full-width;
 $l-height: calc(#{$row-height} * 6);
@@ -65,17 +65,20 @@ $g-height: calc(#{$row-height} * 7);
   }
 }
 
+$e-offset-y: calc(#{$f-height} + #{$text-margin});
+
 .theme-text__e {
   top: 0;
   right: 0;
   width: $e-width;
   height: $e-height;
+  transform: translate3d(0, $e-offset-y, 0);
 
   & #e-top {
     transform: translate3d(0, $text-width-offset, 0);
   }
   & #e-center {
-    transform: translate3d(0, 55%, 0);
+    transform: translate3d(0, 65%, 0);
   }
   & #e-btm {
     transform: translate3d(0, calc(100% - #{$text-width-offset}), 0);
@@ -95,10 +98,10 @@ $e2-offset-y: calc(#{$f-height} + #{$text-margin});
   transform: translate3d(0, $e2-offset-y, 0);
 
   & #e2-top {
-    transform: translate3d(0, $text-width-offset, 0) scaleX(0.5);
+    transform: translate3d(0, $text-width-offset, 0);
   }
   & #e2-center {
-    transform: translate3d(0, 55%, 0) scaleX(0.45);
+    transform: translate3d(0, 50%, 0);
   }
   & #e2-btm {
     transform: translate3d(0, calc(100% - #{$text-width-offset}), 0);
@@ -156,6 +159,7 @@ $n-offset-y: calc(
     transform: translate3d($text-width-offset, 0, 0) scaleY(0.6);
   }
   & #n-right {
+    transform-origin: bottom;
     transform: translate3d(calc(#{$n-width} - #{$text-width-offset}), 0, 0);
   }
 }
@@ -198,70 +202,182 @@ $g-offset-y: calc(
 /*
 ** animation
 */
-
 .theme-text {
-  @keyframes f-e-e_f {
-    from {
-      width: $f-width;
-    }
-    to {
-      width: $full-width;
-    }
+  & > * > * {
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
   }
-  @keyframes f-e-e_e {
-    from {
-      height: $e-height;
-      transform: none;
-    }
-    to {
-      height: $e2-height;
-      transform: translate3d(0, $e2-offset-y, 0);
-    }
-  }
-  @keyframes f-e-e_e2 {
-    from {
-      width: $e2-width;
-    }
-    to {
-      width: calc(#{$full-width} / 2);
-    }
-  }
-  @keyframes f-e-e_e2-top {
-    from {
+
+  @keyframes f-top {
+    0%,
+    100% {
       transform: translate3d(0, $text-width-offset, 0) scaleX(0.5);
     }
-    to {
+    50% {
       transform: translate3d(0, $text-width-offset, 0) scaleX(1);
     }
   }
-  @keyframes f-e-e_e2-center {
-    from {
-      transform: translate3d(0, 55%, 0) scaleX(0.45);
+  @keyframes f-center {
+    0%,
+    100% {
+      transform: translate3d(0, 58%, 0) scaleX(1);
     }
-    to {
-      transform: translate3d(0, 55%, 0) scaleX(0.8);
+    50% {
+      transform: translate3d(0, 58%, 0) scaleX(0.5);
     }
+  }
+  &__f #f-top {
+    animation-name: f-top;
+  }
+  &__f #f-center {
+    animation-name: f-center;
   }
 
-  &__f {
-    animation-name: f-e-e_f;
-    animation-duration: 3s;
+  @keyframes e-top {
+    0%,
+    100% {
+      transform: translate3d(0, $text-width-offset, 0) scaleX(0.25);
+    }
+    50% {
+      transform: translate3d(0, $text-width-offset, 0) scaleX(1);
+    }
   }
-  &__e {
-    animation-name: f-e-e_e;
-    animation-duration: 3s;
+  @keyframes e-center {
+    0%,
+    100% {
+      transform: translate3d(0, 65%, 0) scaleX(1);
+    }
+    50% {
+      transform: translate3d(0, 65%, 0) scaleX(0.25);
+    }
   }
-  &__e2 {
-    animation-name: f-e-e_e2;
-    animation-duration: 3s;
+  @keyframes e-btm {
+    0%,
+    100% {
+      transform: translate3d(0, calc(100% - #{$text-width-offset}), 0) scaleX(1);
+    }
+    50% {
+      transform: translate3d(0, calc(100% - #{$text-width-offset}), 0)
+        scaleX(0.65);
+    }
+  }
+  &__e #e-top {
+    animation-name: e-top;
+  }
+  &__e #e-center {
+    animation-name: e-center;
+  }
+  &__e #e-btm {
+    animation-name: e-btm;
+  }
 
-    & #e2-top {
-      animation-name: f-e-e_e2-top;
-      animation-duration: 3s;
+  @keyframes e2-top {
+    0%,
+    100% {
+      transform: translate3d(0, $text-width-offset, 0) scaleX(1);
     }
-    & #e2-center {
-      animation-name: f-e-e_e2-center;
-      animation-duration: 3s;
+    50% {
+      transform: translate3d(0, $text-width-offset, 0) scaleX(0.5);
     }
+  }
+  @keyframes e2-center {
+    0%,
+    100% {
+      transform: translate3d(0, 50%, 0) scaleX(0.15);
+    }
+    50% {
+      transform: translate3d(0, 50%, 0) scaleX(1);
+    }
+  }
+  @keyframes e2-btm {
+    0%,
+    100% {
+      transform: translate3d(0, calc(100% - #{$text-width-offset}), 0)
+        scaleX(0.5);
+    }
+    50% {
+      transform: translate3d(0, calc(100% - #{$text-width-offset}), 0) scaleX(1);
+    }
+  }
+  &__e2 #e2-top {
+    animation-name: e2-top;
+  }
+  &__e2 #e2-center {
+    animation-name: e2-center;
+  }
+  &__e2 #e2-btm {
+    animation-name: e2-btm;
+  }
+
+  @keyframes l-btm {
+    0%,
+    100% {
+      transform: translate3d(0, calc(100% - #{$text-width-offset}), 0) scaleX(1);
+    }
+    50% {
+      transform: translate3d(0, calc(100% - #{$text-width-offset}), 0)
+        scaleX(0.5);
+    }
+  }
+  &__l #l-btm {
+    animation-name: l-btm;
+  }
+
+  @keyframes n-diagonal {
+    0%,
+    100% {
+      transform: scaleY(1);
+    }
+    50% {
+      transform: scaleY(0.65);
+    }
+  }
+  @keyframes n-right {
+    0%,
+    100% {
+      transform: translate3d(calc(#{$n-width} - #{$text-width-offset}), 0, 0)
+        scaleY(0.5);
+    }
+    50% {
+      transform: translate3d(calc(#{$n-width} - #{$text-width-offset}), -35%, 0)
+        scaleY(1);
+    }
+  }
+  &__n {
+    overflow: inherit;
+  }
+  &__n #n-diagonal {
+    animation-name: n-diagonal;
+  }
+  &__n #n-right {
+    animation-name: n-right;
+  }
+
+  @keyframes g-top {
+    0%,
+    100% {
+      transform: translate3d($text-width-offset, $text-width-offset, 0)
+        scaleX(0.25);
+    }
+    50% {
+      transform: translate3d($text-width-offset, $text-width-offset, 0)
+        scaleX(1);
+    }
+  }
+  @keyframes g-center {
+    0%,
+    100% {
+      transform: translate3d(calc(#{$col-width} * 10), 60%, 0);
+    }
+    50% {
+      transform: translate3d(calc(#{$col-width} * 2.5), 60%, 0);
+    }
+  }
+  &__g #g-top {
+    animation-name: g-top;
+  }
+  &__g #g-center {
+    animation-name: g-center;
   }
 }
