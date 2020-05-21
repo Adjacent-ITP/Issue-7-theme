@@ -43,3 +43,8 @@
 .about__team-list {
   @include f-paragraph;
 }
+
+.about__team-paragraph {
+  @include f-paragraph;
+  margin-top: 2rem;
+}
