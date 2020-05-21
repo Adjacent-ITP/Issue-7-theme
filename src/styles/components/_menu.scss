@@ -49,12 +49,16 @@ $menu-small-row-height: calc(100% / 12);
   opacity: 0;
   width: 100%;
   height: 100%;
-  padding: 36px 0 0 40px;
+  padding: 36px 40px 0 40px;
   box-sizing: border-box;
 }
 .menu-post__title {
   @include f-title;
-  margin-bottom: 12px;
+}
+.menu-post:not(.-small) {
+  & .menu-post__title {
+    margin-bottom: 12px;
+  }
 }
 .menu-post__author {
   @include f-title-regular;
