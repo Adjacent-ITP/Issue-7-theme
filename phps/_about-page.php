@@ -28,7 +28,7 @@
 				<li class="about__team-list-item">Ashley Jane Lewis</li>
 				<li class="about__team-list-item">Melissa Powers</li>
 				<li class="about__team-list-item">Lillian Ritchie</li>
-				<li class="about__team-list-item">Matthew Ross			</li>
+				<li class="about__team-list-item">Matthew Ross</li>
 			</ul>
 		</div>
 		<div class="about__team">
@@ -36,7 +36,7 @@
 			<ul class="about__team-list">
 				<li class="about__team-list-item">Dana Elkis</li>
 				<li class="about__team-list-item">Emily Lin</li>
-				<li class="about__team-list-item">Ilana Bonder			</li>
+				<li class="about__team-list-item">Ilana Bonder</li>
 			</ul>
 		</div>
 		<div class="about__team">
@@ -49,7 +49,7 @@
 			<h2 class="about__team-title">Web Development</h2>
 			<ul class="about__team-list">
 				<li class="about__team-list-item">Sukanya Aneja</li>
-				<li class="about__team-list-item">Vince Mingpu Shao			</li>
+				<li class="about__team-list-item">Vince MingPu Shao</li>
 			</ul>
 		</div>
 		<div class="about__team">
@@ -59,14 +59,14 @@
 				<li class="about__team-list-item">Sarah Liriano</li>
 				<li class="about__team-list-item">Yiting Liu</li>
 				<li class="about__team-list-item">Marcela Mancino</li>
-				<li class="about__team-list-item">Kat Vlasova			</li>
+				<li class="about__team-list-item">Kat Vlasova</li>
 			</ul>
 			<p class="about__team-paragraph">ADJACENT was made possible by a Tisch Faculty Grant. Special thanks to Tisch School of the Arts Dean, Allyson Green, and ITP’s Chair and the Associate Dean for Emerging Media, Dan O’Sullivan, for their ongoing support.</p>
 		</div>
 		<div class="about__team">
 			<h2 class="about__team-title">Contact</h2>
 			<ul class="about__team-list">
-				<li class="about__team-list-item">adjacent@itp.nyu.eduv</li>
+				<li class="about__team-list-item">adjacent@itp.nyu.edu</li>
 			</ul>
 		</div>
 	</div>
