@@ -1,0 +1,43 @@
+@include media("below-tablet") {
+  .menu__row {
+    flex-direction: column;
+  }
+  .menu__cell {
+    width: 100%;
+    max-width: 100%;
+    border-right: none !important;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .menu__cell.-small {
+    order: -1;
+  }
+
+  .menu-post {
+    @include -flex;
+    padding-left: 24px;
+    padding-right: 16px;
+  }
+  .menu-post.-small {
+    justify-content: flex-start;
+  }
+  .menu-post__text {
+    position: relative;
+    opacity: 1;
+    padding-top: 0;
+  }
+  .menu-post__number {
+    max-width: 22.5%;
+  }
+  .menu-post:not(.-small) .menu-post__title {
+    margin-bottom: 8px;
+  }
+
+  .content-area.-is-menu-active .menu {
+    max-width: 100vw;
+    min-width: 100vw;
+    transition: all 0.5s;
+  }
+}

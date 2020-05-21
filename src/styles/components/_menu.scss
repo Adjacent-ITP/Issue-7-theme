@@ -4,6 +4,7 @@
   height: 100%;
   max-width: $content-area-width;
   overflow-y: scroll;
+  transition: all 0.3s;
 }
 
 $menu-border: 1px dashed $c-main;
@@ -28,7 +29,6 @@ $menu-small-row-height: calc(100% / 12);
   max-width: calc(100% / 3);
   flex-grow: 1;
   box-sizing: border-box;
-  padding: 24px 0;
 
   &:not(:nth-child(3n)) {
     border-right: $menu-border;
@@ -41,6 +41,8 @@ $menu-small-row-height: calc(100% / 12);
   width: 100%;
   max-width: 100%;
   height: 100%;
+  padding: 24px 0;
+  box-sizing: border-box;
 }
 .menu-post__text {
   position: absolute;

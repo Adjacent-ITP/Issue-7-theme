@@ -2,6 +2,8 @@
 
 :root {
   --theme-rect-width: 20vw;
+  --header-height: 16vh;
+  --footer-height: 8vh;
 }
 @include media("below-desktop") {
   :root {
@@ -10,13 +12,12 @@
 }
 @include media("below-tablet") {
   :root {
-    --theme-rect-width: 30vw;
+    --header-height: 14vh;
+    --footer-height: 8vh;
   }
 }
 
-$header-height: 16vh;
-$footer-height: 8vh;
-$body-height: calc(100vh - #{$header-height} - #{$footer-height});
+$body-height: calc(100vh - var(--header-height) - var(--footer-height));
 
 $theme-rect-height: $body-height;
 $nav-width: calc(100vw - var(--theme-rect-width));

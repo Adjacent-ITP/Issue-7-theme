@@ -1,5 +1,5 @@
 .header {
-  height: $header-height;
+  height: var(--header-height);
   width: 100%;
   border-bottom: $border-standard;
   display: flex;

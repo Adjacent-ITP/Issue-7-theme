@@ -1,3 +1,5 @@
+@import "../utilities/media-quries.scss";
+
 /*---------------------*/
 /*
 ** FONT FAMILY SETUP
@@ -29,11 +31,24 @@ $f-main: "Helvetica", "Roboto", "Arial", sans-serif;
 /*---------------------*/
 
 $fs-root: 16px;
-$fs-headline: 2rem;
-$fs-title: 1.425rem;
-$fs-subtitle: 1.125rem;
-$fs-small: 0.875rem;
-$fs-note: 0.75rem;
+
+:root {
+  --fs-headline: 2rem;
+  --fs-title: 1.425rem;
+  --fs-subtitle: 1.125rem;
+  --fs-small: 0.85rem;
+  --fs-note: 0.75rem;
+}
+
+@include media("below-tablet") {
+  :root {
+    --fs-headline: 1.8rem;
+    --fs-title: 1.25rem;
+    --fs-subtitle: 1rem;
+    --fs-small: 0.75rem;
+    --fs-note: 0.65rem;
+  }
+}
 
 /*---------------------*/
 /*
@@ -57,7 +72,7 @@ $fw-bold: bold;
 // subhead
 @mixin f-subhead {
   font-family: $f-main;
-  font-size: $fs-headline;
+  font-size: var(--fs-headline);
   line-height: 2.5rem;
 }
 .-f-subhead {
@@ -82,9 +97,13 @@ $fw-bold: bold;
 // title, author, quote
 @mixin f-title {
   font-family: $f-main;
-  font-size: $fs-title;
+  font-size: var(--fs-title);
   line-height: 1.75rem;
   font-weight: $fw-bold;
+
+  @include media("below-tablet") {
+    line-height: 1.6rem;
+  }
 }
 @mixin f-quote {
   @include f-title;
@@ -97,7 +116,7 @@ $fw-bold: bold;
 // author
 @mixin f-title-regular {
   font-family: $f-main;
-  font-size: $fs-title;
+  font-size: var(--fs-title);
   line-height: 1.75rem;
 }
 @mixin f-author {
@@ -110,7 +129,7 @@ $fw-bold: bold;
 // paragraph, illustrator, list, caption
 @mixin f-subtitle {
   font-family: $f-main;
-  font-size: $fs-subtitle;
+  font-size: var(--fs-subtitle);
   line-height: 1.875rem;
 }
 @mixin f-paragraph {
@@ -143,8 +162,12 @@ $fw-bold: bold;
 // footer, quote author
 @mixin f-small {
   font-family: $f-main;
-  font-size: $fs-small;
+  font-size: var(--fs-small);
   line-height: 1.125rem;
+
+  @include media("below-tablet") {
+    line-height: 1rem;
+  }
 }
 @mixin f-footer {
   @include f-small;
@@ -165,7 +188,7 @@ $fw-bold: bold;
 // footnote
 @mixin f-note {
   font-family: $f-main;
-  font-size: $fs-note;
+  font-size: var(--fs-note);
   line-height: 1.125rem;
 }
 .-f-note,
