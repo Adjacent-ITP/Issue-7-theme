@@ -1,11 +1,26 @@
+@import "../utilities/media-quries.scss";
+
+:root {
+  --theme-rect-width: 20vw;
+}
+@include media("below-desktop") {
+  :root {
+    --theme-rect-width: 30vw;
+  }
+}
+@include media("below-tablet") {
+  :root {
+    --theme-rect-width: 30vw;
+  }
+}
+
 $header-height: 16vh;
 $footer-height: 8vh;
 $body-height: calc(100vh - #{$header-height} - #{$footer-height});
 
-$theme-rect-width: 20vw;
 $theme-rect-height: $body-height;
-$nav-width: calc(100vw - #{$theme-rect-width});
-$content-area-width: calc(100vw - #{$theme-rect-width});
+$nav-width: calc(100vw - var(--theme-rect-width));
+$content-area-width: calc(100vw - var(--theme-rect-width));
 
 $border-standard: 1px solid $c-main;
 

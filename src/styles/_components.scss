@@ -1,6 +1,7 @@
 /* inject:scss */
 
 @import "components/_header.scss";
+@import "components/_header-rwd.scss";
 
 @import "components/_main.scss";
 
@@ -9,6 +10,7 @@
 @import "components/_content-area.scss";
 
 @import "components/_theme-rect.scss";
+@import "components/_theme-rect-rwd.scss";
 
 @import "components/_menu.scss";
 

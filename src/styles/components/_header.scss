@@ -7,7 +7,7 @@
 
 .header__logo {
   @include -flex-center-all;
-  width: $theme-rect-width;
+  width: var(--theme-rect-width);
   border-left: $border-standard;
 
   &-link {
@@ -23,7 +23,9 @@
 /*
 ** navigation bar
 */
-$nav-border-size: 4px;
+:root {
+  --nav-border-size: 4px;
+}
 $nav-chevron-size: 3em;
 $nav-btn-width: calc(#{$nav-width} * 0.2);
 $chevron-line-width: calc(#{$nav-width} / 10);
@@ -50,7 +52,7 @@ $chevron-line-width: calc(#{$nav-width} / 10);
   }
   &-chevron {
     border-style: solid;
-    border-width: $nav-border-size $nav-border-size 0 0;
+    border-width: var(--nav-border-size) var(--nav-border-size) 0 0;
     border-color: black;
     height: $nav-chevron-size;
     width: $nav-chevron-size;
@@ -68,9 +70,9 @@ $chevron-line-width: calc(#{$nav-width} / 10);
     &:before {
       content: "";
       position: absolute;
-      top: calc(50% - #{$nav-border-size}/ 2);
+      top: calc(50% - #{var(--nav-border-size)}/ 2);
       width: $chevron-line-width;
-      height: $nav-border-size;
+      height: var(--nav-border-size);
       background-color: $c-main;
       transition: all $transition-time;
     }
@@ -89,7 +91,7 @@ $chevron-line-width: calc(#{$nav-width} / 10);
     height: $nav-chevron-size;
 
     & .nav__btn-ham {
-      height: $nav-border-size;
+      height: var(--nav-border-size);
       width: 100%;
       background-color: $c-main;
     }
@@ -99,7 +101,7 @@ $chevron-line-width: calc(#{$nav-width} / 10);
       content: "";
       position: absolute;
       left: 0;
-      height: $nav-border-size;
+      height: var(--nav-border-size);
       width: 100%;
       background-color: $c-main;
     }

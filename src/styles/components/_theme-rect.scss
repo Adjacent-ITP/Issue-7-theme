@@ -2,13 +2,15 @@ $row-count: 50;
 $col-count: 18;
 $text-width: 4px;
 $text-width-offset: calc(#{$text-width} / 2);
-$rect-container-width: calc(#{$theme-rect-width} * 0.9);
+$rect-container-width: calc(var(--theme-rect-width) * 0.9);
 $rect-container-height: calc(#{$theme-rect-height} * 0.9);
 $row-height: calc(#{$rect-container-height} / #{$row-count});
 $col-width: calc(#{$rect-container-width} / #{$col-count});
 
 .theme-rect {
-  width: $theme-rect-width;
+  width: var(--theme-rect-width);
+  min-width: var(--theme-rect-width);
+  max-width: var(--theme-rect-width);
   border-left: $border-standard;
   display: flex;
   justify-content: center;

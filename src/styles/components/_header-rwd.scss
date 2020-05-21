@@ -1,0 +1,39 @@
+@include media("below-tablet") {
+  :root {
+    --nav-border-size: 2px;
+  }
+
+  .header {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  .header__logo {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: $border-standard;
+  }
+  .header__logo-img {
+    width: 22.5vw;
+  }
+
+  .nav {
+    padding: 32px 40px;
+  }
+  .nav__btn {
+    width: 15vw;
+  }
+  .nav__btn.-ham {
+    height: 1.5em;
+  }
+  .nav__btn.-chevron {
+    &:before {
+      width: 10vw;
+    }
+  }
+  .nav__btn-chevron {
+    height: 1.5em;
+    width: 1.5em;
+  }
+}
