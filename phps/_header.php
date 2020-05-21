@@ -42,7 +42,7 @@
 
 	</nav>
 	<div class="header__logo">
-		<a href="/" class="header__logo-link">
+		<a href="<?php echo get_bloginfo('url'); ?>" class="header__logo-link">
 			<img src="<?php echo get_bloginfo('template_directory'); ?>/public/assets/logo.svg" alt="logo" class="header__logo-img">
 		</a>
 	</div>
