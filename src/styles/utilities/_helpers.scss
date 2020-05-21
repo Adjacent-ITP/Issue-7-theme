@@ -30,3 +30,20 @@
 .-flex.-column {
   @include -flex-column;
 }
+
+@mixin -scroll-bar {
+  /* width */
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: white;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $c-theme;
+  }
+}
