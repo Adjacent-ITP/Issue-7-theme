@@ -2,3 +2,17 @@
   width: 100%;
   height: $body-height;
 }
+
+@include media("below-tablet") {
+  .main.-is-post {
+    & .menu,
+    & .content-area,
+    & .content-area__main {
+      max-width: 100vw;
+      width: 100vw;
+    }
+    & .theme-rect {
+      display: none;
+    }
+  }
+}

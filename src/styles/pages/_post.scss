@@ -42,8 +42,6 @@
 .article__content {
   @include f-paragraph;
 
-  p,
-  h2,
   figure img,
   .article__footnote-title {
     margin-bottom: 16px;
@@ -95,10 +93,12 @@
 
   h2 {
     @include f-title;
+    margin: 80px 0 48px 0;
   }
 
   p {
     @include f-paragraph;
+    margin-bottom: 40px;
   }
 
   sup {
@@ -144,6 +144,7 @@
 
     & > * {
       @include f-note;
+      margin-bottom: 16px;
     }
 
     ol {
@@ -240,25 +241,5 @@
     background-size: cover;
     background-repeat: no-repeat;
     transition: all 1s;
-  }
-}
-
-// rwd
-.post {
-  @include media("below-desktop") {
-    & .post__left {
-      width: 100%;
-      max-width: 100%;
-      border-right: none;
-    }
-    & .post__right {
-      display: none;
-    }
-    & .article__caption {
-      display: none;
-    }
-    figure {
-      display: block;
-    }
   }
 }

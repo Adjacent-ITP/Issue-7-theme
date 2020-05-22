@@ -131,6 +131,10 @@ $fw-bold: bold;
   font-family: $f-main;
   font-size: var(--fs-subtitle);
   line-height: 1.875rem;
+
+  @include media("below-tablet") {
+    line-height: 1.65rem;
+  }
 }
 @mixin f-paragraph {
   @include f-subtitle;

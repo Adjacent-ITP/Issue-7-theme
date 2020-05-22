@@ -1,0 +1,37 @@
+@include media("below-desktop") {
+  .post {
+    & .post__left {
+      width: 100%;
+      max-width: 100%;
+      border-right: none;
+    }
+    & .post__right {
+      display: none;
+    }
+    & .article__caption {
+      display: none;
+    }
+    figure {
+      display: block !important;
+    }
+  }
+}
+
+@include media("below-tablet") {
+  .article__header,
+  .article__content {
+    padding: 32px 24px;
+  }
+
+  .article__header.-is-scrolled {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .article__header .article__headline {
+    margin-bottom: 24px;
+  }
+  .article__content {
+    margin-top: 64px;
+  }
+}
