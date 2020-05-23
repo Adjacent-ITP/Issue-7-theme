@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<body>
+<body style="background-image:url('<?php echo get_bloginfo('template_directory'); ?>/public/assets/bg.jpg')">
 
 	<?php get_template_part( './phps/_header' ); ?>
 	<?php get_template_part( './phps/_body' ); ?>

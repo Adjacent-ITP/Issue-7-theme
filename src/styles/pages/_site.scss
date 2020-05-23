@@ -10,6 +10,15 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+body {
+  background-size: 100% auto;
+  background-position: 0% 0%;
+}
+
 a {
   color: $c-theme;
+}
+
+p {
+  visibility: hidden;
 }

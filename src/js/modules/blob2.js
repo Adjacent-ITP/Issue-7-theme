@@ -1,5 +1,4 @@
-let activateBlob2 = () => {
-
+let activateBlob = () => {
 
   let $area = document.querySelector('.content-area__main');
   let $areaBounds = $area.getBoundingClientRect();
@@ -7,57 +6,66 @@ let activateBlob2 = () => {
   let $scroller = document.querySelector('.posts');
   let $scrollerHeight = $scroller.scrollHeight - $scroller.getBoundingClientRect().height;
 
-  let COLOR_1 = new THREE.Color("rgb(213, 157, 1)");
-  let COLOR_2 = new THREE.Color('rgb(127, 20, 11)');
-  let COLOR_3 = new THREE.Color('rgb(0,0,0)');
+  let BCOL = [
+    (new THREE.Color('rgb(181, 208, 163)')),
+    (new THREE.Color('rgb(196, 178, 228)')),
+    (new THREE.Color('rgb(91, 109, 173)')),
+    (new THREE.Color('rgb(188, 169, 199)')),
+    (new THREE.Color('rgb(151, 176, 180)')),
+    (new THREE.Color('rgb(182, 207, 215)')),
+    (new THREE.Color('rgb(229, 218, 216)')),
+    (new THREE.Color('rgb(252, 222, 152)')),
+    (new THREE.Color('rgb(158, 79, 133)')),
+    (new THREE.Color('rgb(92, 67, 106)')),
+    (new THREE.Color('rgb(252, 230, 138)'))
+  ]
 
+  let DCOL = [
+    (new THREE.Color('rgb(170, 197, 216)')),
+    (new THREE.Color('rgb(171, 188, 242)')),
+    (new THREE.Color('rgb(117, 103, 173)')),
+    (new THREE.Color('rgb(245, 189, 190)')),
+    (new THREE.Color('rgb(238, 150, 104)')),
+    (new THREE.Color('rgb(241, 196, 219)')),
+    (new THREE.Color('rgb(251, 213, 40)')),
+    (new THREE.Color('rgb(209, 234, 231)')),
+    (new THREE.Color('rgb(184, 77, 145)')),
+    (new THREE.Color('rgb(210, 120, 119)')),
+    (new THREE.Color('rgb(196, 210, 177)'))
+  ]
+
+  let COLORSTOPS = BCOL.length;
+  let COL1 = BCOL[0];
+  let COL2 = DCOL[0];
 
   let loader = new THREE.OBJLoader();
   let scene = new THREE.Scene();
-  scene.background = new THREE.Color( 0xffffff);
   let camera = new THREE.PerspectiveCamera(75, $areaBounds.width/$areaBounds.height, 0.1, 1000);
   camera.position.z = 20;
   camera.aspect = $areaBounds.width / $areaBounds.height;
   camera.updateProjectionMatrix();
 
-  let renderer = new THREE.WebGLRenderer();
+  let renderer = new THREE.WebGLRenderer({ alpha: true });
   renderer.setSize( $areaBounds.width, $areaBounds.height );
   renderer.domElement.classList = "blob";
   $area.appendChild( renderer.domElement );
 
 
   let doTheStuff = (object) => {
+
+    var startTime = Date.now();
     let raycaster = new THREE.Raycaster();
     let mouse = new THREE.Vector2(0,0);
     let deadMouse = new THREE.Vector3(1000.,1000.,1000.);
 
     let uniforms = {
-          "time": { value: 1.0 },
-          'shape2A': {'type': 'f', 'value': 0.8},
-          'shape2B': {'type': 'f', 'value': 1},
-          'shape2M': {'type': 'f', 'value': 14},
-          'shape2N1': {'type': 'f', 'value': 2.4},
-          'shape2N2': {'type': 'f', 'value': 4},
-          'shape2N3': {'type': 'f', 'value': 2.5},
-          'shape1A': {'type': 'f', 'value': 0.8},
-          'shape1B': {'type': 'f', 'value': 0.5},
-          'shape1M': {'type': 'f', 'value': 25},
-          'shape1N1': {'type': 'f', 'value': 3.3},
-          'shape1N2': {'type': 'f', 'value': 1.5},
-          'shape1N3': {'type': 'f', 'value': 0.8},
-          'mouse': {'type': 'v2', 'value': mouse},
-          'mouseCast': {'type': 'v3', 'value': deadMouse},
-          'depthBasedShading': {'type': 'i', 'value': 0},
-          'lightPosition': {'type': 'v3', 'value': new THREE.Vector3(0.0, 0.0, 40.0)},
-          'brightColor': {'type': 'c', 'value': COLOR_1},
-          'darkColor': {'type': 'c', 'value': COLOR_2},
-          'minColorDistance': {'type': 'f', 'value': 0.0},
-          'maxColorDistance': {'type': 'f', 'value': 15.75},
-          // 'lightIntensity': {'type': 'f', 'value': 0.14},
-          'lightIntensity': {'type': 'f', 'value': .5},
-          'ambientLightIntensity': {'type': 'f', 'value': 0.0},
-          'brightnessMultiplier': {'type': 'f', 'value': .6}
-        };
+      "time": { value: 1.0 },
+      "scroll": { value: 1.0 },
+      'mouse': {'type': 'v2', 'value': mouse},
+      'mouseCast': {'type': 'v3', 'value': deadMouse},
+      'brightColor': {'type': 'c', 'value': COL1},
+      'darkColor': {'type': 'c', 'value': COL2},
+    };
 
     let material = new THREE.ShaderMaterial( {
     	uniforms: uniforms,
@@ -76,36 +84,61 @@ let activateBlob2 = () => {
         child.geometry.computeVertexNormals();
       }
     })
+    object.rotation.x = -0.8;
+    // object.rotation.z = 0.7;
+    object.rotation.y = -0.6;
+    object.scale.x = 2.2;
+    object.scale.y = 2.2;
+    object.scale.z = 2.2;
     object.position.z = -20;
-    object.scale.x = 2;
-    object.scale.y = 2;
-    object.scale.z = 2;
     scene.add( object );
 
-    let animate = ( timestamp ) => {
+    $scroller.addEventListener('scroll', () => {
+      let t = $scroller.scrollTop / $scrollerHeight;
+      document.body.style.backgroundPositionY = `${t*100}%`;
+      object.rotation.y = t*20;
+      camera.position.z = 14+8*Math.sin(t*3);
+      camera.position.y = 3*Math.sin(t*2);
+      camera.updateProjectionMatrix();
+
+
+      let ct = t*COLORSTOPS;
+      uniforms.scroll.value = ct;
+      let ci = Math.floor(ct);
+
+      ct = ct - ci;
+
+      COL1.lerp(BCOL[ci], ct);
+      COL2.lerp(DCOL[ci], ct);
+
+    })
+
+    let animate = (  ) => {
       requestAnimationFrame( animate );
       raycaster.setFromCamera( mouse, camera );
       var intersect = raycaster.intersectObject( object , true);
 
       if(intersect.length > 0) {
-        // console.log(intersect[0].point);
-        uniforms[ "mouseCast" ].value = intersect[0].point;
+      // console.log(intersect[0].distance);
+        uniforms.mouseCast.value = intersect[0].point;
       } else {
-        uniforms[ "mouseCast" ].value = deadMouse;
+        uniforms.mouseCast.value = deadMouse;
       }
+      uniforms.mouse.value = mouse;
 
-      uniforms[ "mouse" ].value = mouse;
-
+      var elapsedMilliseconds = Date.now() - startTime;
+      var elapsedSeconds = elapsedMilliseconds / 1000.;
+      uniforms.time.value = 60. * elapsedSeconds;
       renderer.render( scene, camera );
     };
 
 
-    $area.addEventListener("mousemove", (event) => {
-      let x = event.clientX - $areaBounds.x;
-      let y = event.clientY - $areaBounds.y;
-      mouse.x = (x / $areaBounds.width) * 2 - 1;
-      mouse.y = -(y / $areaBounds.height) * 2 + 1;
-    }, false)
+      $area.addEventListener("mousemove", (event) => {
+        let x = event.clientX - $areaBounds.x;
+        let y = event.clientY - $areaBounds.y;
+        mouse.x = (x / $areaBounds.width) * 2 - 1;
+        mouse.y = -(y / $areaBounds.height) * 2 + 1;
+      }, false)
 
 
     window.addEventListener("resize", () => {
@@ -115,25 +148,11 @@ let activateBlob2 = () => {
       renderer.setSize( $areaBounds.width, $areaBounds.height );
     })
 
-    $scroller.addEventListener('scroll', () => {
-      let t = $scroller.scrollTop / $scrollerHeight;
-      object.rotation.y = t*4;
-      uniforms[ "time" ].value = t*6;
-      uniforms['brightColor'].value.b = Math.sin(10+t*10)*0.3+0.3;
-      uniforms['brightColor'].value.r = Math.cos(1099+t*10)*0.3+0.3;
-      uniforms['brightColor'].value.g = Math.cos(99+t*10)*0.99+0.99;
-
-      uniforms['darkColor'].value.b = Math.sin(100000+t*10)*0.3+0.3;
-
-      uniforms['darkColor'].value.g = Math.sin(1200+t*10)*0.3+0.3;
-    })
-
-
     animate();
   }
 
 
-  let path = document.querySelector('.header__logo-img').src.replace("logo.png", "glob/glob.obj");
+  let path = document.querySelector('.header__logo-img').src.replace("logo.svg", "glob/blobby.obj");
 
   loader.load(path,
     // called when resource is loaded
@@ -151,7 +170,6 @@ let activateBlob2 = () => {
       console.log( 'An error happened' );
     }
   );
-
 
 
 

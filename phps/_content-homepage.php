@@ -31,18 +31,13 @@
   varying vec4 vMousePosition;
   varying vec3 vFragVertexEc;
 
-  uniform vec2 mouse;
+  uniform float time;
+  uniform float scroll;
+  // uniform vec2 mouse;
 
-  uniform bool depthBasedShading;
   uniform vec3 darkColor;
   uniform vec3 brightColor;
-  uniform vec3 lightPosition;
 
-  uniform float minColorDistance;
-  uniform float maxColorDistance;
-  uniform float lightIntensity;
-  uniform float ambientLightIntensity;
-  uniform float brightnessMultiplier;
 
 
   vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
@@ -69,73 +64,72 @@
 
     // Permutations
     i = mod(i, 289.0 );
-    vec4 p = permute( permute( permute(
-      i.z + vec4(0.0, i1.z, i2.z, 1.0 ))
-      + i.y + vec4(0.0, i1.y, i2.y, 1.0 ))
-      + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));
+    vec4 p = permute(
+      permute(
+        permute( i.z + vec4(0.0, i1.z, i2.z, 1.0 ))
+        + i.y + vec4(0.0, i1.y, i2.y, 1.0 )
+      ) + i.x + vec4(0.0, i1.x, i2.x, 1.0 )
+    );
 
-      // Gradients
-      // ( N*N points uniformly over a square, mapped onto an octahedron.)
-      float n_ = 1.0/7.0; // N=7
-      vec3  ns = n_ * D.wyz - D.xzx;
+    // Gradients
+    // ( N*N points uniformly over a square, mapped onto an octahedron.)
+    float n_ = 1.0/7.0; // N=7
+    vec3  ns = n_ * D.wyz - D.xzx;
 
-      vec4 j = p - 49.0 * floor(p * ns.z *ns.z);  //  mod(p,N*N)
+    vec4 j = p - 49.0 * floor(p * ns.z *ns.z);  //  mod(p,N*N)
 
-      vec4 x_ = floor(j * ns.z);
-      vec4 y_ = floor(j - 7.0 * x_ );    // mod(j,N)
+    vec4 x_ = floor(j * ns.z);
+    vec4 y_ = floor(j - 7.0 * x_ );    // mod(j,N)
 
-      vec4 x = x_ *ns.x + ns.yyyy;
-      vec4 y = y_ *ns.x + ns.yyyy;
-      vec4 h = 1.0 - abs(x) - abs(y);
+    vec4 x = x_ *ns.x + ns.yyyy;
+    vec4 y = y_ *ns.x + ns.yyyy;
+    vec4 h = 1.0 - abs(x) - abs(y);
 
-      vec4 b0 = vec4( x.xy, y.xy );
-      vec4 b1 = vec4( x.zw, y.zw );
+    vec4 b0 = vec4( x.xy, y.xy );
+    vec4 b1 = vec4( x.zw, y.zw );
 
-      vec4 s0 = floor(b0)*2.0 + 1.0;
-      vec4 s1 = floor(b1)*2.0 + 1.0;
-      vec4 sh = -step(h, vec4(0.0));
+    vec4 s0 = floor(b0)*2.0 + 1.0;
+    vec4 s1 = floor(b1)*2.0 + 1.0;
+    vec4 sh = -step(h, vec4(0.0));
 
-      vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;
-      vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;
+    vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;
+    vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;
 
-      vec3 p0 = vec3(a0.xy,h.x);
-      vec3 p1 = vec3(a0.zw,h.y);
-      vec3 p2 = vec3(a1.xy,h.z);
-      vec3 p3 = vec3(a1.zw,h.w);
+    vec3 p0 = vec3(a0.xy,h.x);
+    vec3 p1 = vec3(a0.zw,h.y);
+    vec3 p2 = vec3(a1.xy,h.z);
+    vec3 p3 = vec3(a1.zw,h.w);
 
-      //Normalise gradients
-      vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
-      p0 *= norm.x;
-      p1 *= norm.y;
-      p2 *= norm.z;
-      p3 *= norm.w;
+    //Normalise gradients
+    vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+    p0 *= norm.x;
+    p1 *= norm.y;
+    p2 *= norm.z;
+    p3 *= norm.w;
 
-      // Mix final noise value
-      vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
-      m = m * m;
-      return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1),
-      dot(p2,x2), dot(p3,x3) ) );
-    }
+    // Mix final noise value
+    vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+    m = m * m;
+    return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1),
+    dot(p2,x2), dot(p3,x3) ) );
+  }
 
-    void main() {
-      float brightness = 0.5; // 0...1
+  void main() {
 
-      // if (depthBasedShading) {
-      brightness = clamp(length(vPosition) * 0.3, minColorDistance, maxColorDistance);
-      brightness = pow(brightness, 1.5);
+    vec3 c1 = brightColor;//vec3(0.7198039216, 0.8256862745, 0.6492156863);
+    vec3 c2 = darkColor;//vec3(0.6766666667, 0.7825490196, 0.8570588235);
 
-      vec4 col = vec4(darkColor, 1.0) + brightnessMultiplier * lightIntensity * (brightness + ambientLightIntensity) * vec4(brightColor - darkColor, 1.0);
+    vec3 np = normalize( scroll*vPosition +  + snoise(vNormal*0.8) );
 
-      col.xyz += 0.3*snoise(vPosition*0.2 + snoise(vNormal*1.8));
-      // } else {
-      //   vec3 X = dFdx(vGlobalPosition.xyz);
-      //   vec3 Y = dFdy(vGlobalPosition.xyz);
-      //   vec3 faceNormal = normalize(cross(X,Y));
-      //   brightness = dot(faceNormal, normalize(lightPosition));
-      // }
+    vec3 contrastAmp = vec3(8.);
+    float contrast = length( pow(np, contrastAmp) );
+    float brightness = 0.14;
+    float n =  brightness + contrast;
 
-      gl_FragColor = col + vec4(1.,0.,0.,1.);
-    }
+    vec3 col = mix(c2,c1,n);//vec3(n);
+
+    gl_FragColor = vec4(col,1.);//col ;
+  }
 
 
 </script>
@@ -154,72 +148,26 @@
   varying vec3 vGlobalNormal;
   varying vec3 vPosition;
   varying vec4 vGlobalPosition;
-
   varying vec4 vMousePosition;
 
   uniform float time;
   uniform vec2 mouse;
   uniform vec3 mouseCast;
 
-  uniform float shape1A;
-  uniform float shape1B;
-  uniform float shape1M;
-  uniform float shape1N1;
-  uniform float shape1N2;
-  uniform float shape1N3;
-
-  uniform float shape2A;
-  uniform float shape2B;
-  uniform float shape2M;
-  uniform float shape2N1;
-  uniform float shape2N2;
-  uniform float shape2N3;
-
-  float radiusForAngle(float angle, float a, float b, float m, float n1, float n2, float n3) {
-    float tempA = abs(cos(angle * m * 0.25) / a);
-    float tempB = abs(sin(angle * m * 0.25) / b);
-    float tempAB = pow(tempA, n2) + pow(tempB, n3);
-    return abs(pow(tempAB, - 1.0 / n1));
-  }
-
-  vec3 superPositionForPosition(vec3 p) {
-    float r = length(p);
-
-    float phi = atan(p.y, p.x);
-    float theta = r == 0.0 ? 0.0 : asin(p.z / r);
-
-    // float superRadiusPhi = radiusForAngle(phi, shape1A+0.5*sin(time+p.x), shape1B+0.5*sin(time+p.y), shape1M+0.5*sin(time), shape1N1, shape1N2, shape1N3);
-    // float superRadiusTheta = radiusForAngle(theta, shape2A, shape2B, shape2M, shape2N1+0.5*sin(time+p.x), shape2N2+0.5*sin(time+p.y), shape2N3+0.5*sin(time+p.x+p.y));
-
-    float superRadiusPhi = radiusForAngle(phi, shape1A+0.2*sin(3.+time*0.8), shape1B, shape1M, shape1N1, shape1N2, shape1N3);
-    float superRadiusTheta = radiusForAngle(theta, shape2A, shape2B, shape2M, shape2N1, shape2N2, shape2N3);
-
-    p.x = r * superRadiusPhi * cos(phi) * superRadiusTheta * cos(theta);
-    p.y = r * superRadiusPhi * sin(phi) * superRadiusTheta * cos(theta);
-    p.z = r * superRadiusTheta * sin(theta);
-
-    return p;
-  }
-
   void main() {
     vUv = uv;
-
     vNormal = normal;
+    vPosition = position;
+
     vGlobalNormal = normalize(normalMatrix * normal);
 
-    vPosition = superPositionForPosition(position);
+    float d = distance(vPosition.xyz, mouseCast);
+    float s = smoothstep(10., 15., d);
 
+    vPosition = position + s*vNormal.xyz;
+
+    vGlobalNormal = normalize(normalMatrix * normal);
     vGlobalPosition = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);
-
-    float d = distance(vGlobalPosition.xyz, mouseCast);
-
-    float s = smoothstep(5., 15., d);
-
-    vPosition = superPositionForPosition(position + s*vNormal.xyz);
-    vGlobalPosition = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);
-
     gl_Position = vGlobalPosition;
   }
-
-
 </script>

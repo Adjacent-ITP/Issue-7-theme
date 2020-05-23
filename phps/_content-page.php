@@ -1,19 +1,16 @@
 
+<!-- OLD BLOB, WITHOUT OBJ -->
 <div class="posts blobtest">
   <?php $count = 0; ?>
   <?php while (have_posts()) : ?>
   	<?php the_post(); $count++; ?>
-    <!-- <div class="posts__item" style="--index: <?php echo $count; ?>;"> -->
+    <div class="posts__item" style="--index: <?php echo $count; ?>;">
       <a href="<?php the_permalink(); ?>" class="posts__link">
         <img src="<?php echo get_bloginfo('template_directory'); ?>/public/assets/number_<?php echo $count;?>.svg" alt="logo" class="posts__link-number">
         <h1 class="posts__link-title -f-headline-b"> <?php the_title() ?> </h1>
         <h2 class="posts__link-author -f-author"> Interactive Pope </h2>
       </a>
-      <div class="-f-author"> <?php the_content(); ?> </div>
-      <div class="-f-author"> <?php the_content(); ?> </div>
-      <div class="-f-author"> <?php the_content(); ?> </div>
-
-    <!-- </div> -->
+    </div>
   <?php endwhile; ?>
 </div>
 
@@ -130,7 +127,7 @@
 
       vec4 col = vec4(darkColor, 1.0) + brightnessMultiplier * lightIntensity * (brightness + ambientLightIntensity) * vec4(brightColor - darkColor, 1.0);
 
-      col.xyz += 0.3*snoise(vPosition*0.2 + snoise(vNormal*0.8));
+      col.xyz += 0.3*snoise(vPosition*0.2 + snoise(vNormal*1.8));
       // } else {
       //   vec3 X = dFdx(vGlobalPosition.xyz);
       //   vec3 Y = dFdy(vGlobalPosition.xyz);
@@ -211,16 +208,15 @@
     vNormal = normal;
     vGlobalNormal = normalize(normalMatrix * normal);
 
-    vPosition = position;//superPositionForPosition(position);
+    vPosition = superPositionForPosition(position);
 
     vGlobalPosition = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);
 
     float d = distance(vGlobalPosition.xyz, mouseCast);
 
+    float s = smoothstep(5., 15., d);
 
-    float s = smoothstep(1700., 1710., d);
-
-    vPosition = position + s*vNormal.xyz;//superPositionForPosition(position + s*vNormal.xyz);
+    vPosition = superPositionForPosition(position + s*vNormal.xyz);
     vGlobalPosition = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);
 
     gl_Position = vGlobalPosition;

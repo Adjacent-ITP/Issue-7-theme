@@ -1,4 +1,4 @@
-let activateBlob = () => {
+let activateBlobOld = () => {
 
 
   let $area = document.querySelector('.content-area__main');
