@@ -1,6 +1,7 @@
 @include media("below-tablet") {
   .menu__row {
     flex-direction: column;
+    flex-wrap: nowrap;
   }
   .menu__cell {
     width: 100%;
@@ -37,7 +38,6 @@
 
   .content-area.-is-menu-active .menu {
     max-width: 100vw;
-    min-width: 100vw;
     transition: all 0.5s;
   }
 }
