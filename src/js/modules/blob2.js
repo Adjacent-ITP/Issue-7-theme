@@ -55,6 +55,7 @@ let activateBlob = () => {
 
     var startTime = Date.now();
     let raycaster = new THREE.Raycaster();
+    let prevMouse = new THREE.Vector2(0,0);
     let mouse = new THREE.Vector2(0,0);
     let deadMouse = new THREE.Vector3(1000.,1000.,1000.);
 
@@ -119,7 +120,7 @@ let activateBlob = () => {
       var intersect = raycaster.intersectObject( object , true);
 
       if(intersect.length > 0) {
-      // console.log(intersect[0].distance);
+        // console.log(intersect[0]);
         uniforms.mouseCast.value = intersect[0].point;
       } else {
         uniforms.mouseCast.value = deadMouse;
@@ -136,10 +137,23 @@ let activateBlob = () => {
       $area.addEventListener("mousemove", (event) => {
         let x = event.clientX - $areaBounds.x;
         let y = event.clientY - $areaBounds.y;
-        mouse.x = (x / $areaBounds.width) * 2 - 1;
-        mouse.y = -(y / $areaBounds.height) * 2 + 1;
+        x = (x / $areaBounds.width) * 2 - 1;
+        y = -(y / $areaBounds.height) * 2 + 1;
+
+        mouse.x = 0.95*prevMouse.x + 0.05*x;
+        mouse.y = 0.95*prevMouse.y + 0.05*y;
+        prevMouse.x = mouse.x;
+        prevMouse.y = mouse.y;
       }, false)
 
+      $area.addEventListener("mouseup", (event) => {
+        raycaster.setFromCamera( mouse, camera );
+        var intersect = raycaster.intersectObject( object , true);
+
+        if(intersect.length > 0) {
+          console.log(intersect[0]);
+        }
+      }, false)
 
     window.addEventListener("resize", () => {
       $areaBounds = $area.getBoundingClientRect();
