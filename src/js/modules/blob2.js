@@ -97,7 +97,7 @@ let activateBlob = () => {
     $scroller.addEventListener('scroll', () => {
       let t = $scroller.scrollTop / $scrollerHeight;
       document.body.style.backgroundPositionY = `${t*100}%`;
-      object.rotation.y = t*20;
+      object.rotation.y = t*4;
       camera.position.z = 14+8*Math.sin(t*3);
       camera.position.y = 3*Math.sin(t*2);
       camera.updateProjectionMatrix();
@@ -140,8 +140,8 @@ let activateBlob = () => {
         x = (x / $areaBounds.width) * 2 - 1;
         y = -(y / $areaBounds.height) * 2 + 1;
 
-        mouse.x = 0.95*prevMouse.x + 0.05*x;
-        mouse.y = 0.95*prevMouse.y + 0.05*y;
+        mouse.x = 0.85*prevMouse.x + 0.15*x;
+        mouse.y = 0.85*prevMouse.y + 0.15*y;
         prevMouse.x = mouse.x;
         prevMouse.y = mouse.y;
       }, false)
