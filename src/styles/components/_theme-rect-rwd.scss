@@ -1,9 +1,18 @@
 @include media("below-tablet") {
-  // .content-area.-is-menu-active + .theme-rect {
-  //   width: 0px;
-  //   min-width: 0px;
-  //   max-width: 0px;
-  //   transform: translate3d(100vw, 0, 0);
-  //   transition: all 0.5s;
-  // }
+  .theme-rect__container {
+    height: 95%;
+    // display: flex;
+  }
+  .theme-text__g {
+    overflow: auto;
+    height: calc(#{$row-height} * 8);
+    transform: translate3d(
+      0,
+      calc(
+        #{$f-height} + #{$e2-height} + #{$l-height} + #{$n-height} + #{$text-margin} *
+          2.5
+      ),
+      0
+    );
+  }
 }

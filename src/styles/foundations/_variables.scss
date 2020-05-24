@@ -1,4 +1,5 @@
-@import "../utilities/media-quries.scss";
+@import "../utilities/_media-quries.scss";
+@import "../utilities/_helpers.scss";
 
 :root {
   --theme-rect-width: 20vw;
@@ -12,12 +13,14 @@
 }
 @include media("below-tablet") {
   :root {
-    --header-height: 14vh;
-    --footer-height: 8vh;
+    // --header-height: 14vh;
+    // --footer-height: 8vh;
+    --header-height: #{vh(14)};
+    --footer-height: #{vh(8)};
   }
 }
 
-$body-height: calc(100vh - var(--header-height) - var(--footer-height));
+$body-height: calc(#{vh(100)} - var(--header-height) - var(--footer-height));
 
 $theme-rect-height: $body-height;
 $nav-width: calc(100vw - var(--theme-rect-width));

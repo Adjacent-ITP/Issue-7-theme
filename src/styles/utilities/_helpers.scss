@@ -47,3 +47,7 @@
     background: $c-theme;
   }
 }
+
+@function vh($quantity) {
+  @return calc(var(--vh, 1vh) * #{$quantity});
+}

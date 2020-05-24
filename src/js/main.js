@@ -3,6 +3,15 @@ const tags = {
   menuActive: "-is-menu-active",
 };
 
+// global event
+// reset vh height
+window.onload = () => {
+  // setTimeout(() => {
+  const vh = window.innerHeight / 100;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+  // }, 100);
+};
+
 // nav bar
 const nav = document.getElementById("nav");
 const menu = document.getElementById("menu");
@@ -15,13 +24,9 @@ btnHam.addEventListener("click", () => {
   contentArea.classList.toggle(tags.menuActive);
 });
 
-
-if(document.getElementById('articlePost')) {
-  console.log("article");
+if (document.getElementById("articlePost")) {
   activateArticlePage();
-}
-else if(document.querySelector('.posts')) {
-  console.log("blob");
+} else if (document.querySelector(".posts")) {
   activateBlob();
 }
 

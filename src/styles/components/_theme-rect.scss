@@ -1,7 +1,16 @@
+:root {
+  --text-width: 4px;
+}
+@include media("below-tablet") {
+  :root {
+    --text-width: 2px;
+  }
+}
+
 $row-count: 50;
 $col-count: 18;
-$text-width: 4px;
-$text-width-offset: calc(#{$text-width} / 2);
+// $text-width: 4px;
+$text-width-offset: calc(var(--text-width) / 2);
 $rect-container-width: calc(var(--theme-rect-width) * 0.9);
 $rect-container-height: calc(#{$theme-rect-height} * 0.9);
 $row-height: calc(#{$rect-container-height} / #{$row-count});
@@ -47,7 +56,7 @@ $g-height: calc(#{$row-height} * 7);
   }
   line {
     stroke: black;
-    stroke-width: $text-width;
+    stroke-width: var(--text-width);
   }
 }
 .theme-text__f {
