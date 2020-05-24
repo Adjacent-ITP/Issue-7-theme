@@ -10,3 +10,12 @@
     padding: 0 5%;
   }
 }
+@include media("below-mobile") {
+  .footer {
+    padding: 0 2.5%;
+  }
+  .footnote__text {
+    font-size: 10px;
+    line-height: 11px;
+  }
+}

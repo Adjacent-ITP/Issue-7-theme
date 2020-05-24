@@ -4,15 +4,15 @@
     // display: flex;
   }
   .theme-text__g {
-    overflow: auto;
+    // overflow: auto;
     height: calc(#{$row-height} * 8);
-    transform: translate3d(
-      0,
-      calc(
-        #{$f-height} + #{$e2-height} + #{$l-height} + #{$n-height} + #{$text-margin} *
-          2.5
-      ),
-      0
-    );
+
+    & #g-btm {
+      transform: translate3d(
+        0,
+        calc(#{$g-height} + #{$text-width-offset} * 8),
+        0
+      );
+    }
   }
 }

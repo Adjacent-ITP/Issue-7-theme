@@ -1,6 +1,9 @@
 html,
 body {
   overflow: hidden;
+  @include media("below-mobile") {
+    max-height: vh(100);
+  }
 }
 
 // should this be here?
