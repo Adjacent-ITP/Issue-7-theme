@@ -26,6 +26,7 @@ btnHam.addEventListener("click", () => {
 
 if (document.getElementById("articlePost")) {
   activateArticlePage();
+  activateMagnifier();
 } else if (document.querySelector(".posts")) {
   activateBlob();
 }

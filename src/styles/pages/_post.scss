@@ -196,6 +196,7 @@
   margin-top: 136px;
   padding: 48px 72px;
   z-index: 1;
+  overflow-x: hidden;
 }
 .article__header-sub {
   position: absolute;
@@ -242,5 +243,29 @@
     background-size: cover;
     background-repeat: no-repeat;
     transition: all 1s;
+  }
+}
+
+// magnifier
+.img-magnifier-container {
+  position: relative;
+
+  &:hover {
+    cursor: zoom-in;
+  }
+}
+.img-magnifier-glass {
+  position: absolute;
+  border: 1px solid #000;
+  border-radius: 50%;
+  cursor: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+
+  .-is-active & {
+    opacity: 1;
+    transition: opacity 0.3s;
+    pointer-events: initial;
   }
 }
