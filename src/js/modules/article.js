@@ -8,7 +8,6 @@ let activateArticlePage = () => {
   const $contentArea = document.getElementById("contentArea");
   const $articleSection = document.getElementById("articleSection");
   const $articleHeader = document.getElementById("articleHeader");
-  const $articleContent = document.getElementById("articleContent");
   const $articlePost = document.getElementById("articlePost");
   const $imgAnchors = Array.from(
     document.getElementsByClassName("article__caption")
@@ -24,9 +23,9 @@ let activateArticlePage = () => {
 
   // getters
   function getLayoutType() {
-    return $articlePost.classList.contains("-is-horizontal")
-      ? "horizontal"
-      : "vertical";
+    if ($articlePost.classList.contains("-is-vertical")) return "vertical";
+    if ($articlePost.classList.contains("-is-scroll")) return "scroll";
+    if ($articlePost.classList.contains("-is-iframe")) return "iframe";
   }
 
   /*
@@ -35,15 +34,16 @@ let activateArticlePage = () => {
    *
    */
   // fill in first image
-  if (getLayoutType() === "vertical" && $imgAnchors.length > 0)
+  if (getLayoutType() !== "iframe" && $imgAnchors.length > 0) {
     setGalleryImg($imgAnchors[0]);
+  }
 
   /*
    *
    * events
    *
    */
-  // scroll event
+
   $articleSection.addEventListener("scroll", () => {
     // stick smaller header
     if ($articleSection.scrollTop > headerHeight / 2) {
@@ -67,6 +67,14 @@ let activateArticlePage = () => {
         }
       });
     }
-  });
 
-}
+    // scroll type image
+    if (getLayoutType() === "scroll") {
+      const areaHeight =
+        $articleSection.scrollHeight -
+        $articleSection.getBoundingClientRect().height;
+      const ratio = $articleSection.scrollTop / areaHeight;
+      $galleryImg.style.backgroundPositionY = `${ratio * 100}%`;
+    }
+  });
+};

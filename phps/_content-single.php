@@ -1,7 +1,7 @@
 <?php while (have_posts()) : ?>
 	<?php the_post(); ?>
 
-<article class="post <?php if( get_field('layout') == 'horizontal'): ?>-is-horizontal<?php endif; ?>" id="articlePost">
+<article class="post -is-<?php echo get_field('layout') ?>" id="articlePost">
 	<div class="post__left article" id="articleSection">
 		<div class="article__header" id="articleHeader">
 			<div class="article__header-main">
@@ -32,11 +32,11 @@
 		</div>
 		</div>
 	</div>
-	<?php if( get_field('layout') != 'horizontal'): ?>
 	<div class="post__right gallery">
-		<div class="gallery__wrapper" id="galleryImg"></div>
+		<?php if(get_field('layout') != "iframe"): ?>
+			<div class="gallery__wrapper" id="galleryImg"></div>
+		<?php endif; ?>
 	</div>
-	<?php endif; ?>
 </article>
 
 <?php endwhile; ?>
