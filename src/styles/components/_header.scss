@@ -24,9 +24,9 @@
 ** navigation bar
 */
 :root {
-  --nav-border-size: 4px;
+  --nav-border-size: 3px;
 }
-$nav-chevron-size: 3em;
+$nav-chevron-size: 2em;
 $nav-btn-width: calc(#{$nav-width} * 0.2);
 $chevron-line-width: calc(#{$nav-width} / 10);
 
@@ -54,8 +54,8 @@ $chevron-line-width: calc(#{$nav-width} / 10);
     border-style: solid;
     border-width: var(--nav-border-size) var(--nav-border-size) 0 0;
     border-color: black;
-    height: $nav-chevron-size;
-    width: $nav-chevron-size;
+    height: calc(#{$nav-chevron-size} * 0.8);
+    width: calc(#{$nav-chevron-size} * 0.8);
 
     .-left & {
       transform: rotate(-135deg);
@@ -71,17 +71,17 @@ $chevron-line-width: calc(#{$nav-width} / 10);
       content: "";
       position: absolute;
       top: calc(50% - #{var(--nav-border-size)}/ 2);
-      width: $chevron-line-width;
+      width: calc(#{$chevron-line-width} * 0.8);
       height: var(--nav-border-size);
       background-color: $c-main;
       transition: all $transition-time;
     }
 
     &.-left:before {
-      left: calc(#{$chevron-line-width} / 5);
+      left: calc(#{$chevron-line-width} / 10);
     }
     &.-right:before {
-      right: calc(#{$chevron-line-width} / 5);
+      right: calc(#{$chevron-line-width} / 10);
     }
   }
 
@@ -89,6 +89,7 @@ $chevron-line-width: calc(#{$nav-width} / 10);
   &.-ham {
     position: relative;
     height: $nav-chevron-size;
+    width: calc(#{$nav-btn-width} / 1.5);
 
     & .nav__btn-ham {
       height: var(--nav-border-size);
@@ -127,10 +128,6 @@ $chevron-line-width: calc(#{$nav-width} / 10);
       }
     }
 
-    & .nav__btn-chevron:hover {
-      // border-color: red;
-    }
-
     &.-left:hover {
       transform: translate3d(-0.8rem, 0, 0);
 
@@ -153,7 +150,7 @@ $chevron-line-width: calc(#{$nav-width} / 10);
     transition: all $transition-time;
 
     &:hover {
-      width: calc(#{$nav-btn-width} * 1.2);
+      width: calc(#{$nav-btn-width} / 1.4);
     }
   }
 }
