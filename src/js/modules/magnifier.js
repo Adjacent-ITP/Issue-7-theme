@@ -78,7 +78,7 @@ const activateMagnifier = () => {
   if ($containers.length > 0) {
     $containers.forEach(($container) => {
       $container.addEventListener("click", () => {
-        $container.classList.add("-is-active");
+        $container.classList.toggle("-is-active");
       });
       $container.addEventListener("mouseleave", () => {
         $container.classList.remove("-is-active");
