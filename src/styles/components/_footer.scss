@@ -1,6 +1,8 @@
 .footer {
   @include -flex-center-all;
   height: var(--footer-height);
+  max-height: var(--footer-height);
+  overflow: hidden;
   max-width: 100vw;
   border-top: $border-standard;
 }
