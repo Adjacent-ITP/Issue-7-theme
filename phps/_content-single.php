@@ -35,6 +35,10 @@
 	<div class="post__right gallery">
 		<?php if(get_field('layout') != "iframe"): ?>
 			<div class="gallery__wrapper" id="galleryImg"></div>
+		<?php else: ?>
+			<div class="video-holder gallery__wrapper">
+				<iframe id="galleryIframe" src="<?php the_field('side_video'); ?>" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+			</div>
 		<?php endif; ?>
 	</div>
 </article>

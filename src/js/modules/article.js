@@ -43,6 +43,7 @@ let activateArticlePage = () => {
    * events
    *
    */
+  const layoutType = getLayoutType();
 
   $articleSection.addEventListener("scroll", () => {
     // stick smaller header
@@ -53,7 +54,7 @@ let activateArticlePage = () => {
     }
 
     // change gallery image
-    if (getLayoutType() === "vertical") {
+    if (layoutType === "vertical") {
       const areaOffsetTop = $contentArea.offsetTop;
       const areaOffsetBtm = $contentArea.offsetHeight;
       $imgAnchors.forEach(($anchor) => {
@@ -69,7 +70,7 @@ let activateArticlePage = () => {
     }
 
     // scroll type image
-    if (getLayoutType() === "scroll") {
+    if (layoutType === "scroll") {
       const areaHeight =
         $articleSection.scrollHeight -
         $articleSection.getBoundingClientRect().height;
