@@ -78,7 +78,7 @@ $menu-small-row-height: calc(100% / 12);
     transition: opacity 0.3s;
   }
 
-  @include media("above-desktop") {
+  @include media("above-medium") {
     &:hover {
       & .menu-post__number {
         opacity: 0;

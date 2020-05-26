@@ -1,4 +1,4 @@
-@include media("below-tablet") {
+@include media("below-medium") {
   .menu__row {
     flex-direction: column;
     flex-wrap: nowrap;
@@ -19,7 +19,7 @@
   .menu-post {
     @include -flex;
     padding-left: 24px;
-    padding-right: 16px;
+    padding-right: 10vw;
   }
   .menu-post.-small {
     justify-content: flex-start;
@@ -31,7 +31,7 @@
     padding-right: 0;
   }
   .menu-post__number {
-    max-width: 22.5%;
+    max-width: 15%;
   }
   .menu-post:not(.-small) .menu-post__title {
     margin-bottom: 8px;
@@ -40,5 +40,14 @@
   .content-area.-is-menu-active .menu {
     max-width: 100vw;
     transition: all 0.5s;
+  }
+}
+
+@include media("below-desktop") {
+  .menu-post {
+    padding-right: 16px;
+  }
+  .menu-post__number {
+    max-width: 20%;
   }
 }
