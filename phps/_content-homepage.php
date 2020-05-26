@@ -232,7 +232,7 @@
     vUv = uv;
     vNormal = normal ;//+ 0.2*snoise(position);
     vPosition = position;
-    vec3 offset = position - 0.4*vNormal*sin(0.01*time + 2.*vNormal+vPosition.zxy);
+    vec3 offset = position - 0.2*vNormal*sin(0.01*time + 2.*vNormal+vPosition.zxy);
 
     vPosition = mix(vPosition, offset, cos(0.01*time+3.)*0.5+0.5);
 
