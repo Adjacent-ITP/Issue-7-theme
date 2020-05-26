@@ -50,6 +50,9 @@ let activateArticlePage = () => {
    *
    */
   setGalleryWidth();
+  window.addEventListener("resize", () => {
+    setGalleryWidth();
+  });
 
   /*
    *

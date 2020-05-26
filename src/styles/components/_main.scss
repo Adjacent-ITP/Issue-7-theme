@@ -1,6 +1,6 @@
 .main {
   width: 100%;
-  height: $body-height;
+  height: var(--body-height);
 }
 
 @include media("below-tablet") {

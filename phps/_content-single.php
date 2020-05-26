@@ -37,7 +37,7 @@
 			<div class="gallery__wrapper" id="galleryImg"></div>
 		<?php else: ?>
 			<div class="gallery__wrapper">
-<div style="padding:176.94% 0 0 0;position:relative;"><iframe src="<?php the_field('side_video'); ?>?autoplay=1&loop=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+				<div style="padding:176.94% 0 0 0;position:relative;"><iframe src="<?php the_field('side_video'); ?>?autoplay=1&loop=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 			</div>
 		<?php endif; ?>
 	</div>
