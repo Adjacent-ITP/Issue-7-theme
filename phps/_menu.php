@@ -13,7 +13,11 @@
 							class="menu-post__number"
 						>
 						<div class="menu-post__text">
-							<p class="menu-post__title"><?php the_title(); ?></p>
+							<p class="menu-post__title">
+								<?php if(get_field('short_title')): the_field('short_title'); ?>
+                <?php else: the_title(); ?>
+                <?php endif; ?>
+							</p>
 							<p class="menu-post__author">By <?php the_field('author_name') ?></p>
 						</div>
 					</a>

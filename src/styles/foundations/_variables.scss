@@ -3,8 +3,8 @@
 
 :root {
   --theme-rect-width: 20vw;
-  --header-height: 16vh;
-  --footer-height: 8vh;
+  --header-height: 10vh;
+  --footer-height: 6vh;
 }
 @include media("below-desktop") {
   :root {
@@ -13,8 +13,6 @@
 }
 @include media("below-tablet") {
   :root {
-    // --header-height: 14vh;
-    // --footer-height: 8vh;
     --header-height: #{vh(14)};
     --footer-height: #{vh(8)};
   }
