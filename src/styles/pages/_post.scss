@@ -5,16 +5,16 @@
 
   &__left {
     @include -scroll-bar;
-    width: 65%;
-    max-width: calc(1620px * 0.65);
-    border-right: $border-standard;
-  }
-  &__right {
     flex-grow: 1;
+    border-right: $border-standard;
   }
 
   & .article {
     overflow-y: scroll;
+  }
+  & .article__intro,
+  & .article__main {
+    max-width: calc(1620px * 0.65);
   }
 }
 
@@ -255,6 +255,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     transition: all 1s;
+    overflow: hidden;
   }
 }
 

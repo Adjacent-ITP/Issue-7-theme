@@ -8,6 +8,7 @@ let activateArticlePage = () => {
   const $contentArea = document.getElementById("contentArea");
   const $articleSection = document.getElementById("articleSection");
   const $articleHeader = document.getElementById("articleHeader");
+  const $articleGallery = document.getElementById("articleGallery");
   const $articlePost = document.getElementById("articlePost");
   const $imgAnchors = Array.from(
     document.getElementsByClassName("article__caption")
@@ -19,6 +20,11 @@ let activateArticlePage = () => {
   function setGalleryImg(targetElement) {
     const imgUrl = targetElement.dataset.src;
     $galleryImg.style.backgroundImage = `url('${imgUrl}')`;
+  }
+  function setGalleryWidth() {
+    const contentAreaHeight = $contentArea.getBoundingClientRect().height;
+    const fmtValue = Math.ceil(contentAreaHeight / 1.7685);
+    $articleGallery.style.minWidth = `${fmtValue}px`;
   }
 
   // getters
@@ -40,7 +46,14 @@ let activateArticlePage = () => {
 
   /*
    *
-   * events
+   * onload
+   *
+   */
+  setGalleryWidth();
+
+  /*
+   *
+   * scroll
    *
    */
   const layoutType = getLayoutType();
