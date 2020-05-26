@@ -11,15 +11,16 @@ window.onload = () => {
 
   // nav bar
   const nav = document.getElementById("nav");
-  const menu = document.getElementById("menu");
   const contentArea = document.getElementById("contentArea");
 
   const btnHam = document.getElementById("btnHam");
 
-  btnHam.addEventListener("click", () => {
-    nav.classList.toggle(tags.menuActive);
-    contentArea.classList.toggle(tags.menuActive);
-  });
+  if (btnHam) {
+    btnHam.addEventListener("click", () => {
+      nav.classList.toggle(tags.menuActive);
+      contentArea.classList.toggle(tags.menuActive);
+    });
+  }
 
   if (document.getElementById("articlePost")) {
     activateArticlePage();

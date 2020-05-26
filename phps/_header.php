@@ -1,4 +1,6 @@
-<header class="header" role="banner">
+<?php $slug = get_post_field( 'post_name', get_post() ); ?>
+
+<header class="header -is-<?php echo $slug ?>" role="banner">
 	<nav class="nav" id="nav">
 
 
@@ -32,9 +34,15 @@
 			<div class="nav__btn-chevron"></div>
 		</a>
 
+		<?php if($slug != 'about'):?>
 		<button class="nav__btn -center -ham" id="btnHam">
 			<div class="nav__btn-ham"></div>
 		</button>
+		<?php else: ?>
+		<a class="nav__btn -center -ham" href="<?php echo get_bloginfo('url'); ?>">
+			<div class="nav__btn-ham"></div>
+		</a>
+		<?php endif ;?>
 
 		<a href=<?php echo $next;?> class="nav__btn -right -chevron">
 			<div class="nav__btn-chevron"></div>

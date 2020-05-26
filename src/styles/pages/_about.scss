@@ -48,3 +48,13 @@
   @include f-paragraph;
   margin-top: 2rem;
 }
+
+// rwd
+@include media("below-tablet") {
+  .about__row {
+    padding: 2rem 1rem;
+  }
+  .about__row.-logo {
+    display: none;
+  }
+}
