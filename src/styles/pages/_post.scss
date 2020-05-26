@@ -31,19 +31,19 @@
     display: none;
   }
 }
-.post.-is-horizontal {
-  & .post__left {
-    width: 100%;
-    max-width: 100%;
-    border-right: none;
-  }
-  & .post__right {
-    display: none;
-  }
-  & .article__caption {
-    display: none;
-  }
-}
+// .post.-is-horizontal {
+//   & .post__left {
+//     width: 100%;
+//     max-width: 100%;
+//     border-right: none;
+//   }
+//   & .post__right {
+//     display: none;
+//   }
+//   & .article__caption {
+//     display: none;
+//   }
+// }
 
 // article section
 .article__content {

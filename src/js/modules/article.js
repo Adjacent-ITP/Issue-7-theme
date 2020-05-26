@@ -14,7 +14,6 @@ let activateArticlePage = () => {
     document.getElementsByClassName("article__caption")
   );
   const $galleryImg = document.getElementById("galleryImg");
-  const headerHeight = $articleHeader.offsetHeight;
 
   // setters
   function setGalleryImg(targetElement) {
@@ -63,7 +62,10 @@ let activateArticlePage = () => {
 
   $articleSection.addEventListener("scroll", () => {
     // stick smaller header
-    if ($articleSection.scrollTop > headerHeight / 2) {
+    if (
+      $articleSection.scrollTop >
+      $contentArea.getBoundingClientRect().height * 0.05
+    ) {
       $articleHeader.classList.add("-is-scrolled");
     } else {
       $articleHeader.classList.remove("-is-scrolled");
