@@ -188,6 +188,11 @@
   padding-bottom: 100%;
   margin-bottom: 0;
 }
+.video-holder.-is-iframe-layout {
+  display: none;
+  padding-bottom: 100%;
+}
+
 .article {
   box-sizing: border-box;
   position: relative;

@@ -24,6 +24,12 @@
 		</div>
 		<div class="article__main">
 
+		<?php if(get_field('layout') == 'iframe'): ?>
+			<div class="video-holder -is-iframe-layout">
+				<iframe src="<?php the_field('side_video'); ?>" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+			</div>
+		<?php endif; ?>
+
 			<?php the_content(); ?>
 
 			<p class="article__footnote-title"><?php echo get_field('author_name') ?></p>
