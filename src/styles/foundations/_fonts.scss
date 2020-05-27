@@ -43,7 +43,7 @@ $fs-root: 16px;
 @include media("below-tablet") {
   :root {
     --fs-headline: 1.8rem;
-    --fs-title: 1.25rem;
+    --fs-title: 1.2rem;
     --fs-subtitle: 1rem;
     --fs-small: 0.75rem;
     --fs-note: 0.65rem;
@@ -118,6 +118,10 @@ $fw-bold: bold;
   font-family: $f-main;
   font-size: var(--fs-title);
   line-height: 1.75rem;
+
+  @include media("below-tablet") {
+    line-height: 1.55rem;
+  }
 }
 @mixin f-author {
   @include f-title-regular;
