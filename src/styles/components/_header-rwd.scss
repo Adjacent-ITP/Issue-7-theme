@@ -37,6 +37,7 @@
     width: 1em;
   }
 
+  .header.-is-about,
   .nav.-is-menu-active {
     & .nav__btn.-ham {
       &:after {

@@ -156,6 +156,7 @@ $chevron-line-width: calc(#{$nav-width} / 10);
 }
 
 // state management
+.header.-is-about,
 .nav.-is-menu-active {
   transition: all $transition-time;
 

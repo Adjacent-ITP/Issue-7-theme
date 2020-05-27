@@ -8,17 +8,22 @@ let activateArticlePage = () => {
   const $contentArea = document.getElementById("contentArea");
   const $articleSection = document.getElementById("articleSection");
   const $articleHeader = document.getElementById("articleHeader");
+  const $articleGallery = document.getElementById("articleGallery");
   const $articlePost = document.getElementById("articlePost");
   const $imgAnchors = Array.from(
     document.getElementsByClassName("article__caption")
   );
   const $galleryImg = document.getElementById("galleryImg");
-  const headerHeight = $articleHeader.offsetHeight;
 
   // setters
   function setGalleryImg(targetElement) {
     const imgUrl = targetElement.dataset.src;
     $galleryImg.style.backgroundImage = `url('${imgUrl}')`;
+  }
+  function setGalleryWidth() {
+    const contentAreaHeight = $contentArea.getBoundingClientRect().height;
+    const fmtValue = Math.ceil(contentAreaHeight / 1.7685);
+    $articleGallery.style.minWidth = `${fmtValue}px`;
   }
 
   // getters
@@ -40,14 +45,27 @@ let activateArticlePage = () => {
 
   /*
    *
-   * events
+   * onload
+   *
+   */
+  setGalleryWidth();
+  window.addEventListener("resize", () => {
+    setGalleryWidth();
+  });
+
+  /*
+   *
+   * scroll
    *
    */
   const layoutType = getLayoutType();
 
   $articleSection.addEventListener("scroll", () => {
     // stick smaller header
-    if ($articleSection.scrollTop > headerHeight / 2) {
+    if (
+      $articleSection.scrollTop >
+      $contentArea.getBoundingClientRect().height * 0.05
+    ) {
       $articleHeader.classList.add("-is-scrolled");
     } else {
       $articleHeader.classList.remove("-is-scrolled");

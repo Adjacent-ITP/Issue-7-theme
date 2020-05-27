@@ -1,4 +1,4 @@
-@include media("below-desktop") {
+@include media("below-medium") {
   .post {
     & .post__left {
       width: 100%;
@@ -13,6 +13,9 @@
     }
     figure {
       display: block !important;
+    }
+    .video-holder.-is-iframe-layout {
+      display: block;
     }
   }
 }

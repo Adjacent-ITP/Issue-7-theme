@@ -2,9 +2,10 @@
 @import "../utilities/_helpers.scss";
 
 :root {
-  --theme-rect-width: 20vw;
+  --theme-rect-width: 18vw;
   --header-height: 10vh;
   --footer-height: 6vh;
+  --body-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 @include media("below-desktop") {
   :root {
@@ -15,12 +16,13 @@
   :root {
     --header-height: #{vh(14)};
     --footer-height: #{vh(8)};
+    --body-height: calc(
+      #{vh(100)} - var(--header-height) - var(--footer-height)
+    );
   }
 }
 
-$body-height: calc(#{vh(100)} - var(--header-height) - var(--footer-height));
-
-$theme-rect-height: $body-height;
+$theme-rect-height: var(--body-height);
 $nav-width: calc(100vw - var(--theme-rect-width));
 $content-area-width: calc(100vw - var(--theme-rect-width));
 
