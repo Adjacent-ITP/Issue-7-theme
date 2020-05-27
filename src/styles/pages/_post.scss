@@ -263,11 +263,7 @@
 
 // article section state
 .article__header.-is-scrolled {
-  // background-color: transparent;
-  background-image: url("./public/assets/bg.jpg");
-  border-bottom: 1px solid $c-theme;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding: 0;
 
   & .article__header-main {
     position: absolute;
@@ -278,6 +274,9 @@
     opacity: 1;
     position: relative;
     pointer-events: initial;
+    padding: 24px 72px;
+    background-image: url("./public/assets/bg.jpg");
+    border-bottom: 1px solid $c-theme;
   }
 }
 

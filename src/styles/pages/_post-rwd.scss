@@ -26,9 +26,8 @@
     padding: 32px 24px;
   }
 
-  .article__header.-is-scrolled {
-    padding-top: 16px;
-    padding-bottom: 16px;
+  .article__header.-is-scrolled .article__header-sub {
+    padding: 20px 16px;
   }
 
   .article__header .article__headline {

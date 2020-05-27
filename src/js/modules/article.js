@@ -48,10 +48,15 @@ let activateArticlePage = () => {
    * onload
    *
    */
+  // gallery responsive ratio
   setGalleryWidth();
   window.addEventListener("resize", () => {
     setGalleryWidth();
   });
+
+  // sticky header size
+  const headerheight = $articleHeader.getBoundingClientRect().height;
+  $articleHeader.style.minHeight = `${headerheight}px`;
 
   /*
    *
