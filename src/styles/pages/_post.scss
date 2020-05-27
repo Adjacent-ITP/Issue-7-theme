@@ -101,6 +101,29 @@
   h2 {
     @include f-title;
     margin: 80px 0 48px 0;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: 1.375rem;
+    margin: 72px 0 40px 0;
+    text-transform: uppercase;
+    font-weight: $fw-bold;
+
+    @include media("below-tablet") {
+      font-size: 1rem;
+    }
+  }
+
+  h4 {
+    font-size: 1rem;
+    margin: 32px 0 0 0;
+    text-transform: uppercase;
+    font-weight: $fw-bold;
+
+    @include media("below-tablet") {
+      font-size: 0.85rem;
+    }
   }
 
   p {
@@ -165,6 +188,16 @@
       &:before {
         display: none;
       }
+    }
+  }
+
+  .wp-block-audio {
+    audio {
+      width: 100%;
+    }
+    figcaption {
+      @include f-small;
+      font-style: italic;
     }
   }
 }
