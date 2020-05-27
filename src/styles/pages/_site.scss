@@ -13,9 +13,15 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+/*
+  BACKGROUND IS DESIGNED FOR 12 POSTS
+  THIS SHOULD CHANGE IF THAT NUMBER CHANGES
+*/
+
 body {
-  background-size: 100% auto;
+  background-size: 100% 1200%;
   background-position: 0% 0%;
+
 }
 
 a {

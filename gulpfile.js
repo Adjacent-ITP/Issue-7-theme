@@ -88,9 +88,9 @@ gulp.task("make:js", function() {
         errorHandler: onError
       })
     )
-    .pipe(sourcemaps.init())
-    .pipe(sourcemaps.write())
     .pipe(concat("main.js"))
+    .pipe(sourcemaps.init())
+    .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest(dest.js))
     .pipe(browserSync.stream());
 });

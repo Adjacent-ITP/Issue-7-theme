@@ -7,7 +7,7 @@
       <a href="<?php the_permalink(); ?>" class="posts__link">
         <img src="<?php echo get_bloginfo('template_directory'); ?>/public/assets/number_<?php echo $count;?>.svg" alt="logo" class="posts__link-number">
         <h1 class="posts__link-title -f-headline-b"> <?php the_title() ?> </h1>
-        <h2 class="posts__link-author -f-author"> Interactive Pope </h2>
+        <h2 class="posts__link-author -f-author"> <?php echo get_field('author_name') ?> </h2>
       </a>
     </div>
   <?php endwhile; ?>
@@ -119,14 +119,16 @@
     vec3 c1 = brightColor;//vec3(0.7198039216, 0.8256862745, 0.6492156863);
     vec3 c2 = darkColor;//vec3(0.6766666667, 0.7825490196, 0.8570588235);
 
-    vec3 np = normalize( scroll*vPosition +  + snoise(vNormal*0.8) );
+    vec3 np = normalize( vPosition + snoise( vNormal*0.8) + 0.1*sin(vPosition.x + time*0.05) );
 
-    vec3 contrastAmp = vec3(8.+0.1*scroll);
-    float contrast = length( pow(np, contrastAmp) );
+    vec3 contrastAmp = vec3(8.);
+    float contrast = length( pow( abs(np), contrastAmp) ) ;
     float brightness = 0.14;
     float n =  brightness + contrast;
 
-    vec3 col = mix(c2,c1,n);//vec3(n);
+    // n += 0.2*sin(n + time*0.1)*0.5+0.5;
+
+    vec3 col = mix(c2,c1, n );//vec3(n);
 
     gl_FragColor = vec4(col,1.);//col ;
   }
@@ -241,7 +243,7 @@
     float d = distance(vPosition.xyz, mouseCast);
     float s = smoothstep(10., 15., d);
 
-    vPosition = vPosition + 1.5*s*vNormal.xyz;
+    vPosition = vPosition + s*vNormal.xyz;
 
     vGlobalNormal = normalize(normalMatrix * normal);
     vGlobalPosition = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);
