@@ -32,17 +32,18 @@
 
 .posts__link {
   display: block;
-  width: 50%;
+  width: 28rem;
+  text-align: center;
 }
 
 .posts__link-title {
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .posts__link-number {
-  width: 50%;
-  left: 10%;
+  width: 17rem;
+  margin: 0 auto;
   position: relative;
   display: block;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }

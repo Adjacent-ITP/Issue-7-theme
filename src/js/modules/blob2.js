@@ -9,7 +9,7 @@ let activateBlob = () => {
   let $next = document.querySelector(".nav__btn.-right");
   let $prev = document.querySelector(".nav__btn.-left");
 
-  let camPosInit = new THREE.Vector3(0,2.7,18);
+  let camPosInit = new THREE.Vector3(0,2.7,38);
   let blobRotInit = new THREE.Vector3(0,5.5,0);
 
   let BCOL = [
@@ -112,7 +112,8 @@ let activateBlob = () => {
       object.rotation.y = blobRotInit.y + t*4;
 
       camera.position.z = camPosInit.z + 8*Math.sin(t*3);
-      camera.position.y = camPosInit.y + 3*Math.sin(t*2);
+      camera.position.y = camPosInit.y + 12*Math.sin(t*12);
+      camera.position.x = camPosInit.x + 14*Math.sin(t*12);
 
       camera.updateProjectionMatrix();
       let ct = t*(COLORSTOPS-1);

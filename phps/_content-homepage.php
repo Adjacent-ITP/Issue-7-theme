@@ -152,6 +152,7 @@
   varying vec4 vGlobalPosition;
   varying vec4 vMousePosition;
 
+  uniform float scroll;
   uniform float time;
   uniform vec2 mouse;
   uniform vec3 mouseCast;
@@ -237,6 +238,8 @@
     vec3 offset = position - 0.2*vNormal*sin(0.01*time + 2.*vNormal+vPosition.zxy);
 
     vPosition = mix(vPosition, offset, cos(0.01*time+3.)*0.5+0.5);
+
+    // vPosition.x = 0.15*((scroll*2.-1.) + sin(scroll*0.5)) * vPosition.x;
 
     vGlobalNormal = normalize(normalMatrix * normal);
 
