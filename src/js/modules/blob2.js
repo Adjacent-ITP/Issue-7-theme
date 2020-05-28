@@ -106,7 +106,8 @@ let activateBlob = () => {
     scene.add( object );
 
     $scroller.addEventListener('scroll', () => {
-      let t = $scroller.scrollTop / $scrollerHeight;
+      let t = Math.min($scroller.scrollTop / $scrollerHeight, 1);
+      console.log(t);
       document.body.style.backgroundPositionY = `${t*100}%`;
 
       object.rotation.y = blobRotInit.y + t*4;
