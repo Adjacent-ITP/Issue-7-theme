@@ -113,8 +113,8 @@ let activateBlob = () => {
       object.rotation.y = blobRotInit.y + t*4;
 
       camera.position.z = camPosInit.z + 8*Math.sin(t*3);
-      camera.position.y = camPosInit.y + 12*Math.sin(t*12);
-      camera.position.x = camPosInit.x + 14*Math.sin(t*12);
+      // camera.position.y = camPosInit.y + 4*Math.sin(t*7);
+      // camera.position.x = camPosInit.x + 6*Math.sin(t*9);
 
       camera.updateProjectionMatrix();
       let ct = t*(COLORSTOPS-1);
@@ -193,7 +193,7 @@ let activateBlob = () => {
   $next.addEventListener('click', () => navigate(1));
   $prev.addEventListener('click', () => navigate(-1));
 
-  let path = document.querySelector('.header__logo-img').src.replace("logo.svg", "glob/blobby.obj");
+  let path = document.querySelector('.header__logo-img').src.replace("logo.svg", "glob/glob.obj");
 
   loader.load(path,
     // called when resource is loaded

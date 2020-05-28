@@ -235,11 +235,14 @@
     vUv = uv;
     vNormal = normal ;//+ 0.2*snoise(position);
     vPosition = position;
-    vec3 offset = position - 0.2*vNormal*sin(0.01*time + 2.*vNormal+vPosition.zxy);
+    // vec3 offset = position - 0.2*vNormal*sin(0.01*time + 2.*vNormal+vPosition.zxy);
 
-    vPosition = mix(vPosition, offset, cos(0.01*time+3.)*0.5+0.5);
+    // vPosition = mix(vPosition, offset, cos(0.01*time+3.)*0.5+0.5);
 
     // vPosition.x = 0.15*((scroll*2.-1.) + sin(scroll*0.5)) * vPosition.x;
+
+    vPosition.x += 18.*(sin(scroll) *0.5 + 0.5) * vNormal.x;
+    vPosition.y += 18.*(cos(scroll) *0.5 + 0.5) * vNormal.y;
 
     vGlobalNormal = normalize(normalMatrix * normal);
 
