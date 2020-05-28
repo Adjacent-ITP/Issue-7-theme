@@ -241,8 +241,12 @@
 
     // vPosition.x = 0.15*((scroll*2.-1.) + sin(scroll*0.5)) * vPosition.x;
 
-    vPosition.x += 18.*(sin(scroll) *0.5 + 0.5) * vNormal.x;
-    vPosition.y += 18.*(cos(scroll) *0.5 + 0.5) * vNormal.y;
+    // vPosition.x += 10.*(sin(scroll+time*0.01) *0.5 + 0.5) * vNormal.x;
+    // vPosition.y += 6.*(cos(scroll+time*0.012) *0.5 + 1.5) * vNormal.y;
+
+    vPosition.y += cos(time*0.01);
+    vPosition.z += sin(time*0.01);
+
 
     vGlobalNormal = normalize(normalMatrix * normal);
 

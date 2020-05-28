@@ -1,6 +1,6 @@
 <div class="theme-rect">
 	<div class="theme-rect__container theme-text">
-		<svg class="theme-text__f" height="100%" width="100%">
+		<!-- <svg class="theme-text__f" height="100%" width="100%">
 			<line id="f-top" x1="0" y1="0" x2="100%" y2="0" />
 			<line id="f-center" x1="0" y1="0" x2="100%" y2="0" />
 			<line id="f-left" x1="0" y1="0" x2="0" y2="100%" />
@@ -35,6 +35,6 @@
 			<line id="g-btm" x1="0" y1="0" x2="100%" y2="0" />
 			<line id="g-right" x1="0" y1="0" x2="0" y2="100%" />
 			<line id="g-center" x1="0" y1="0" x2="100%" y2="0" />
-		</svg>
+		</svg> -->
 	</div>
 </div>

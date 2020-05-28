@@ -9,7 +9,7 @@ let activateBlob = () => {
   let $next = document.querySelector(".nav__btn.-right");
   let $prev = document.querySelector(".nav__btn.-left");
 
-  let camPosInit = new THREE.Vector3(0,2.7,38);
+  let camPosInit = new THREE.Vector3(0,2.7,50);
   let blobRotInit = new THREE.Vector3(0,5.5,0);
 
   let BCOL = [
