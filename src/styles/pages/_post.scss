@@ -124,6 +124,9 @@
       font-size: 1rem;
     }
   }
+
+  .article__caption + h2,
+  .article__caption + h3,
   blockquote + h2,
   blockquote + h3 {
     margin-top: 0;
@@ -247,6 +250,7 @@
   padding: 3rem 4.5rem;
   border-bottom: 0.0625rem solid $c-theme;
   pointer-events: visible;
+  transform: translate3d(0, -1px, 0);
 
   & .article__header-main {
     margin-bottom: 0.25rem;

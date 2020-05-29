@@ -152,4 +152,28 @@ let activateArticlePage = () => {
   window.addEventListener("resize", () => {
     loadArticle();
   });
+
+  /*
+   *
+   * footnote
+   *
+   */
+  const $footnoteTriggers = Array.from(document.getElementsByTagName("sup"));
+  $footnoteTriggers.forEach(($trigger) => {
+    $trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      const $eventTrigger = event.currentTarget;
+      const targetIndex = $eventTrigger.children[0]
+        .getAttribute("href")
+        .replace("#", "");
+      const $targetFootnote = document.getElementById(targetIndex);
+      const footnoteOffset = $targetFootnote.offsetTop;
+      const headerHeight = $articleHeader.getBoundingClientRect().height;
+
+      $articleSection.scrollTo({
+        top: footnoteOffset - headerHeight * 1.25,
+        left: 0,
+      });
+    });
+  });
 };
