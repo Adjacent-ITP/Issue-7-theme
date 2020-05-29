@@ -1,6 +1,10 @@
 @include media("below-medium") {
   .article__header {
     border-right: none;
+
+    &.-is-scrolled {
+      border-right: none;
+    }
   }
   .post {
     & .post__left {

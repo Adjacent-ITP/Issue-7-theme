@@ -62,11 +62,15 @@
   figure,
   blockquote,
   iframe {
-    margin-bottom: 3rem 0;
+    margin-bottom: 3rem;
   }
 
   .article__caption {
     margin-bottom: 3rem;
+
+    &.-is-empty {
+      display: inline;
+    }
   }
   .article__footnote-title {
     @include f-title;
@@ -185,6 +189,7 @@
     @include f-caption;
     display: inline-block;
     font-size: 0.75rem;
+    width: 100%;
     i {
       font-size: italic;
       font-weight: 900;
@@ -214,10 +219,6 @@
   .wp-block-audio {
     audio {
       width: 100%;
-    }
-    figcaption {
-      @include f-small;
-      font-style: italic;
     }
   }
 }
@@ -277,7 +278,7 @@
   padding-bottom: 1.5rem;
   background-image: url("./public/assets/bg.jpg");
   background-position: top;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
   border-right: 0.0625rem solid $c-theme;
 
