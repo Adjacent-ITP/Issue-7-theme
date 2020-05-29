@@ -53,7 +53,7 @@
 
   figure img,
   .article__footnote-title {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
 
   hr,
@@ -62,17 +62,17 @@
   figure,
   blockquote,
   iframe {
-    margin: 48px 0;
+    margin-bottom: 3rem 0;
   }
 
   .article__caption {
-    padding: 48px 0;
+    margin-bottom: 3rem;
   }
   .article__footnote-title {
     @include f-title;
   }
   .article__footnotes {
-    margin-bottom: 64px;
+    margin-bottom: 4rem;
   }
 
   figure {
@@ -102,16 +102,16 @@
 
   h2 {
     @include f-title;
-    margin: 80px 0 48px 0;
+    margin: 5rem 0 3rem 0;
     text-transform: uppercase;
   }
 
   h3 {
     font-size: 1.375rem;
-    margin: 72px 0 40px 0;
+    margin: 4.5rem 0 2.5rem 0;
     text-transform: uppercase;
     font-weight: $fw-bold;
-    border: 1px solid black;
+    border: 0.0625rem solid black;
     border-left: none;
     border-right: none;
     padding: 1.8rem 0rem;
@@ -122,7 +122,7 @@
 
   h4 {
     font-size: 1rem;
-    margin: 32px 0 0 0;
+    margin: 2rem 0 0 0;
     text-transform: uppercase;
     font-weight: $fw-bold;
 
@@ -133,7 +133,7 @@
 
   p {
     @include f-paragraph;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
   }
 
   sup {
@@ -152,21 +152,21 @@
   }
 
   hr {
-    border: 2px solid $c-theme;
+    border: 0.125rem solid $c-theme;
   }
 
   .article__intro {
     width: 90%;
-    margin-bottom: 48px;
+    margin-bottom: 3rem;
   }
   .article__blurb {
-    margin-bottom: 48px;
+    margin-bottom: 3rem;
   }
 
   blockquote {
     @include f-quote;
     display: inline-block;
-    padding-bottom: 24px;
+    padding-bottom: 1.5rem;
     padding-left: 2.5rem;
     p {
       margin-bottom: 0;
@@ -194,7 +194,7 @@
   .article__footnotes {
     & > * {
       @include f-note;
-      margin-bottom: 16px;
+      margin-bottom: 1rem;
     }
 
     ol {
@@ -232,7 +232,7 @@
   box-sizing: border-box;
   z-index: -1;
   padding: 3rem 4.5rem;
-  border-bottom: 1px solid $c-theme;
+  border-bottom: 0.0625rem solid $c-theme;
   pointer-events: visible;
 
   & .article__header-main {
@@ -254,7 +254,7 @@
 .article__content {
   max-width: 100%;
   margin-top: 4rem;
-  padding: 48px 72px;
+  padding: 3rem 4.5rem;
   z-index: 1;
   overflow-x: hidden;
 }
@@ -267,7 +267,7 @@
 
   & .article__author {
     font-weight: $fw-regular;
-    padding-left: 4px;
+    padding-left: 0.25rem;
   }
 }
 
@@ -279,7 +279,7 @@
   background-position: top;
   z-index: 0;
   pointer-events: none;
-  border-right: 1px solid $c-theme;
+  border-right: 0.0625rem solid $c-theme;
 
   & .article__headline {
     @include f-title;
@@ -325,7 +325,7 @@
 }
 .img-magnifier-glass {
   position: absolute;
-  border: 1px solid #000;
+  border: 0.0625rem solid #000;
   border-radius: 50%;
   cursor: none;
   opacity: 0;

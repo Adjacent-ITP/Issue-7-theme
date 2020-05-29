@@ -148,23 +148,9 @@ $fw-bold: bold;
 }
 .-f-subtitle,
 .-f-paragraph,
-.-f-list {
+.-f-list,
+.-f-illustrator {
   @include f-subtitle;
-}
-
-@mixin f-subtitle-i {
-  @include f-subtitle;
-  font-style: italic;
-}
-@mixin f-illustrator {
-  @include f-subtitle-i;
-}
-@mixin f-caption {
-  @include f-subtitle-i;
-}
-.-f-illustrator,
-.-f-caption {
-  @include f-subtitle-i;
 }
 
 // footer, quote author
@@ -202,6 +188,14 @@ $fw-bold: bold;
 .-f-note,
 .-f-footnote {
   @include f-note;
+}
+
+@mixin f-caption {
+  @include f-note;
+  font-style: italic;
+}
+.-f-caption {
+  @include f-caption;
 }
 
 // modifier
