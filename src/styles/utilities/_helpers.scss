@@ -32,6 +32,9 @@
 }
 
 @mixin -scroll-bar {
+  scrollbar-color: $c-theme transparent; /* thumb and track color */
+  scrollbar-width: thin;
+
   /* width */
   &::-webkit-scrollbar {
     width: 2px;
