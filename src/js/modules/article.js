@@ -9,6 +9,7 @@ let activateArticlePage = () => {
   const $articleSection = document.getElementById("articleSection");
   const $articleHeader = document.getElementById("articleHeader");
   const $articleGallery = document.getElementById("articleGallery");
+  const $articleContent = document.getElementById("articleContent");
   const $articlePost = document.getElementById("articlePost");
   const $imgAnchors = Array.from(
     document.getElementsByClassName("article__caption")
@@ -21,9 +22,30 @@ let activateArticlePage = () => {
     $galleryImg.style.backgroundImage = `url('${imgUrl}')`;
   }
   function setGalleryWidth() {
-    const contentAreaHeight = $contentArea.getBoundingClientRect().height;
-    const fmtValue = Math.ceil(contentAreaHeight / 1.7685);
-    $articleGallery.style.minWidth = `${fmtValue}px`;
+    return new Promise((resolve) => {
+      const contentAreaHeight = $contentArea.getBoundingClientRect().height;
+      const fmtValue = Math.ceil(contentAreaHeight / 1.7685);
+      $articleGallery.style.minWidth = `${fmtValue}px`;
+      resolve();
+    });
+  }
+  function setHeaderWidth() {
+    return new Promise((resolve) => {
+      const width = $articleSection.getBoundingClientRect().width;
+      $articleHeader.style.maxWidth = `${width}px`;
+      $articleHeader.style.width = `${width}px`;
+      resolve();
+    });
+  }
+  function setContentPadding() {
+    return new Promise((resolve) => {
+      const headerHeight = $articleHeader.getBoundingClientRect().height;
+      $articleContent.style.paddingTop = `${headerHeight}px`;
+      resolve();
+    });
+  }
+  function setContentView() {
+    $articlePost.classList.remove("-is-loading");
   }
 
   // getters
@@ -48,15 +70,13 @@ let activateArticlePage = () => {
    * onload
    *
    */
-  // gallery responsive ratio
-  setGalleryWidth();
-  window.addEventListener("resize", () => {
-    setGalleryWidth();
-  });
-
-  // sticky header size
-  const headerheight = $articleHeader.getBoundingClientRect().height;
-  $articleHeader.style.minHeight = `${headerheight}px`;
+  async function loadArticle() {
+    await setGalleryWidth();
+    await setHeaderWidth();
+    await setContentPadding();
+    setContentView();
+  }
+  loadArticle();
 
   /*
    *
@@ -69,7 +89,7 @@ let activateArticlePage = () => {
     // stick smaller header
     if (
       $articleSection.scrollTop >
-      $contentArea.getBoundingClientRect().height * 0.05
+      $articleHeader.getBoundingClientRect().height * 0.05
     ) {
       $articleHeader.classList.add("-is-scrolled");
     } else {
@@ -100,5 +120,14 @@ let activateArticlePage = () => {
       const ratio = $articleSection.scrollTop / areaHeight;
       $galleryImg.style.backgroundPositionY = `${ratio * 100}%`;
     }
+  });
+
+  /*
+   *
+   * resize
+   *
+   */
+  window.addEventListener("resize", () => {
+    loadArticle();
   });
 };

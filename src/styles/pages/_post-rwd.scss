@@ -1,4 +1,7 @@
 @include media("below-medium") {
+  .article__header {
+    border-right: none;
+  }
   .post {
     & .post__left {
       width: 100%;
@@ -24,10 +27,6 @@
   .article__header,
   .article__content {
     padding: 32px 24px;
-  }
-
-  .article__header.-is-scrolled .article__header-sub {
-    padding: 20px 16px;
   }
 
   .article__header .article__headline {
