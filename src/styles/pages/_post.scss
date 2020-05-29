@@ -123,6 +123,9 @@
       font-size: 1rem;
     }
   }
+  blockquote + h3 {
+    margin-top: 0;
+  }
 
   h4 {
     font-size: 1rem;
@@ -223,6 +226,10 @@
   }
 }
 
+.video-holder.-is-iframe-layout {
+  display: none;
+}
+
 .article {
   box-sizing: border-box;
   position: relative;
@@ -269,6 +276,25 @@
   & .article__author {
     font-weight: $fw-regular;
     padding-left: 0.25rem;
+  }
+}
+
+.gallery__wrapper.-is-iframes {
+  position: relative;
+  .gallery__wrapper-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    transition: opacity 0.5s;
+  }
+  .gallery__wrapper-video:not(.-is-active) {
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .gallery__wrapper-video div {
+    padding: 176.94% 0 0 0;
+    position: relative;
   }
 }
 

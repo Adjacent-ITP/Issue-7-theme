@@ -11,6 +11,7 @@ let activateArticlePage = () => {
   const $articleGallery = document.getElementById("articleGallery");
   const $articleContent = document.getElementById("articleContent");
   const $articlePost = document.getElementById("articlePost");
+  const $galleryWrapper = document.getElementById("galleryWrapper");
   const $imgAnchors = Array.from(
     document.getElementsByClassName("article__caption")
   );
@@ -20,6 +21,18 @@ let activateArticlePage = () => {
   function setGalleryImg(targetElement) {
     const imgUrl = targetElement.dataset.src;
     $galleryImg.style.backgroundImage = `url('${imgUrl}')`;
+  }
+  function setGalleryVideo(targetElement) {
+    const targetIndex = targetElement.dataset.index;
+    const $presetVideos = Array.from($galleryWrapper.children);
+
+    $presetVideos.forEach((video, index) => {
+      if (targetIndex == index + 1) {
+        video.classList.add("-is-active");
+      } else {
+        video.classList.remove("-is-active");
+      }
+    });
   }
   function setGalleryWidth() {
     return new Promise((resolve) => {
@@ -53,6 +66,7 @@ let activateArticlePage = () => {
     if ($articlePost.classList.contains("-is-vertical")) return "vertical";
     if ($articlePost.classList.contains("-is-scroll")) return "scroll";
     if ($articlePost.classList.contains("-is-iframe")) return "iframe";
+    return "iframeGallery";
   }
 
   /*
@@ -61,7 +75,11 @@ let activateArticlePage = () => {
    *
    */
   // fill in first image
-  if (getLayoutType() !== "iframe" && $imgAnchors.length > 0) {
+  if (
+    getLayoutType() !== "iframe" &&
+    getLayoutType() !== "iframeGallery" &&
+    $imgAnchors.length > 0
+  ) {
     setGalleryImg($imgAnchors[0]);
   }
 
@@ -97,7 +115,7 @@ let activateArticlePage = () => {
     }
 
     // change gallery image
-    if (layoutType === "vertical") {
+    if (layoutType === "vertical" || layoutType === "iframeGallery") {
       const areaOffsetTop = $contentArea.offsetTop;
       const areaOffsetBtm = $contentArea.offsetHeight;
       $imgAnchors.forEach(($anchor) => {
@@ -107,7 +125,11 @@ let activateArticlePage = () => {
           fmtAnchorOffsetTop > 0 && fmtAnchorOffsetTop < areaOffsetBtm;
 
         if (isAnchorInView) {
-          setGalleryImg($anchor);
+          if (layoutType === "vertical") {
+            setGalleryImg($anchor);
+          } else {
+            setGalleryVideo($anchor);
+          }
         }
       });
     }
