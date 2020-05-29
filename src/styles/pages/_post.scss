@@ -61,7 +61,8 @@
   ol,
   figure,
   blockquote,
-  iframe {
+  iframe,
+  .video-holder {
     margin-bottom: 3rem;
   }
 
@@ -123,6 +124,7 @@
       font-size: 1rem;
     }
   }
+  blockquote + h2,
   blockquote + h3 {
     margin-top: 0;
   }
@@ -223,6 +225,9 @@
     audio {
       width: 100%;
     }
+  }
+  .wp-block-embed__wrapper iframe {
+    margin-bottom: 0;
   }
 }
 
