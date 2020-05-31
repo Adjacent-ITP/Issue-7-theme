@@ -1,15 +1,15 @@
 <?php $slug = get_post_field( 'post_name', get_post() ); ?>
 
-<header class="header -is-<?php echo $slug ?>" role="banner">
+<!-- temporarily added "new-" to prevent .-is-about classes from taking effect -->
+<header class="header -is-<?php echo "new-".$slug ?>" role="banner">
 	<nav class="nav" id="nav">
 
 
 		<?php
 			$prev = "#";
 			$next = "#";
-			// if it's a post page, set $next and $prev to the URLs of next and prev posts
-			// what should happen if its a static page? ie an about page.. ?
-			if( is_single() ) {
+
+			if( is_single() || is_page() ) {
 				if( get_adjacent_post(false, '', true) ) {
 					$prev = get_permalink(get_previous_post()->ID);
 				} else {
@@ -28,8 +28,7 @@
 			}
 		?>
 
-		<!-- changed buttons to A tags for minimal HTML changes between homepage and post page
-		just the least destructive solution for now, feel free to change. -->
+
 		<a href=<?php echo $next;?> class="nav__btn -left -chevron">
 			<div class="nav__btn-chevron"></div>
 		</a>
