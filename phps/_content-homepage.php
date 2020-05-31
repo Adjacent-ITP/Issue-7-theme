@@ -33,7 +33,8 @@
 
   uniform float time;
   uniform float scroll;
-  // uniform vec2 mouse;
+  uniform vec2 mouse;
+  uniform vec3 intersection;
 
   uniform vec3 darkColor;
   uniform vec3 brightColor;
@@ -121,7 +122,8 @@
 
     vec3 normal = normalize( cross(dFdx(vPosition), dFdy(vPosition)) );
 
-    vec3 np = normalize( vPosition + snoise( normal*0.8) + 0.1*sin(vPosition.x + time*0.05) );
+    vec3 p = normalize(vPosition);
+    vec3 np = normalize( vPosition + snoise( p*0.8) + 0.4*sin(vPosition.x +time*3.)  + 0.3*sin(vPosition.y +time*2.) );
 
     vec3 contrastAmp = vec3(8.);
     float contrast = length( pow( abs(np), contrastAmp) ) ;
@@ -132,6 +134,7 @@
 
     vec3 col = mix(c2,c1, n );//vec3(n);
 
+    // float d = distance(vGlobalPosition.xyz/20., vec3(mouse, 1.) );
     gl_FragColor = vec4(col,1.);//col ;
   }
 
@@ -157,7 +160,7 @@
 
   uniform float time;
   uniform vec2 mouse;
-  uniform vec3 mouseCast;
+  uniform vec3 intersection;
 
   uniform vec3 shape1;
   uniform vec3 shape2;
@@ -189,7 +192,6 @@
 
   void main() {
     vUv = uv;
-
     vNormal = normal;
     vGlobalNormal = normalize(normalMatrix * normal);
 
@@ -197,13 +199,11 @@
 
     vGlobalPosition = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);
 
-    // float d = distance(vGlobalPosition.xyz, mouseCast);
-    //
-    // float s = smoothstep(5., 7., d);
-    //
-    // vPosition = superPositionForPosition(position + s*vNormal.xyz);
+    float d = distance(vGlobalPosition.xyz/20., vec3(mouse, 1.));
+    float s = smoothstep(0.45, 1.35, d);
+    vPosition = superPositionForPosition(position + 4.*s*vNormal.xyz);
+
     vGlobalPosition = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);
-    // vNormal = modelViewMatrix * vec4(vPosition, 1.);
     gl_Position = vGlobalPosition;
   }
 

@@ -28,7 +28,7 @@ let activateBlob = () => {
     [ (new THREE.Vector3(84, 51, 103)),     (new THREE.Vector3(240, 115, 115)) ],
     [ (new THREE.Vector3(255, 230, 139)),   (new THREE.Vector3(197, 213, 172)) ],
     [ (new THREE.Vector3(121, 114, 12)),    (new THREE.Vector3(213, 180, 110)) ],
-    [ (new THREE.Vector3(255, 167, 157)),   (new THREE.Vector3(112, 119, 104)) ]
+    [ (new THREE.Vector3(112, 119, 104)),   (new THREE.Vector3(255, 167, 157)) ]
   ]
 
   let colorstops = colors.length-1;
@@ -43,9 +43,9 @@ let activateBlob = () => {
 
   let shapes = [
     [
-      (new THREE.Vector3(6.19, 1.35, 1.35)),
+      (new THREE.Vector3(6.39, 1.35, 1.35)),
       (new THREE.Vector3(-6, 1.35, 15)),
-      (new THREE.Vector3(1, 3, .55)),
+      (new THREE.Vector3(1.2, 3, .55)),
       (new THREE.Vector3(16, 53, 9))
     ],
     [
@@ -61,8 +61,8 @@ let activateBlob = () => {
       (new THREE.Vector3(16,53,9))
     ],
     [
-      (new THREE.Vector3(6.19,1.35,-10)),
-      (new THREE.Vector3(-9,1.35,15)),
+      (new THREE.Vector3(6.19,1.35,-5)),
+      (new THREE.Vector3(-6,1.35,15)),
       (new THREE.Vector3(1,3,-8.2)),
       (new THREE.Vector3(16,53,9))
     ],
@@ -94,7 +94,7 @@ let activateBlob = () => {
   let raycaster = new THREE.Raycaster();
   let prevMouse = new THREE.Vector2(0,0);
   let mouse = new THREE.Vector2(0,0);
-  let deadMouse = new THREE.Vector3(1000.,1000.,1000.);
+  let intersection = new THREE.Vector3(1000.,1000.,1000.);
 
   let scene = new THREE.Scene();
   let camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
@@ -144,7 +144,19 @@ let activateBlob = () => {
 
   let animate = (  ) => {
     requestAnimationFrame( animate );
+    // raycaster.setFromCamera( mouse, camera );
+    // var intersect = raycaster.intersectObject( object);
+    //
+    // if(intersect.length > 0) {
+    //   // console.log(intersect[0].distance);
+    //   uniforms.intersection.value = intersect[0].point;
+    // } else {
+    //   uniforms.intersection.value = intersection;
+    // }
+    uniforms.mouse.value = mouse;
+
     uniforms.time.value = (Date.now() - startTime) / 1000.;
+
     renderer.render( scene, camera );
   };
 
@@ -169,7 +181,7 @@ let activateBlob = () => {
     "time": { value: 1.0 },
     "scroll": { value: 1.0 },
     'mouse': {'type': 'v2', 'value': mouse},
-    'mouseCast': {'type': 'v3', 'value': deadMouse},
+    'intersection': {'type': 'v3', 'value': intersection},
     'brightColor': {'type': 'c', 'value': color1},
     'darkColor': {'type': 'c', 'value': color2},
     'shape1': {'type': 'v3', 'value': shape.p1},
@@ -184,7 +196,7 @@ let activateBlob = () => {
     fragmentShader: document.getElementById( 'fragmentShader' ).textContent
   });
 
-  let geometry = new THREE.SphereGeometry( 15, 128, 128 );
+  let geometry = new THREE.SphereGeometry( 12, 128, 128 );
   let object = new THREE.Mesh(geometry, material);
   // object.rotation.copy(blobRotInit);
 
@@ -196,6 +208,18 @@ let activateBlob = () => {
   /* ========================= EVENTS ====================== */
 
   window.addEventListener("resize", setSpace);
+
+  $DOM.wrapper.addEventListener("mousemove", (event) => {
+    let x = event.clientX - $DOM.wrapperDims.x;
+    let y = event.clientY - $DOM.wrapperDims.y;
+    x = (x / $DOM.wrapperDims.width) * 2 - 1;
+    y = -(y / $DOM.wrapperDims.height) * 2 + 1;
+
+    mouse.x = x;//0.88*prevMouse.x + 0.12*x;
+    mouse.y = y;//0.88*prevMouse.y + 0.12*y;
+    prevMouse.x = mouse.x;
+    prevMouse.y = mouse.y;
+  }, false)
 
   $DOM.scroller.addEventListener("scroll", () => {
     let t = Math.min($DOM.scroller.scrollTop / $DOM.scrollerHeight, 0.999);
