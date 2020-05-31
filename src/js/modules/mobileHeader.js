@@ -29,8 +29,8 @@ const activateMobileHeader = () => {
       await setHomeHeader();
       setTimeout(() => {
         document.querySelector(".homepage").style.opacity = 1;
-        document.querySelector(".homepage").style.transition = "0.3s";
-      }, 3000);
+        document.querySelector(".homepage").style.transition = "0.1s";
+      }, 500);
     }
     initHomeHeader();
 
