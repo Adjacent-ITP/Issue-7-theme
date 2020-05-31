@@ -5,6 +5,7 @@
   overflow: hidden;
   max-width: 100vw;
   border-top: $border-standard;
+  transition: transform 0.3s;
 }
 
 @include media("below-tablet") {

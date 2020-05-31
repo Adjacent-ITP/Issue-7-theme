@@ -3,6 +3,7 @@
   width: 100%;
   border-bottom: $border-standard;
   display: flex;
+  transition: transform 0.3s;
 }
 
 .header__logo {
@@ -19,6 +20,19 @@
     width: 65%;
     margin: 0 auto;
   }
+}
+
+.header-theme-logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid $c-theme;
+  transition: transform 0.3s;
+  display: none;
+}
+.header__logo-theme {
+  display: none;
 }
 
 /*

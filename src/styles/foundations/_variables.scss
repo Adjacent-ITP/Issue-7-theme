@@ -9,7 +9,8 @@
 }
 @include media("below-desktop") {
   :root {
-    --theme-rect-width: 30vw;
+    // --theme-rect-width: 30vw;
+    --theme-rect-width: 0vw;
   }
 }
 @include media("below-tablet") {

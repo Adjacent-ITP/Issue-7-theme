@@ -8,14 +8,46 @@
   }
 
   .header__logo {
+    display: flex;
     width: 100%;
     text-align: center;
     border-left: none;
     border-bottom: $border-standard;
     height: 50%;
+    justify-content: space-between;
+    padding: 0 1.8rem;
+    box-sizing: border-box;
   }
   .header__logo-img {
     width: 22.5vw;
+  }
+
+  body.homepage .header-theme-logo {
+    display: block;
+  }
+
+  .header__logo-theme {
+    display: block;
+    max-width: 50%;
+    transition: all 0.3s;
+  }
+  body.homepage {
+    .header__logo {
+      justify-content: center;
+    }
+    .header__logo-theme {
+      opacity: 0;
+      width: 0;
+    }
+    .header__logo.-is-active {
+      justify-content: space-between;
+
+      .header__logo-theme {
+        opacity: 1;
+        width: initial;
+        transition: all 0.3s;
+      }
+    }
   }
 
   .nav {

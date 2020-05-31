@@ -1,18 +1,21 @@
 @include media("below-tablet") {
-  .theme-rect__container {
-    height: 95%;
-    // display: flex;
+  .theme-rect {
+    display: none;
   }
-  .theme-text__g {
-    // overflow: auto;
-    height: calc(#{$row-height} * 8);
+  // .theme-rect__container {
+  //   height: 95%;
+  //   // display: flex;
+  // }
+  // .theme-text__g {
+  //   // overflow: auto;
+  //   height: calc(#{$row-height} * 8);
 
-    & #g-btm {
-      transform: translate3d(
-        0,
-        calc(#{$g-height} + #{$text-width-offset} * 8),
-        0
-      );
-    }
-  }
+  //   & #g-btm {
+  //     transform: translate3d(
+  //       0,
+  //       calc(#{$g-height} + #{$text-width-offset} * 8),
+  //       0
+  //     );
+  //   }
+  // }
 }
