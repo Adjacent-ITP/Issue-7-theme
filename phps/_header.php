@@ -30,7 +30,7 @@
 
 		<!-- changed buttons to A tags for minimal HTML changes between homepage and post page
 		just the least destructive solution for now, feel free to change. -->
-		<a href=<?php echo $prev;?> class="nav__btn -left -chevron">
+		<a href=<?php echo $next;?> class="nav__btn -left -chevron">
 			<div class="nav__btn-chevron"></div>
 		</a>
 
@@ -44,7 +44,7 @@
 		</a>
 		<?php endif ;?>
 
-		<a href=<?php echo $next;?> class="nav__btn -right -chevron">
+		<a href=<?php echo $prev;?> class="nav__btn -right -chevron">
 			<div class="nav__btn-chevron"></div>
 		</a>
 
