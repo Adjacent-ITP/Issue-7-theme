@@ -10,6 +10,7 @@ let setBackground = () => {
     let total = document.querySelectorAll('.menu__cell:not(.-small)').length || 12;
     let offset = Math.min( (i/total), .999);
     document.body.style.backgroundPositionY = `${ offset * 100}%`;
+    document.querySelector('.article__header').style.backgroundPositionY = `${ offset * 100}%`;
   }
 }
 

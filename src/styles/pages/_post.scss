@@ -311,7 +311,8 @@
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   background-image: url("./public/assets/bg.jpg");
-  background-position: top;
+  background-size: 100vw 1200vh;
+  background-position: 0% 0%;
   z-index: 1;
   pointer-events: none;
   border-right: 0.0625rem solid $c-theme;
