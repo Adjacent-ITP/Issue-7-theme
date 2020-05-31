@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="522px" height="51px" viewBox="0 0 522 51" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <line x1="170" y1="31" x2="204.4" y2="31" id="Path" stroke="#010202" stroke-width="2"></line>
+        <polyline id="Path" stroke="#010202" stroke-width="2" points="210.8 0.7 170 0.7 170 48.9 210.8 48.9"></polyline>
+        <line x1="113.1" y1="21.9" x2="158.3" y2="21.9" id="Path" stroke="#010202" stroke-width="2"></line>
+        <polyline id="Path" stroke="#010202" stroke-width="2" points="133.9 0.7 112.3 0.7 112.3 48.9 157.6 48.9"></polyline>
+        <polyline id="Path" stroke="#010202" stroke-width="2" points="0.1 50.6 0.1 0.7 100.5 0.7"></polyline>
+        <line x1="0.8" y1="33.6" x2="97.8" y2="33.6" id="Path" stroke="#010202" stroke-width="2"></line>
+        <polyline id="Path" stroke="#010202" stroke-width="2" points="226.5 0.7 226.5 48.9 347 48.9"></polyline>
+        <line x1="360.3" y1="0.7" x2="360.3" y2="48.9" id="Path" stroke="#010202" stroke-width="2"></line>
+        <polyline id="Path" stroke="#010202" stroke-width="2" points="373.6 48.9 373.6 0.2 417.4 45.7 417.4 0.2"></polyline>
+        <polyline id="Path" stroke="#010202" stroke-width="2" points="492.3 0.9 433.1 0.9 433.1 48.9 521.9 48.9 521.9 28.9 452.2 28.9"></polyline>
+    </g>
+</svg>

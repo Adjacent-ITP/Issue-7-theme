@@ -4,14 +4,21 @@ const tags = {
 };
 
 let setBackground = () => {
-  let activeMenu = document.querySelector('.menu__cell.-active');
-  if(activeMenu) {
-    let i = parseInt(activeMenu.dataset.key || '0');
-    let total = document.querySelectorAll('.menu__cell:not(.-small)').length || 12;
-    let offset = Math.min( (i/total), .999);
-    document.body.style.backgroundPositionY = `${ offset * 100}%`;
-    document.querySelector('.article__header').style.backgroundPositionY = `${ offset * 100}%`;
+  let activeMenu = document.querySelector(".menu__cell.-active");
+  if (activeMenu) {
+    let i = parseInt(activeMenu.dataset.key || "0");
+    let total =
+      document.querySelectorAll(".menu__cell:not(.-small)").length || 12;
+    let offset = Math.min(i / total, 0.999);
+    document.body.style.backgroundPositionY = `${offset * 100}%`;
+    document.querySelector(".article__header").style.backgroundPositionY = `${
+      offset * 100
+    }%`;
   }
+};
+
+if (document.querySelector(".homepage")) {
+  activateMobileHeader();
 }
 
 window.onload = () => {
@@ -32,7 +39,6 @@ window.onload = () => {
       contentArea.classList.toggle(tags.menuActive);
     });
   }
-
 
   if (document.getElementById("articlePost")) {
     setBackground();
