@@ -43,58 +43,34 @@ let activateBlob = () => {
 
   let shapes = [
     [
-      (new THREE.Vector3(1, 1, 0)),
-      (new THREE.Vector3(2, 4, 2)),
-      (new THREE.Vector3(1, 1, 0)),
-      (new THREE.Vector3(2, 4, 2))
+      (new THREE.Vector3(6.19, 1.35, 1.35)),
+      (new THREE.Vector3(-6, 1.35, 15)),
+      (new THREE.Vector3(1, 3, .55)),
+      (new THREE.Vector3(16, 53, 9))
     ],
     [
-      (new THREE.Vector3(1.2, 0.3, 5)),
-      (new THREE.Vector3(3, 2.6, 1.8)),
-      (new THREE.Vector3(1.4, 1.6, 40)),
-      (new THREE.Vector3(2.9, 6.7, 2))
+      (new THREE.Vector3(6.19, 1.35,1.35)),
+      (new THREE.Vector3(-6,1.35,15)),
+      (new THREE.Vector3(1,3,-2.7)),
+      (new THREE.Vector3(16,53,9))
     ],
     [
-      (new THREE.Vector3(0.6,0.1,0)),
-      (new THREE.Vector3(1.3,2.6,4.4)),
-      (new THREE.Vector3(0.6,1.6,47)),
-      (new THREE.Vector3(2,4,2))
+      (new THREE.Vector3(6.19,1.35,1.35)),
+      (new THREE.Vector3(-6,1.35,15)),
+      (new THREE.Vector3(1,3,-8.2)),
+      (new THREE.Vector3(16,53,9))
     ],
     [
-      (new THREE.Vector3(0.6,0.7,23)),
-      (new THREE.Vector3(2,2.9,4.4)),
-      (new THREE.Vector3(1.4,1,10)),
-      (new THREE.Vector3(1.4,1.9,2))
+      (new THREE.Vector3(6.19,1.35,-10)),
+      (new THREE.Vector3(-9,1.35,15)),
+      (new THREE.Vector3(1,3,-8.2)),
+      (new THREE.Vector3(16,53,9))
     ],
     [
-      (new THREE.Vector3(.9,.4,14)),
-      (new THREE.Vector3(2.1,2.7,1.8)),
-      (new THREE.Vector3(1,1.9,1)),
-      (new THREE.Vector3(3.6,2.4,2.6))
-    ],
-    [
-      (new THREE.Vector3(.5, .6, 0)),
-      (new THREE.Vector3(3.8, 3.2, 5.1)),
-      (new THREE.Vector3(.7, 1.5, 10)),
-      (new THREE.Vector3(2.9,1.7,7.1))
-    ],
-    [
-      (new THREE.Vector3(.7, .2, 12)),
-      (new THREE.Vector3(.9,1.7,7.5)),
-      (new THREE.Vector3(1.3,0.9,19)),
-      (new THREE.Vector3(1.1,2.5,7.1))
-    ],
-    [
-      (new THREE.Vector3(1.6,0.4,31)),
-      (new THREE.Vector3(3.4,1.2,5.6)),
-      (new THREE.Vector3(1.5,0.4,53)),
-      (new THREE.Vector3(3.1,4.6,4.7))
-    ],
-    [
-      (new THREE.Vector3(1.4,0.4,6)),
-      (new THREE.Vector3(2.4,6.8,6.9)),
-      (new THREE.Vector3(0.6,1,4)),
-      (new THREE.Vector3(2.3,3.3,4.1))
+      (new THREE.Vector3(6.19,1.35,-10)),
+      (new THREE.Vector3(-9,1.35,15)),
+      (new THREE.Vector3(1,3,-5)),
+      (new THREE.Vector3(16,53,9))
     ]
   ]
 
@@ -124,8 +100,7 @@ let activateBlob = () => {
   let camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
   let renderer = new THREE.WebGLRenderer({ alpha: true });
   let camPosInit = new THREE.Vector3(0,0,50);
-  let blobRotInit = new THREE.Vector3(0,0,0);
-
+  let blobRotInit = new THREE.Vector3(0,100,10);
 
   /* ========================= SETUP ====================== */
 
@@ -209,9 +184,9 @@ let activateBlob = () => {
     fragmentShader: document.getElementById( 'fragmentShader' ).textContent
   });
 
-  let geometry = new THREE.SphereGeometry( 15, 32, 32 );
+  let geometry = new THREE.SphereGeometry( 15, 128, 128 );
   let object = new THREE.Mesh(geometry, material);
-
+  // object.rotation.copy(blobRotInit);
 
   /* ========================= SCENE ====================== */
 
@@ -225,6 +200,9 @@ let activateBlob = () => {
   $DOM.scroller.addEventListener("scroll", () => {
     let t = Math.min($DOM.scroller.scrollTop / $DOM.scrollerHeight, 0.999);
     document.body.style.backgroundPositionY = `${t*100}%`;
+
+    object.rotation.y = t*5;
+    object.rotation.x = t*5;
 
     scrollTransition(t, colorstops, setColors);
     scrollTransition(t, shapestops, setShapes);

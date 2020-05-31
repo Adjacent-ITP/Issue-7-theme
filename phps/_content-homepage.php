@@ -119,7 +119,9 @@
     vec3 c1 = brightColor;//vec3(0.7198039216, 0.8256862745, 0.6492156863);
     vec3 c2 = darkColor;//vec3(0.6766666667, 0.7825490196, 0.8570588235);
 
-    vec3 np = normalize( vPosition + snoise( vNormal*0.8) + 0.1*sin(vPosition.x + time*0.05) );
+    vec3 normal = normalize( cross(dFdx(vPosition), dFdy(vPosition)) );
+
+    vec3 np = normalize( vPosition + snoise( normal*0.8) + 0.1*sin(vPosition.x + time*0.05) );
 
     vec3 contrastAmp = vec3(8.);
     float contrast = length( pow( abs(np), contrastAmp) ) ;
@@ -156,20 +158,6 @@
   uniform float time;
   uniform vec2 mouse;
   uniform vec3 mouseCast;
-
-  // uniform float shape1A;
-  // uniform float shape1B;
-  // uniform float shape1M;
-  // uniform float shape1N1;
-  // uniform float shape1N2;
-  // uniform float shape1N3;
-  //
-  // uniform float shape2A;
-  // uniform float shape2B;
-  // uniform float shape2M;
-  // uniform float shape2N1;
-  // uniform float shape2N2;
-  // uniform float shape2N3;
 
   uniform vec3 shape1;
   uniform vec3 shape2;
@@ -215,7 +203,7 @@
     //
     // vPosition = superPositionForPosition(position + s*vNormal.xyz);
     vGlobalPosition = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);
-
+    // vNormal = modelViewMatrix * vec4(vPosition, 1.);
     gl_Position = vGlobalPosition;
   }
 
