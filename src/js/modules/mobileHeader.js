@@ -9,6 +9,7 @@ const activateMobileHeader = () => {
     const $headerLogo = document.getElementById("headerLogo");
     const $footer = document.getElementById("site-footer");
     const $headerThemeLogo = document.getElementById("headerThemeLogo");
+    const $contentArea = document.getElementById("contentArea");
     const $articleArea = document.querySelector(".posts");
     let themeLogoHeight = $headerThemeLogo.getBoundingClientRect().height;
 
@@ -17,7 +18,7 @@ const activateMobileHeader = () => {
         themeLogoHeight = $headerThemeLogo.getBoundingClientRect().height;
         $headerLogo.classList.remove("-is-active");
         $header.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
-        $articleArea.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
+        $contentArea.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
         $footer.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
         resolve();
       });
@@ -38,13 +39,13 @@ const activateMobileHeader = () => {
       if (scrollValue > 1) {
         $header.style.transform = `translate3d(0, 0, 0)`;
         $headerThemeLogo.style.transform = `translate3d(0, -${themeLogoHeight}px, 0)`;
-        $articleArea.style.transform = `translate3d(0, 0, 0)`;
+        $contentArea.style.transform = `translate3d(0, 0, 0)`;
         $footer.style.transform = `translate3d(0, 0, 0)`;
         $headerLogo.classList.add("-is-active");
       } else {
         $header.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
         $headerThemeLogo.style.transform = `translate3d(0, 0, 0)`;
-        $articleArea.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
+        $contentArea.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
         $footer.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
         $headerLogo.classList.remove("-is-active");
       }
