@@ -147,14 +147,14 @@ $chevron-line-width: calc(#{$nav-width} / 10);
       transform: translate3d(-0.8rem, 0, 0);
 
       &:before {
-        transform: translate3d(-0.85rem, 0, 0);
+        transform: translate3d(-0.88rem, 0, 0);
       }
     }
     &.-right:hover {
       transform: translate3d(0.8rem, 0, 0);
 
       &:before {
-        transform: translate3d(0.85rem, 0, 0);
+        transform: translate3d(0.88rem, 0, 0);
       }
     }
   }

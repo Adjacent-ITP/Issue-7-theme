@@ -6,8 +6,13 @@
     <div class="posts__item" style="--index: <?php echo $count; ?>;">
       <a href="<?php the_permalink(); ?>" class="posts__link">
         <img src="<?php echo get_bloginfo('template_directory'); ?>/public/assets/number_<?php echo $count;?>.svg" alt="logo" class="posts__link-number">
+
         <h1 class="posts__link-title -f-headline-b"> <?php the_title() ?> </h1>
-        <h2 class="posts__link-author -f-author"> <?php echo get_field('author_name') ?> </h2>
+        <h2 class="posts__link-author -f-author"> <?php echo get_field('author_name') ?> Sukanya Aneja</h2>
+
+        <p class="posts__link-desc -f-paragraph">
+          <?php echo wp_trim_words(get_field('blurb'), 24) ?>
+        </p>
       </a>
     </div>
   <?php endwhile; ?>
@@ -34,7 +39,6 @@
   uniform float time;
   uniform float scroll;
   uniform vec2 mouse;
-  uniform vec3 intersection;
 
   uniform vec3 darkColor;
   uniform vec3 brightColor;
@@ -160,7 +164,6 @@
 
   uniform float time;
   uniform vec2 mouse;
-  uniform vec3 intersection;
 
   uniform vec3 shape1;
   uniform vec3 shape2;

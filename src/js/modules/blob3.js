@@ -91,10 +91,8 @@ let activateBlob = () => {
   let currentPost = 0;
 
   let startTime = Date.now();
-  let raycaster = new THREE.Raycaster();
   let prevMouse = new THREE.Vector2(0,0);
   let mouse = new THREE.Vector2(0,0);
-  let intersection = new THREE.Vector3(1000.,1000.,1000.);
 
   let scene = new THREE.Scene();
   let camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
@@ -144,19 +142,8 @@ let activateBlob = () => {
 
   let animate = (  ) => {
     requestAnimationFrame( animate );
-    // raycaster.setFromCamera( mouse, camera );
-    // var intersect = raycaster.intersectObject( object);
-    //
-    // if(intersect.length > 0) {
-    //   // console.log(intersect[0].distance);
-    //   uniforms.intersection.value = intersect[0].point;
-    // } else {
-    //   uniforms.intersection.value = intersection;
-    // }
     uniforms.mouse.value = mouse;
-
     uniforms.time.value = (Date.now() - startTime) / 1000.;
-
     renderer.render( scene, camera );
   };
 
@@ -181,7 +168,6 @@ let activateBlob = () => {
     "time": { value: 1.0 },
     "scroll": { value: 1.0 },
     'mouse': {'type': 'v2', 'value': mouse},
-    'intersection': {'type': 'v3', 'value': intersection},
     'brightColor': {'type': 'c', 'value': color1},
     'darkColor': {'type': 'c', 'value': color2},
     'shape1': {'type': 'v3', 'value': shape.p1},
