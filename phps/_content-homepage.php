@@ -8,7 +8,7 @@
         <img src="<?php echo get_bloginfo('template_directory'); ?>/public/assets/number_<?php echo $count;?>.svg" alt="logo" class="posts__link-number">
 
         <h1 class="posts__link-title -f-headline-b"> <?php the_title() ?> </h1>
-        <h2 class="posts__link-author -f-author"> <?php echo get_field('author_name') ?> Sukanya Aneja</h2>
+        <h2 class="posts__link-author -f-author"> <?php echo get_field('author_name') ?></h2>
 
         <p class="posts__link-desc -f-paragraph">
           <?php echo wp_trim_words(get_field('blurb'), 24) ?>

@@ -6,7 +6,8 @@ let activateBlob = () => {
     next: document.querySelector(".nav__btn.-right"),
     prev: document.querySelector(".nav__btn.-left"),
     wrapper: document.querySelector('.content-area__main'),
-    scroller: document.querySelector('.posts')
+    scroller: document.querySelector('.posts'),
+    posts: document.querySelectorAll('.posts__item')
   };
 
   /* ===================== DOM ELEMENTS ================== */
@@ -140,6 +141,37 @@ let activateBlob = () => {
     fn(index1, index2, lerpAmt);
   }
 
+  let prevPost = () => {
+    let found = false;
+    for(let i=$DOM.posts.length-1; i>=0; i--) {
+      let dims = $DOM.posts[i].getBoundingClientRect();
+      if( ($DOM.wrapperDims.y - dims.y) > 1) {
+        $DOM.posts[i].scrollIntoView();
+        found = true;
+        break;
+      }
+    }
+    if(!found) { $DOM.posts[$DOM.posts.length-1].scrollIntoView(); }
+  }
+
+  let nextPost = () => {
+    if(Math.abs($DOM.scroller.scrollTop-$DOM.scrollerHeight) < 1) {
+      $DOM.posts[0].scrollIntoView();
+    } else {
+      let found = false;
+      for(let i=0; i<$DOM.posts.length; i++) {
+        let dims = $DOM.posts[i].getBoundingClientRect();
+        if((dims.y - $DOM.wrapperDims.y) > 1) {
+          $DOM.posts[i].scrollIntoView();
+          found = true;
+          console.log();
+          break;
+        }
+      }
+      if(!found) {$DOM.posts[0].scrollIntoView();}
+    }
+  }
+
   let animate = (  ) => {
     requestAnimationFrame( animate );
     uniforms.mouse.value = mouse;
@@ -216,7 +248,10 @@ let activateBlob = () => {
 
     scrollTransition(t, colorstops, setColors);
     scrollTransition(t, shapestops, setShapes);
-  })
+  });
+
+  $DOM.next.addEventListener('click', nextPost);
+  $DOM.prev.addEventListener('click', prevPost);
 
   /* ========================= EVENTS ====================== */
 
