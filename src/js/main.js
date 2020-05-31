@@ -3,6 +3,16 @@ const tags = {
   menuActive: "-is-menu-active",
 };
 
+let setBackground = () => {
+  let activeMenu = document.querySelector('.menu__cell.-active');
+  if(activeMenu) {
+    let i = parseInt(activeMenu.dataset.key || '0');
+    let total = document.querySelectorAll('.menu__cell:not(.-small)').length || 12;
+    let offset = Math.min( (i/total), .999);
+    document.body.style.backgroundPositionY = `${ offset * 100}%`;
+  }
+}
+
 window.onload = () => {
   // global event
   // reset vh height
@@ -22,7 +32,9 @@ window.onload = () => {
     });
   }
 
+
   if (document.getElementById("articlePost")) {
+    setBackground();
     activateArticlePage();
     activateMagnifier();
   } else if (document.querySelector(".posts")) {

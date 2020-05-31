@@ -123,8 +123,9 @@ let activateBlob = () => {
   let scene = new THREE.Scene();
   let camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
   let renderer = new THREE.WebGLRenderer({ alpha: true });
-  let camPosInit = new THREE.Vector3(0,2.7,50);
+  let camPosInit = new THREE.Vector3(0,0,50);
   let blobRotInit = new THREE.Vector3(0,0,0);
+
 
   /* ========================= SETUP ====================== */
 
@@ -210,6 +211,7 @@ let activateBlob = () => {
 
   let geometry = new THREE.SphereGeometry( 15, 32, 32 );
   let object = new THREE.Mesh(geometry, material);
+
 
   /* ========================= SCENE ====================== */
 

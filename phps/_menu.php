@@ -5,7 +5,12 @@
 			setup_postdata( $post );
 		?>
 			<?php foreach ($all_posts as $key=>$post) : ?>
-				<div class="menu__cell">
+				<?php if(is_single($post)): ?>
+					<div class="menu__cell -active" data-key=<?php echo $key; ?> >
+				<?php else: ?>
+					<div class="menu__cell" >
+				<?php endif; ?>
+
 					<a href="<?php the_permalink(); ?>" class="menu__cell-post menu-post">
 						<img
 							src="<?php echo get_bloginfo('template_directory'); ?>/public/assets/number_<?php echo ($key+1);?>.svg"
