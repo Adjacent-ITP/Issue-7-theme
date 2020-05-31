@@ -26,6 +26,7 @@ $col-width: calc(#{$rect-container-width} / #{$col-count});
   align-items: center;
 }
 
+
 .theme-rect__container {
   position: relative;
   width: 90%;
@@ -49,6 +50,11 @@ $n-width: calc(#{$col-width} * 16);
 $n-height: calc(#{$row-height} * 10);
 $g-width: $full-width;
 $g-height: calc(#{$row-height} * 7);
+
+.theme-text__static {
+  width:100%;
+  height:100%;
+}
 
 .theme-text {
   svg {
