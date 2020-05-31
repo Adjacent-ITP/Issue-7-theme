@@ -6,12 +6,13 @@
 }
 
 .header__logo {
-  @include -flex-center-all;
+  // @include -flex-center-all;
   width: var(--theme-rect-width);
   border-left: $border-standard;
 
   &-link {
     @include -flex-center-all;
+    height: 100%;
   }
 
   &-img {
