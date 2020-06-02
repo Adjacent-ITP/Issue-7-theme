@@ -3,12 +3,12 @@
   <?php $count = 0; ?>
   <?php while (have_posts()) : ?>
   	<?php the_post(); $count++; ?>
-    <div class="posts__item" style="--index: <?php echo $count; ?>;">
+    <div class="posts__item -item-<?php echo $count; ?>">
       <a href="<?php the_permalink(); ?>" class="posts__link">
         <img src="<?php echo get_bloginfo('template_directory'); ?>/public/assets/number_<?php echo $count;?>.svg" alt="logo" class="posts__link-number">
 
         <h1 class="posts__link-title -f-headline-b"> <?php the_title() ?> </h1>
-        <h2 class="posts__link-author -f-author"> <?php echo get_field('author_name') ?></h2>
+        <h2 class="posts__link-author -f-subtitle"> <?php echo get_field('author_name') ?></h2>
 
         <p class="posts__link-desc -f-paragraph">
           <?php echo wp_trim_words(get_field('blurb'), 24) ?>
@@ -129,7 +129,7 @@
     vec3 normal = normalize( cross(dFdx(vPosition), dFdy(vPosition)) );
 
     vec3 p = normalize(vPosition);
-    vec3 np = normalize( vPosition + snoise( p*0.8) + 0.4*sin(vPosition.x +time*3.)  + 0.3*sin(vPosition.y +time*2.) );
+    vec3 np = normalize( vPosition + snoise( p*0.8) + 0.4*sin(vPosition.x +time*2.)  + 0.3*sin(vPosition.y +time*1.5) );
 
     vec3 contrastAmp = vec3(8.);
     float contrast = length( pow( abs(np), contrastAmp) ) ;

@@ -44,9 +44,9 @@ let activateBlob = () => {
 
   let shapes = [
     [
-      (new THREE.Vector3(6.39, 1.35, 1.35)),
+      (new THREE.Vector3(6.59, 1.35, 1.35)),
       (new THREE.Vector3(-6, 1.35, 15)),
-      (new THREE.Vector3(1, 3, .56)),
+      (new THREE.Vector3(1.2, 3, .56)),
       (new THREE.Vector3(16, 53, 9))
     ],
     [
@@ -92,14 +92,14 @@ let activateBlob = () => {
   let currentPost = 0;
 
   let startTime = Date.now();
-  // let prevMouse = new THREE.Vector3(0,0);
   let mouse = new THREE.Vector3(0,0,0);
 
   let scene = new THREE.Scene();
   let camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
   let renderer = new THREE.WebGLRenderer({ alpha: true });
-  let camPosInit = new THREE.Vector3(0,0,50);
+  let camPosInit = new THREE.Vector3(0,0,40);
   let blobRotInit = new THREE.Vector3(0,100,10);
+  // camera.position.x = camPosInit.x + (1.5)*Math.sin(0);
 
   /* ========================= SETUP ====================== */
 
@@ -139,6 +139,23 @@ let activateBlob = () => {
     let index2 = Math.min(index1+1, stops);
     lerpAmt = lerpAmt - index1;
     fn(index1, index2, lerpAmt);
+  }
+
+  let calculateMouse = (mx, my) => {
+    let x = mx - $DOM.wrapperDims.x;
+    let y = my - $DOM.wrapperDims.y;
+    x = (x / $DOM.wrapperDims.width) * 2 - 1;
+    y = -(y / $DOM.wrapperDims.height) * 2 + 1;
+
+    var vec = new THREE.Vector3();
+    var pos = new THREE.Vector3();
+    vec.set(x,y,1);
+    vec.unproject( camera );
+    vec.sub( camera.position ).normalize();
+    var distance = - camera.position.z / vec.z;
+    pos.copy( camera.position ).add( vec.multiplyScalar( distance ) );
+
+    uniforms.mouse.value = pos;
   }
 
   let prevPost = () => {
@@ -186,6 +203,7 @@ let activateBlob = () => {
     setSpace();
     setColors(0,1,0);
     setShapes(0,1,0);
+    calculateMouse(0,0);
     scene.add( object );
     animate();
   }
@@ -199,7 +217,7 @@ let activateBlob = () => {
   let uniforms = {
     "time": { value: 1.0 },
     "scroll": { value: 1.0 },
-    "camera": { 'type': 'v3', 'value': camPosInit },
+    "camera": { 'type': 'v3', 'value': camera.position },
     'mouse': {'type': 'v3', 'value': mouse},
     'brightColor': {'type': 'c', 'value': color1},
     'darkColor': {'type': 'c', 'value': color2},
@@ -229,26 +247,7 @@ let activateBlob = () => {
   window.addEventListener("resize", setSpace);
 
   $DOM.wrapper.addEventListener("mousemove", (event) => {
-    let x = event.clientX - $DOM.wrapperDims.x;
-    let y = event.clientY - $DOM.wrapperDims.y;
-    // console.log(x);
-    x = (x / $DOM.wrapperDims.width) * 2 - 1;
-    y = -(y / $DOM.wrapperDims.height) * 2 + 1;
-
-    var vec = new THREE.Vector3();
-    var pos = new THREE.Vector3();
-    vec.set(x,y,1);
-    vec.unproject( camera );
-    vec.sub( camera.position ).normalize();
-    var distance = - camera.position.z / vec.z;
-    pos.copy( camera.position ).add( vec.multiplyScalar( distance ) );
-
-    uniforms.mouse.value = pos;
-
-    // mouse.x = x;//0.88*prevMouse.x + 0.12*x;
-    // mouse.y = y;//0.88*prevMouse.y + 0.12*y;
-    // prevMouse.x = mouse.x;
-    // prevMouse.y = mouse.y;
+    calculateMouse(event.clientX, event.clientY)
   }, false)
 
   $DOM.scroller.addEventListener("scroll", () => {
@@ -257,6 +256,10 @@ let activateBlob = () => {
 
     object.rotation.y = t*5;
     object.rotation.x = t*5;
+
+    // camPos.x = camPosInit.x + Math.sin(t*30);
+    camera.position.x = camPosInit.x + (1.5)*Math.sin(t*20);
+    camera.updateProjectionMatrix();
 
     scrollTransition(t, colorstops, setColors);
     scrollTransition(t, shapestops, setShapes);
