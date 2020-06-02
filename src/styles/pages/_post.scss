@@ -127,6 +127,8 @@
 
   .article__caption + h2,
   .article__caption + h3,
+  .article__caption + figure + h2,
+  .article__caption + figure + h3,
   blockquote + h2,
   blockquote + h3 {
     margin-top: 0;
@@ -317,6 +319,9 @@
   pointer-events: none;
   border-right: 0.0625rem solid $c-theme;
 
+  & .article__header-main {
+    margin-bottom: 0;
+  }
   & .article__headline {
     @include f-title;
     margin-bottom: 0.25rem;
