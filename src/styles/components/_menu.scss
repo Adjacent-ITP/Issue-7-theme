@@ -68,7 +68,12 @@ $menu-small-row-height: calc(100% / 12);
 .menu-post__number {
   max-width: 60%;
 }
-
+.menu-post__number {
+  max-width: 60%;
+}
+.menu-post__number.-mobile {
+  display: none;
+}
 // user events
 .menu__cell:not(.-small) {
   & .menu-post__number {

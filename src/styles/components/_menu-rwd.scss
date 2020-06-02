@@ -41,6 +41,12 @@
     max-width: 100vw;
     transition: all 0.5s;
   }
+  .menu-post__number {
+    display: none;
+  }
+  .menu-post__number.-mobile {
+    display: block;
+  }
 }
 
 @include media("below-desktop") {

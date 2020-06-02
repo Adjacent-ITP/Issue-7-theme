@@ -17,6 +17,11 @@
 							alt="<?php echo ($key+1);?>"
 							class="menu-post__number"
 						>
+						<img
+							src="<?php echo get_bloginfo('template_directory'); ?>/public/assets/numbers_mobile/<?php echo ($key+1);?>_numbers_mobile.svg"
+							alt="<?php echo ($key+1);?>"
+							class="menu-post__number -mobile"
+						>
 						<div class="menu-post__text">
 							<p class="menu-post__title">
 								<?php if(get_field('short_title')): the_field('short_title'); ?>
