@@ -55,7 +55,7 @@ $g-height: calc(#{$row-height} * 7);
     position: absolute;
   }
   line {
-    stroke: black;
+    stroke: $c-theme;
     stroke-width: var(--text-width);
   }
 }

@@ -11,6 +11,8 @@ const activateMobileHeader = () => {
     const $headerThemeLogo = document.getElementById("headerThemeLogo");
     const $contentArea = document.getElementById("contentArea");
     const $articleArea = document.querySelector(".posts");
+    const $btnHam = document.getElementById("btnHam");
+
     let themeLogoHeight = $headerThemeLogo.getBoundingClientRect().height;
 
     function setHomeHeader() {
@@ -22,6 +24,20 @@ const activateMobileHeader = () => {
         $footer.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
         resolve();
       });
+    }
+    function hideHugeLogo() {
+      $header.style.transform = `translate3d(0, 0, 0)`;
+      $headerThemeLogo.style.transform = `translate3d(0, -${themeLogoHeight}px, 0)`;
+      $contentArea.style.transform = `translate3d(0, 0, 0)`;
+      $footer.style.transform = `translate3d(0, 0, 0)`;
+      $headerLogo.classList.add("-is-active");
+    }
+    function showHugeLogo() {
+      $header.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
+      $headerThemeLogo.style.transform = `translate3d(0, 0, 0)`;
+      $contentArea.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
+      $footer.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
+      $headerLogo.classList.remove("-is-active");
     }
 
     async function initHomeHeader() {
@@ -37,19 +53,17 @@ const activateMobileHeader = () => {
     $articleArea.addEventListener("scroll", () => {
       const scrollValue = $articleArea.scrollTop;
       if (scrollValue > 1) {
-        $header.style.transform = `translate3d(0, 0, 0)`;
-        $headerThemeLogo.style.transform = `translate3d(0, -${themeLogoHeight}px, 0)`;
-        $contentArea.style.transform = `translate3d(0, 0, 0)`;
-        $footer.style.transform = `translate3d(0, 0, 0)`;
-        $headerLogo.classList.add("-is-active");
+        hideHugeLogo();
       } else {
-        $header.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
-        $headerThemeLogo.style.transform = `translate3d(0, 0, 0)`;
-        $contentArea.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
-        $footer.style.transform = `translate3d(0, ${themeLogoHeight}px, 0)`;
-        $headerLogo.classList.remove("-is-active");
+        showHugeLogo();
       }
     });
+
+    if (btnHam) {
+      btnHam.addEventListener("click", () => {
+        hideHugeLogo();
+      });
+    }
 
     /*
      *
