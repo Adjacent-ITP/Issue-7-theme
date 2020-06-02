@@ -11,9 +11,61 @@
   width: 160px;
 }
 
+.about__content {
+  & > * {
+    box-sizing: border-box;
+  }
+
+  hr {
+    display: block;
+    border: 0;
+    border-bottom: 1px dashed $c-main;
+    margin-bottom: 2.5rem;
+  }
+
+  h3 {
+    @include f-subtitle;
+    font-weight: $fw-bold;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    @include f-paragraph;
+    margin-bottom: 2.5rem;
+  }
+
+  strong {
+    font-weight: $fw-bold;
+  }
+
+  h3,
+  p,
+  .video-holder {
+    margin-left: 4rem;
+    max-width: 1024px;
+
+    @include media("below-medium") {
+      margin-right: 4rem;
+    }
+    @include media("below-desktop") {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+    @include media("below-tablet") {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  p + .video-holder {
+    margin-top: -2.5rem;
+  }
+}
+
 .about__row {
   padding: 3.5rem 15% 3.5rem 4rem;
   box-sizing: border-box;
+  margin-bottom: 2.5rem;
 
   &:not(:last-child) {
     border-bottom: 1px dashed $c-main;
