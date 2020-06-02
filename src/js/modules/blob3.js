@@ -46,32 +46,32 @@ let activateBlob = () => {
     [
       (new THREE.Vector3(6.39, 1.35, 1.35)),
       (new THREE.Vector3(-6, 1.35, 15)),
-      (new THREE.Vector3(1.2, 3, .55)),
+      (new THREE.Vector3(1, 3, .56)),
       (new THREE.Vector3(16, 53, 9))
     ],
     [
       (new THREE.Vector3(6.19, 1.35,1.35)),
       (new THREE.Vector3(-6,1.35,15)),
-      (new THREE.Vector3(1,3,-2.7)),
+      (new THREE.Vector3(1,3,-2)),
+      (new THREE.Vector3(17.1,53,9))
+    ],
+    [
+      (new THREE.Vector3(6.19,1.35,1.35)),
+      (new THREE.Vector3(-6,3.17,3.43)),
+      (new THREE.Vector3(1,3,-4.4)),
       (new THREE.Vector3(16,53,9))
     ],
     [
       (new THREE.Vector3(6.19,1.35,1.35)),
-      (new THREE.Vector3(-6,1.35,15)),
-      (new THREE.Vector3(1,3,-8.2)),
-      (new THREE.Vector3(16,53,9))
+      (new THREE.Vector3(-19.2,3.17,3.43)),
+      (new THREE.Vector3(1,3,-4.4)),
+      (new THREE.Vector3(16.9,53,0.63))
     ],
     [
-      (new THREE.Vector3(6.19,1.35,-5)),
-      (new THREE.Vector3(-6,1.35,15)),
-      (new THREE.Vector3(1,3,-8.2)),
-      (new THREE.Vector3(16,53,9))
-    ],
-    [
-      (new THREE.Vector3(6.19,1.35,-10)),
-      (new THREE.Vector3(-9,1.35,15)),
-      (new THREE.Vector3(1,3,-5)),
-      (new THREE.Vector3(16,53,9))
+      (new THREE.Vector3(6.19,1.35,1.35)),
+      (new THREE.Vector3(-19.2,-3.4,3.43)),
+      (new THREE.Vector3(1,2.03,-4)),
+      (new THREE.Vector3(17.1,-16.4,3.25))
     ]
   ]
 
@@ -92,8 +92,8 @@ let activateBlob = () => {
   let currentPost = 0;
 
   let startTime = Date.now();
-  let prevMouse = new THREE.Vector2(0,0);
-  let mouse = new THREE.Vector2(0,0);
+  // let prevMouse = new THREE.Vector3(0,0);
+  let mouse = new THREE.Vector3(0,0,0);
 
   let scene = new THREE.Scene();
   let camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
@@ -174,7 +174,7 @@ let activateBlob = () => {
 
   let animate = (  ) => {
     requestAnimationFrame( animate );
-    uniforms.mouse.value = mouse;
+    // uniforms.mouse.value = mouse;
     uniforms.time.value = (Date.now() - startTime) / 1000.;
     renderer.render( scene, camera );
   };
@@ -199,7 +199,8 @@ let activateBlob = () => {
   let uniforms = {
     "time": { value: 1.0 },
     "scroll": { value: 1.0 },
-    'mouse': {'type': 'v2', 'value': mouse},
+    "camera": { 'type': 'v3', 'value': camPosInit },
+    'mouse': {'type': 'v3', 'value': mouse},
     'brightColor': {'type': 'c', 'value': color1},
     'darkColor': {'type': 'c', 'value': color2},
     'shape1': {'type': 'v3', 'value': shape.p1},
@@ -214,7 +215,7 @@ let activateBlob = () => {
     fragmentShader: document.getElementById( 'fragmentShader' ).textContent
   });
 
-  let geometry = new THREE.SphereGeometry( 12, 128, 128 );
+  let geometry = new THREE.SphereGeometry( 15, 128, 128 );
   let object = new THREE.Mesh(geometry, material);
   // object.rotation.copy(blobRotInit);
 
@@ -230,13 +231,24 @@ let activateBlob = () => {
   $DOM.wrapper.addEventListener("mousemove", (event) => {
     let x = event.clientX - $DOM.wrapperDims.x;
     let y = event.clientY - $DOM.wrapperDims.y;
+    // console.log(x);
     x = (x / $DOM.wrapperDims.width) * 2 - 1;
     y = -(y / $DOM.wrapperDims.height) * 2 + 1;
 
-    mouse.x = x;//0.88*prevMouse.x + 0.12*x;
-    mouse.y = y;//0.88*prevMouse.y + 0.12*y;
-    prevMouse.x = mouse.x;
-    prevMouse.y = mouse.y;
+    var vec = new THREE.Vector3();
+    var pos = new THREE.Vector3();
+    vec.set(x,y,1);
+    vec.unproject( camera );
+    vec.sub( camera.position ).normalize();
+    var distance = - camera.position.z / vec.z;
+    pos.copy( camera.position ).add( vec.multiplyScalar( distance ) );
+
+    uniforms.mouse.value = pos;
+
+    // mouse.x = x;//0.88*prevMouse.x + 0.12*x;
+    // mouse.y = y;//0.88*prevMouse.y + 0.12*y;
+    // prevMouse.x = mouse.x;
+    // prevMouse.y = mouse.y;
   }, false)
 
   $DOM.scroller.addEventListener("scroll", () => {

@@ -35,10 +35,12 @@
   varying vec4 vGlobalPosition;
   varying vec4 vMousePosition;
   varying vec3 vFragVertexEc;
+  varying vec3 dir;
 
   uniform float time;
   uniform float scroll;
-  uniform vec2 mouse;
+  uniform vec3 mouse;
+  uniform vec3 camera;
 
   uniform vec3 darkColor;
   uniform vec3 brightColor;
@@ -162,8 +164,11 @@
 
   varying vec4 vMousePosition;
 
+  varying vec3 dir;
+
   uniform float time;
-  uniform vec2 mouse;
+  uniform vec3 mouse;
+  uniform vec3 camera;
 
   uniform vec3 shape1;
   uniform vec3 shape2;
@@ -202,9 +207,16 @@
 
     vGlobalPosition = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);
 
-    float d = distance(vGlobalPosition.xyz/20., vec3(mouse, 1.));
-    float s = smoothstep(0.45, 1.35, d);
-    vPosition = superPositionForPosition(position + 4.*s*vNormal.xyz);
+
+    vec3 pdir = normalize(vGlobalPosition.xyz - mouse);
+    // dir = vec3( normalize(pdir) );
+    float d = distance(vGlobalPosition.xyz, mouse);
+    d = pow(d/10.,4.)/1000.;
+    dir = vec3( d );
+
+    // float d = distance(vGlobalPosition.xyz/20., vec3(mouse, 1.));
+    float s = 1.-smoothstep(0., 0.5, d);
+    vPosition = superPositionForPosition(position - 3.5*s*pdir);
 
     vGlobalPosition = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);
     gl_Position = vGlobalPosition;
