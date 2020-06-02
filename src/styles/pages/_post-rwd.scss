@@ -28,6 +28,11 @@
 }
 
 @include media("below-tablet") {
+  .article__header.-is-scrolled {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
   .article__header,
   .article__content {
     padding: 32px 24px;
