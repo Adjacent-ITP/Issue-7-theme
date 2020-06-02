@@ -6,12 +6,28 @@
 		<?php if (is_single()) : ?>
 			<title> <?php the_title(); ?> </title>
 			<meta name="title" content="<?php the_title(); ?>">
+			<meta property="og:title" content="<?php the_title(); ?>">
+			<meta name="twitter:title" content="<?php the_title(); ?>">
+
 			<meta name="description" content="<?php echo get_field('blurb') ?>">
+			<meta property="og:description" content="<?php echo get_field('blurb') ?>">
+			<meta name="twitter:description" content="<?php echo get_field('blurb') ?>">
+
 		<?php else: ?>
 			<title> ADJACENT Issue 7 : Feelings </title>
 			<meta name="title" content="ADJACENT Issue 7 : Feelings">
+			<meta property="og:title" content="ADJACENT Issue 7 : Feelings">
+			<meta name="twitter:title" content="ADJACENT Issue 7 : Feelings">
+
 			<meta name="description" content="Our intent in Feeling was to explore both the ways in which our everyday emotions have been tied into the technical infrastructure around us, and the way in which that infrastructure, which is increasingly moving toward a network of ubiquitous sensing technology, will create new ways of existing in the world.">
+			<meta name="og:description" content="Our intent in Feeling was to explore both the ways in which our everyday emotions have been tied into the technical infrastructure around us, and the way in which that infrastructure, which is increasingly moving toward a network of ubiquitous sensing technology, will create new ways of existing in the world.">
+			<meta name="twitter:description" content="Our intent in Feeling was to explore both the ways in which our everyday emotions have been tied into the technical infrastructure around us, and the way in which that infrastructure, which is increasingly moving toward a network of ubiquitous sensing technology, will create new ways of existing in the world.">
 		<?php endif; ?>
+
+
+		<meta property="og:image" content="<?php echo get_bloginfo('template_directory'); ?>/public/assets/adjacent-og-img.png">
+		<meta name="twitter:image" content="<?php echo get_bloginfo('template_directory'); ?>/public/assets/adjacent-og-img.png">
+		<meta name="twitter:card" content="summary_large_image">
 
 
 		<!-- Standard Favicon -->
