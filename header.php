@@ -14,6 +14,14 @@
 		<?php endif; ?>
 
 
+		<!-- Standard Favicon -->
+	  <link rel="icon" type="image/x-icon" href="<?php echo get_bloginfo('template_directory'); ?>/public/favicon_io/favicon.ico" />
+		<link rel="icon" sizes="192x192" href="<?php echo get_bloginfo('template_directory'); ?>/public/favicon_io/android-chrome-192x192.png">
+		<link rel="icon" sizes="512x512" href="<?php echo get_bloginfo('template_directory'); ?>/public/favicon_io/android-chrome-512x512.png">
+		<link rel="icon" sizes="16x16" href="<?php echo get_bloginfo('template_directory'); ?>/public/favicon_io/favicon-16x16.png">
+		<link rel="icon" sizes="32x32" href="<?php echo get_bloginfo('template_directory'); ?>/public/favicon_io/favicon-32x32.png">
+	  <link rel="apple-touch-icon-precomposed" href="<?php echo get_bloginfo('template_directory'); ?>/public/favicon_io/apple-touch-icon.png">
+
 
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" >

@@ -73,12 +73,25 @@
 
 
 
-@include media("below-medium") {
+@include media("below-desktop") {
   .posts__item {
-    width: 100%;
-    margin: 0;
+    &.-item-1,
+    &.-item-4,
+    &.-item-6,
+    &.-item-9,
+    &.-item-10 ,
+    &.-item-12 {
+      width: 100%;
+      margin: 0;
+    }
   }
   .posts__link-number {
     max-width: 13rem;
+  }
+}
+
+@include media("below-tablet") {
+  .posts__item:nth-child(2n) {
+    align-items: flex-start;
   }
 }
