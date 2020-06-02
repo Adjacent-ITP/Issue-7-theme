@@ -11,6 +11,7 @@ html {
   font-family: $f-main;
   font-size: $fs-root;
   -webkit-font-smoothing: antialiased;
+  color: $c-theme;
 }
 
 /*
@@ -21,6 +22,7 @@ html {
 body {
   background-size: 100% 1200%;
   background-position: 0% 0%;
+  color: $c-theme;
 }
 
 a {

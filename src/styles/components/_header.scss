@@ -68,7 +68,7 @@ $chevron-line-width: calc(#{$nav-width} / 10);
   &-chevron {
     border-style: solid;
     border-width: var(--nav-border-size) var(--nav-border-size) 0 0;
-    border-color: black;
+    border-color: $c-theme;
     height: calc(#{$nav-chevron-size} * 0.8);
     width: calc(#{$nav-chevron-size} * 0.8);
 
@@ -144,17 +144,17 @@ $chevron-line-width: calc(#{$nav-width} / 10);
     }
 
     &.-left:hover {
-      transform: translate3d(-0.8rem, 0, 0);
+      transform: translate3d(-5%, 0, 0);
 
       &:before {
-        transform: translate3d(-0.88rem, 0, 0);
+        transform: translate3d(-8%, 0, 0);
       }
     }
     &.-right:hover {
-      transform: translate3d(0.8rem, 0, 0);
+      transform: translate3d(5%, 0, 0);
 
       &:before {
-        transform: translate3d(0.88rem, 0, 0);
+        transform: translate3d(8%, 0, 0);
       }
     }
   }

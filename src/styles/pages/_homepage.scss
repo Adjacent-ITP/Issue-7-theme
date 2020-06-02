@@ -1,7 +1,6 @@
-.homepage .content-area__main  {
+.homepage .content-area__main {
   z-index: 1;
 }
-
 
 .blob {
   position: absolute;
@@ -48,7 +47,7 @@
 }
 
 .posts__link-author {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $c-theme;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
 }
