@@ -16,7 +16,7 @@
 @include media("below-tablet") {
   :root {
     --header-height: #{vh(14)};
-    --footer-height: #{vh(8)};
+    --footer-height: #{vh(7)};
     --body-height: calc(
       #{vh(100)} - var(--header-height) - var(--footer-height)
     );

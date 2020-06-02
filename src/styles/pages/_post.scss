@@ -378,3 +378,13 @@
     pointer-events: initial;
   }
 }
+
+@include media("below-tablet") {
+  .article__content p {
+    line-height: 1.6rem;
+  }
+  .article__content .article__footnotes > * {
+    line-height: 1.15rem;
+    font-size: 0.75rem;
+  }
+}
