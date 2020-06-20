@@ -46,6 +46,7 @@
   p,
   .video-holder {
     margin-left: 4rem;
+    margin-bottom: 2.5rem;
     max-width: 1024px;
 
     @include media("below-medium") {
@@ -61,12 +62,12 @@
     }
   }
 
-  p + .video-holder {
-    margin-top: -2.5rem;
+  .video-holder {
+    width: calc(100%-4rem);
+    max-width: 1024px;
 
     @include media("below-tablet") {
-      margin-top: -1rem;
-      margin-bottom: 1.5rem;
+      width: calc(100%-2rem);
     }
   }
 }

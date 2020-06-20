@@ -166,7 +166,8 @@
   }
 
   hr {
-    border: 0.125rem solid $c-theme;
+    border: none;
+    border-top: 0.0675rem solid $c-theme;
   }
 
   .article__intro {
